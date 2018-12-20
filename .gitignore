@@ -36,6 +36,7 @@
 
 # production
 /app/smartcinema/build
+/app/smartcinema/dist
 
 # misc
 .DS_Store
