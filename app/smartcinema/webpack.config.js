@@ -43,6 +43,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: __dirname + path.sep + 'public' + path.sep + 'index.html',
+            filename: __dirname + path.sep + 'dist' + path.sep + 'index.html',
             inject: 'body'
         })
     ],
