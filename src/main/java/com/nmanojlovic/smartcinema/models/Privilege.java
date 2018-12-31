@@ -3,6 +3,7 @@ package com.nmanojlovic.smartcinema.models;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Privilege {
 
     @Id
