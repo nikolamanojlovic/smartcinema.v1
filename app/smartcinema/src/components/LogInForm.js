@@ -9,47 +9,44 @@ export default class LogInForm extends Component {
         super(props);
 
         this.state = {
-            username: '',
+            email: '',
             password: '',
-            submitted: false,
-            error : ''
+            error : '',
+            submitted: false
         };
 
         this._handleChange = this._handleChange.bind(this);
-        // this._handleSubmit = this._handleSubmit(this);
+        this._handleSubmit = this._handleSubmit.bind(this);
     }
 
-    _handleChange(event) {
-        const {name, value} = event.target;
+    _handleChange(e) {
+        const {name, value} = e.target;
         this.setState({[name] : value});
     }
 
-    // _handleSubmit(event) {
-    //     event.preventDefault();
-    //
-    //     this.setState({submitted : true});
-    //     const {username, password} = this.state;
-    //
-    //     // check if it's filled
-    //     if ( username && password ) {
-    //         // do log in
-    //         userActions.login(username, password);
-    //     } else {
-    //         this.error = "Please provide credentials!";
-    //     }
-    // }
+    _handleSubmit(e) {
+        e.preventDefault();
+        this.setState({submitted : true});
+        const {email, password} = this.state;
+
+        // check if it's filled
+        console.log(email, password, this.state.submitted)
+        if ( email && password ) {
+            // do log in
+            userActions.login(email, password);
+        } else {
+            this.error = "Please provide credentials!";
+        }
+    }
 
     render() {
         return (
-            <form className="form-login" style={{textAlign: "center"}} >
+            <form className="form-login" style={{textAlign: "center"}} onSubmit={this._handleSubmit} >
                 <TextField name='email' label="E-mail" className="txt-email" style={{display: 'block', marginTop: "4px", marginBottom: "10px"}}
                            onChange={this._handleChange} fullWidth/>
                 <TextField name='password' label="Password" className="txt-password" type="password" style={{display: 'block', marginBottom: "10px"}}
                            onChange={this._handleChange} fullWidth/>
                 <Button variant="contained" color="primary" type="submit" style={{backgroundColor: "#44C2D2", marginBottom: "20px"}}>Log In</Button>
-                {/*{{*/}
-                    {/*if (this.state.submitted === true)*/}
-                {/*}}*/}
             </form>
         );
     }
