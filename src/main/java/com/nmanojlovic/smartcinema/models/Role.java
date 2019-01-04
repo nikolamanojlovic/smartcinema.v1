@@ -1,10 +1,12 @@
 package com.nmanojlovic.smartcinema.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Role {
+@Table(name = "role")
+public class Role implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -22,6 +24,10 @@ public class Role {
             joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "privilege_id", referencedColumnName = "id"))
     private List<Privilege> privileges;
+
+    public Role(String name) {
+        this.name = name;
+    }
 
     public long getId() {
         return id;
