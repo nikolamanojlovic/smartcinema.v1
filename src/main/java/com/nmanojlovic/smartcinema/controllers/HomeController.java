@@ -17,6 +17,6 @@ public class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
     public Optional<AbstractUser> index() {
-        return userService.findUserByEmail("fegwe");
+        return userService.findUserByCredentials("fegwe", "gweonogw");
     }
 }

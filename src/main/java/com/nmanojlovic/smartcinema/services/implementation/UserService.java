@@ -18,4 +18,9 @@ public class UserService implements IUserService {
     public Optional<AbstractUser> findUserByEmail(String email) {
         return Optional.ofNullable(userDao.findById(email));
     }
+
+    @Override
+    public Optional<AbstractUser> findUserByCredentials(String email, String password) {
+        return Optional.ofNullable(userDao.findUserByCredentials(email, password));
+    }
 }

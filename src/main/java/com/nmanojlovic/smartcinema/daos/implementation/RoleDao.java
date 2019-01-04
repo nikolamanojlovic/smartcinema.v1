@@ -1,6 +1,5 @@
 package com.nmanojlovic.smartcinema.daos.implementation;
 
-import com.nmanojlovic.smartcinema.constants.DatabaseConstants;
 import com.nmanojlovic.smartcinema.daos.IRoleDao;
 import com.nmanojlovic.smartcinema.models.Role;
 import org.springframework.stereotype.Repository;
@@ -14,6 +13,6 @@ public class RoleDao extends SuperDao<Role, Long> implements IRoleDao {
 
     @Override
     protected String getModelName() {
-        return DatabaseConstants.ROLE.name();
+        return Role.class.getName();
     }
 }
