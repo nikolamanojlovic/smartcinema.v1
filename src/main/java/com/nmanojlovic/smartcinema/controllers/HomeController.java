@@ -2,8 +2,9 @@ package com.nmanojlovic.smartcinema.controllers;
 
 import com.nmanojlovic.smartcinema.models.AbstractUser;
 import com.nmanojlovic.smartcinema.services.IUserService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -15,8 +16,13 @@ public class HomeController {
     @Resource(name = "userService")
     IUserService userService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Optional<AbstractUser> index() {
-        return userService.findUserByCredentials("fegwe", "gweonogw");
+    @GetMapping()
+    public <T> ResponseEntity<T> index() {
+        Optional<AbstractUser> user = userService.findUserByCredentials("fegwe", "gweonogw");
+        if ( user.isPresent() ) {
+            return null;
+        } else {
+            return null;
+        }
     }
 }

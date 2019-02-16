@@ -26,6 +26,7 @@ export default class LogInForm extends Component {
 
     _handleSubmit(e) {
         e.preventDefault();
+
         this.setState({submitted : true});
         const {email, password} = this.state;
 

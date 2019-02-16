@@ -11,12 +11,11 @@ export const userActions = {
     logout,
 };
 
-
-function login(username, password) {
+function login(email, password) {
     return dispatch => {
-        dispatch(request({ username }));
+        dispatch(request({ email: email }));
 
-        userService.login(username, password)
+        userService.login(email, password)
             .then(
                 user => {
                     dispatch(success(user));

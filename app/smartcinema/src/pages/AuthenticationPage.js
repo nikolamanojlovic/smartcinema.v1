@@ -3,7 +3,6 @@ import {LogInForm} from "../components";
 import Grid from "@material-ui/core/Grid/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
 import Paper from "@material-ui/core/es/Paper/Paper";
-import CardMedia from "@material-ui/core/es/CardMedia/CardMedia";
 
 class AuthenticationPage extends Component {
     render() {

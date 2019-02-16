@@ -1,0 +1,22 @@
+package com.nmanojlovic.smartcinema.models;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class SeatId {
+
+    @Column(name = "row")
+    private int row;
+
+    @Column(name = "number")
+    private int number;
+
+    public int getRow() { return row; }
+
+    public void setRow(int row) { this.row = row; }
+
+    public int getNumber() { return number; }
+
+    public void setNumber(int number) { this.number = number; }
+}
