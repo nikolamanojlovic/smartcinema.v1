@@ -12,6 +12,18 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class AbstractUser implements Serializable {
 
+    public AbstractUser(String email, String password, String name, String lastName, char sex, boolean enabled,
+                        boolean tokenExpired, List<Role> roles) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.lastName = lastName;
+        this.sex = sex;
+        this.enabled = enabled;
+        this.tokenExpired = tokenExpired;
+        this.roles = roles;
+    }
+
     @Id
     @Column(name = "email")
     protected String email;

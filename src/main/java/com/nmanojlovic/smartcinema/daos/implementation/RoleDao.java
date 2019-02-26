@@ -13,6 +13,6 @@ public class RoleDao extends SuperDao<Role, Long> implements IRoleDao {
 
     @Override
     protected String getModelName() {
-        return Role.class.getName();
+        return " " + Role.class.getSimpleName() + " ";
     }
 }

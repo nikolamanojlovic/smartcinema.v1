@@ -18,9 +18,6 @@ class AuthenticationPage extends Component {
                     </div>
                     <Paper style={{ margin: "auto", width : "50%", padding: "5px 15px",  backgroundColor : "#FFFFFF"}}>
                         <LogInForm/>
-                        <Typography align="center" className="no-account" variant="body2" gutterBottom>
-                            Don't have an account yet? <a className="link-sign-up" href="#">Sign up</a>
-                        </Typography>
                     </Paper>
                 </Grid>
             </Grid>

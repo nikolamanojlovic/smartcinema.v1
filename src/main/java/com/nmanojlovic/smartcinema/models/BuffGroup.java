@@ -10,6 +10,12 @@ import java.util.List;
 @Table(name = "buff_group")
 public class BuffGroup {
 
+    public BuffGroup(long id, String name, List<FilmBuff> buffs) {
+        this.id = id;
+        this.name = name;
+        this.buffs = buffs;
+    }
+
     @Id
     @Column(name = "id")
     private long id;
@@ -22,7 +28,7 @@ public class BuffGroup {
             CascadeType.MERGE
     })
     @JoinTable(name = "buff_group_relation", joinColumns = {@JoinColumn(name = "group_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "buff_id", referencedColumnName = "id")})
+            inverseJoinColumns = {@JoinColumn(name = "buff_id", referencedColumnName = "email")})
     private List<FilmBuff> buffs;
 
     public long getId() { return id; }

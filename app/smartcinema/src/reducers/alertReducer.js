@@ -3,21 +3,21 @@ import {alertConstants} from "../constants/alertConstants";
 /*
      Alert reducer manages the application state for alerts
  */
-export function alert(state = {}, action) {
+export const alertReducer = (state = {}, action) => {
     switch (action.type) {
         case alertConstants.SUCCESS:
             return {
-                type: 'alert-success',
-                message: action.message
+                type: 'success',
+                message: action.payload
             };
         case alertConstants.ERROR:
             return {
-                type: 'alert-danger',
-                message: action.message
+                type: 'error',
+                message: action.payload
             };
         case alertConstants.CLEAR:
             return {};
         default:
             return state
     }
-}
+};

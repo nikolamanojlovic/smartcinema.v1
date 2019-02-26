@@ -5,9 +5,9 @@ import { Route, Redirect } from 'react-router-dom';
     If user is in local storage redirect to site, otherwise redirect to Auth page
  */
 export const PrivateRoute = ( {component: Component} ) => (
-    <Route render = {
+    <Route  render = {
             props => (localStorage.getItem('user')
             ? <Component {...props} />
-            : <Redirect to={{ pathname: '/authenticate', state: {from: props.location} }}/>
+            : <Redirect to={{ pathname: '/authenticate' }}/>
     )}/>
 );

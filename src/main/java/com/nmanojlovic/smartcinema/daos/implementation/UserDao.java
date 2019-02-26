@@ -16,7 +16,7 @@ public class UserDao extends SuperDao<AbstractUser, String> implements IUserDao 
 
     @Override
     protected String getModelName() {
-        return AbstractUser.class.getName();
+        return  " " + AbstractUser.class.getSimpleName() + " ";
     }
 
     @Override

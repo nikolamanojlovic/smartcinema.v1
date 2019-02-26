@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Route, Router} from "react-router-dom";
-import {PrivateRoute} from "./components/PrivateRoute";
+import {Route, Router, Switch} from "react-router-dom";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import HomePage from "./pages/HomePage";
 import {history} from "./helpers/history";
@@ -10,10 +9,10 @@ class App extends Component {
     render() {
         return (
             <Router history={history}>
-                <div>
-                    <PrivateRoute exact path="/" component={HomePage}/>
+                <Switch>
                     <Route path="/authenticate" component={AuthenticationPage}/>
-                </div>
+                    <Route path="/" component={HomePage}/>
+                </Switch>
             </Router>
         );
     }

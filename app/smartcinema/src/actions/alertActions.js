@@ -1,22 +1,26 @@
-import { alertConstants } from '../constants/alertConstants';
+import {alertConstants} from '../constants/alertConstants';
+import {AxiosInstance as axios} from "axios";
 
 /*
      Redux action creators for the alerts
  */
 export const alertActions = {
-    success,
-    error,
-    clear,
+    _success,
+    _error,
+    _clear
 };
 
-function success(message) {
-    return { type: alertConstants.SUCCESS, message };
-}
+/** ACTIONS **/
+const _success = (message) => ({
+    type: alertConstants.SUCCESS,
+    payload : message
+});
 
-function error(message) {
-    return { type: alertConstants.ERROR, message };
-}
+const _error = (message) => ({
+    type: alertConstants.ERROR,
+    payload : message
+});
 
-function clear() {
-    return { type: alertConstants.CLEAR };
-}
+const _clear = () => ({
+    type: alertConstants.CLEAR,
+});

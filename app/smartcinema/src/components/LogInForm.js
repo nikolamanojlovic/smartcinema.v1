@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 import {TextField} from "@material-ui/core";
 import Button from "@material-ui/core/Button/Button";
-import {userActions} from "../actions/userActions";
-import CardMedia from "@material-ui/core/es/CardMedia/CardMedia";
 
-export default class LogInForm extends Component {
+export class LogInForm extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             email: '',
             password: '',
-            error : '',
+            errors : {},
             submitted: false
         };
 
@@ -25,19 +23,6 @@ export default class LogInForm extends Component {
     }
 
     _handleSubmit(e) {
-        e.preventDefault();
-
-        this.setState({submitted : true});
-        const {email, password} = this.state;
-
-        // check if it's filled
-        console.log(email, password, this.state.submitted)
-        if ( email && password ) {
-            // do log in
-            userActions.login(email, password);
-        } else {
-            this.error = "Please provide credentials!";
-        }
     }
 
     render() {
@@ -51,4 +36,4 @@ export default class LogInForm extends Component {
             </form>
         );
     }
-};
+}

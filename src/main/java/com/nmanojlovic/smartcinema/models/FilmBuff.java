@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,19 @@ import java.util.List;
 @Entity
 @Table(name = "film_buff")
 public class FilmBuff extends AbstractUser {
+
+    public FilmBuff(String email, String password, String name, String lastName, char sex, boolean enabled,
+                    boolean tokenExpired, List<Role> roles, Date dateOfBirth, String profession, String city,
+                    String state, String imageUri, List<BuffGroup> groups, List<Ticket> tickets) {
+        super(email, password, name, lastName, sex, enabled, tokenExpired, roles);
+        this.dateOfBirth = dateOfBirth;
+        this.profession = profession;
+        this.city = city;
+        this.state = state;
+        this.imageUri = imageUri;
+        this.groups = groups;
+        this.tickets = tickets;
+    }
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "date_of_birth")

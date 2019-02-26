@@ -1,40 +1,33 @@
-import { userConstants } from '../constants/userConstants';
-import { userService } from '../services/userService';
-import { alertActions } from './alertActions';
-import { history } from '../helpers/history';
+import {userConstants} from "../constants/userConstants";
+import {AxiosInstance as axios} from "axios";
+import {alertActions as alterActions} from "./alertActions";
 
 /*
      Redux action creators for the user
  */
 export const userActions = {
-    login,
-    logout,
+    _login,
 };
 
-function login(email, password) {
-    return dispatch => {
-        dispatch(request({ email: email }));
+/** ACTIONS **/
+const _login = (user) => ({
+    type : userConstants.LOGIN,
+    payload : user
+});
 
-        userService.login(email, password)
-            .then(
-                user => {
-                    dispatch(success(user));
-                    history.push('/');
-                },
-                error => {
-                    dispatch(failure(error.toString()));
-                    dispatch(alertActions.error(error.toString()));
-                }
-            );
-    };
+/** FUNCTIONS **/
+export const login = (credentials = {email : '', password : ''}) => {
+    return (dispatch) => {
+        return axios.get(${config.apiUrl} +"/auth/login", {
+            email: credentials.email,
+            password: credentials.password
+        }).then(response => {
+            console.log(response);
+            dispatch(_login(response.data))
+        }).catch(error => {
+            console.log(error.response);
+            dispatch(alterActions._error(error.response.data))
+        });
+    }
+};
 
-    // Sub-actions
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
-}
-
-function logout() {
-    userService.logout();
-    return { type: userConstants.LOGOUT };
-}
