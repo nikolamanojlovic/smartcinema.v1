@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
 import {Route, Router, Switch} from "react-router-dom";
+import {createBrowserHistory} from "history";
+import PrivateRoute from "./components/PrivateRoute";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import HomePage from "./pages/HomePage";
-import {history} from "./helpers/history";
+
+const history = createBrowserHistory();
 
 class App extends Component {
     render() {
@@ -11,7 +14,7 @@ class App extends Component {
             <Router history={history}>
                 <Switch>
                     <Route path="/authenticate" component={AuthenticationPage}/>
-                    <Route path="/" component={HomePage}/>
+                    <PrivateRoute path="/" component={HomePage}/>
                 </Switch>
             </Router>
         );

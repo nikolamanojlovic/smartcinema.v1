@@ -7,6 +7,7 @@ import {alertActions as alterActions} from "./alertActions";
  */
 export const userActions = {
     _login,
+    _getUser
 };
 
 /** ACTIONS **/
@@ -15,17 +16,19 @@ const _login = (user) => ({
     payload : user
 });
 
+const _getUser = () => ({
+    type : userConstants.GET_USER
+});
+
 /** FUNCTIONS **/
-export const login = (credentials = {email : '', password : ''}) => {
+export function login (email, password) {
     return (dispatch) => {
-        return axios.get(${config.apiUrl} +"/auth/login", {
-            email: credentials.email,
-            password: credentials.password
+        return axios.get(url.API + "/auth/login", {
+            email: email,
+            password: password
         }).then(response => {
-            console.log(response);
             dispatch(_login(response.data))
         }).catch(error => {
-            console.log(error.response);
             dispatch(alterActions._error(error.response.data))
         });
     }

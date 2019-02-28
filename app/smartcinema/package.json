@@ -10,7 +10,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "config": "^3.0.1",
     "history": "^4.7.2",
-    "prop-types": "latest",
+    "prop-types": "^15.7.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
@@ -19,8 +19,7 @@
     "react-swipeable-views": "^0.13.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "webpack": "^4.27.1"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
