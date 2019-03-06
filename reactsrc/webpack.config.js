@@ -9,7 +9,8 @@ module.exports = {
         path: path.join(__dirname, '/dist'),
     },
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        port: 3000
     },
     module: {
         rules: [{
