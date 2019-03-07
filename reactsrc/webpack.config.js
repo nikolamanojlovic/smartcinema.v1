@@ -13,14 +13,26 @@ module.exports = {
         port: 3000
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: "babel-loader",
-            query: {
-                presets: ['@babel/preset-env', '@babel/preset-react']
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader",
+                query: {
+                    presets: ['@babel/preset-env', '@babel/preset-react']
+                }
+            },
+            {
+                test: /\.(png|jp(e*)g|svg|ico)$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8000, // Convert images < 8kb to base64 strings
+                        name: 'images/[hash]-[name].[ext]'
+                    }
+                }]
             }
-        }]
+        ]
     },
     plugins: [
         new HWP(
