@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import LogInForm from "../components/logInForm";
+import MessageComponent from "../components/messageComponent";
+import {connect} from "react-redux";
 
 const style = {
     grid : {
@@ -38,9 +39,10 @@ class LogInPage extends Component {
                 <Paper style={style.paper}>
                     <LogInForm/>
                 </Paper>
+                <MessageComponent/>
             </Grid>
         );
     }
 }
 
-export default LogInPage;
+export default connect(null)(LogInPage);

@@ -1,18 +1,18 @@
-import {AxiosInstance as axios} from "axios";
 import {API_URL} from "../helper/apiUrl";
 import {UserLogInActionCreator} from "../actionCreators/userActionCreators";
+import {ErrorMessageActionCreator} from "../actionCreators/messageActionCreators";
+import axios from 'axios';
 
-export const UserLogIn = ({email, password}) => {
-    return (dispatch) => {
-        return axios.get(API_URL + `/authenticate`, {
+export const UserLogIn = (email, password) => {
+    return dispatch => {
+        axios.get(API_URL + '/authenticate/login', {
             email: email,
             password: password
         }).then((response) => {
-            dispatch(UserLogInActionCreator(response.data));
+            console.log("feokwpof");
+            setTimeout(() => {dispatch(UserLogInActionCreator(response.data))}, 2000);
         }).catch((error) => {
-            console.log(error.data);
+            dispatch(ErrorMessageActionCreator("neka greska"));
         })
     };
 };
-
-export default UserLogIn;
