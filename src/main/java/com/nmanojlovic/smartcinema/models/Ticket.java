@@ -27,7 +27,7 @@ public class Ticket implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "buff")
-    private FilmBuff buff;
+    private User user;
 
     public long getId() { return id; }
 
@@ -45,7 +45,7 @@ public class Ticket implements Serializable {
 
     public void setEntries(List<TicketEntry> entries) { this.entries = entries; }
 
-    public FilmBuff getBuff() { return buff; }
+    public User getBuff() { return user; }
 
-    public void setBuff(FilmBuff buff) { this.buff = buff; }
+    public void setBuff(User buff) { this.user = buff; }
 }
