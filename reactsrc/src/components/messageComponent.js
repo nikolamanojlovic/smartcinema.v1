@@ -4,44 +4,35 @@ import Snackbar from "@material-ui/core/Snackbar";
 import {SnackbarContent} from "@material-ui/core";
 import {ClearMessage} from "../functions/messageFunctions";
 
+const style = {
+    error: {
+        color: '#A5122C',
+        marginLeft: 20,
+        marginRight: 20
+    }
+};
+
 class MessageComponent extends Component {
-     _clear() {
-        console.log("fwefkowekfpkwepf");
-        this.props.clearMessage();
-    };
+     _returnMessage() {
+         switch (Object.keys(this.props.message)[0]) {
+             case 'error':
+                 return <div style={style.error}>{Object.values(this.props.message)[0]}</div>;
+             default:
+                 return <div>{Object.values(this.props.message)[0]}</div>;
+         }
+     };
 
     render() {
         return (
-            this.props.message ?
-                (<Snackbar
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}
-                    autoHideDuration={6000}
-                    onClose={() => this._clear()}
-                >
-                    <SnackbarContent
-                        onClose={() => this._clear()}
-                        variant={this.props.message.key}
-                        message={this.props.message.value}
-                    />
-                </Snackbar>)
-                : null
+            Object.keys(this.props.message)[0] ? this._returnMessage() : <span/>
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        message: state.message
+        message: state.MessageReducer.message
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        clearMessage: () => dispatch(ClearMessage())
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MessageComponent);
+export default connect(mapStateToProps)(MessageComponent);

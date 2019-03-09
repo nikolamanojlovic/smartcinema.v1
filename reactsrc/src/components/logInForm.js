@@ -1,10 +1,10 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {connect} from "react-redux";
-import React from "react";
 import {Redirect} from "react-router-dom";
 import {UserLogIn} from "../functions/userFunctions";
+import {ClearMessage} from "../functions/messageFunctions";
 
 const style = {
     form : {
@@ -34,16 +34,23 @@ class LogInForm extends Component {
         this._handleChange = this._handleChange.bind(this);
     };
 
+    _clear() {
+        console.log("fwefkowekfpkwepf");
+        this.props.clearMessage();
+    };
+
     _login() {
-        if ( this.props.user ) {
+        if ( this.props.user.value ) {
             <Redirect exact path="/"/>
         } else {
+            console.log(this.props.user);
             this.props.logIn(this.state.email, this.state.password);
         }
     };
 
     _handleChange(event) {
         this.setState({[event.target.name] : event.target.value});
+        this._clear();
     }
 
     render() {
@@ -80,13 +87,14 @@ class LogInForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.UserReducer.user,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        logIn: (email, password) => dispatch(UserLogIn(email, password))
+        logIn: (email, password) => dispatch(UserLogIn(email, password)),
+        clearMessage: () => dispatch(ClearMessage())
     };
 };
 

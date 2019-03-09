@@ -2,8 +2,7 @@ import React, {Component} from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import LogInForm from "../components/logInForm";
-import MessageComponent from "../components/messageComponent";
-import {connect} from "react-redux";
+import MessageComponent from "../components/messageComponent"
 
 const style = {
     grid : {
@@ -16,12 +15,6 @@ const style = {
         paddingTop: 25,
         paddingBottom: 25,
         width: '25%',
-    },
-    txtLogIn: {
-        marginLeft: 15,
-        marginRight: 15,
-        fontSize: 35,
-        fontWeight: 'bold'
     },
     logo: {
         display: 'block',
@@ -38,11 +31,11 @@ class LogInPage extends Component {
                 <img src={require('../images/logo.svg')} alt="SmartCinema Logo" style={style.logo}/>
                 <Paper style={style.paper}>
                     <LogInForm/>
+                    <MessageComponent/>
                 </Paper>
-                <MessageComponent/>
             </Grid>
         );
     }
 }
 
-export default connect(null)(LogInPage);
+export default LogInPage;

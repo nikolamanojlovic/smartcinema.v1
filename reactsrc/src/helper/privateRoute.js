@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, props, ...rest }) => (
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.UserReducer.user
     };
 };
 
