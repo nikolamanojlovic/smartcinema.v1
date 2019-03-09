@@ -1,12 +1,12 @@
 package com.nmanojlovic.smartcinema.services;
 
-import com.nmanojlovic.smartcinema.models.AbstractUser;
+import com.nmanojlovic.smartcinema.models.User;
 
 import java.util.Optional;
 
 public interface IUserService {
 
-    Optional<AbstractUser> findUserByEmail(String email);
+    Optional<User> findUserByEmail(String email);
 
-    Optional<AbstractUser> findUserByCredentials(String email, String password);
+    Optional<User> findUserByCredentials(String email, String password);
 }

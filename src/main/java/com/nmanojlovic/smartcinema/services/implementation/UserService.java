@@ -1,7 +1,7 @@
 package com.nmanojlovic.smartcinema.services.implementation;
 
 import com.nmanojlovic.smartcinema.daos.IUserDao;
-import com.nmanojlovic.smartcinema.models.AbstractUser;
+import com.nmanojlovic.smartcinema.models.User;
 import com.nmanojlovic.smartcinema.services.IUserService;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +15,12 @@ public class UserService implements IUserService {
     private IUserDao userDao;
 
     @Override
-    public Optional<AbstractUser> findUserByEmail(String email) {
+    public Optional<User> findUserByEmail(String email) {
         return Optional.ofNullable(userDao.findById(email));
     }
 
     @Override
-    public Optional<AbstractUser> findUserByCredentials(String email, String password) {
+    public Optional<User> findUserByCredentials(String email, String password) {
         return Optional.ofNullable(userDao.findUserByCredentials(email, password));
     }
 }

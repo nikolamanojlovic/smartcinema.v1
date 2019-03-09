@@ -17,9 +17,6 @@ public class Film {
     @Column(name = "cost_of_play")
     private double costOfPlay;
 
-    @ManyToMany(mappedBy = "films")
-    private List<Genre> genres;
-
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Projection> projections;
 
@@ -30,10 +27,6 @@ public class Film {
     public double getCostOfPlay() { return costOfPlay; }
 
     public void setCostOfPlay(double costOfPlay) { this.costOfPlay = costOfPlay; }
-
-    public List<Genre> getGenres() { return genres; }
-
-    public void setGenres(List<Genre> genres) { this.genres = genres; }
 
     public List<Projection> getProjections() { return projections; }
 
