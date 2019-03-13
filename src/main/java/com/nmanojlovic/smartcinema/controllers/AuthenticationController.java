@@ -4,13 +4,13 @@ import com.nmanojlovic.smartcinema.models.User;
 import com.nmanojlovic.smartcinema.services.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@RestController("/auth")
+@CrossOrigin
+@RestController
+@RequestMapping("/auth")
 public class AuthenticationController {
 
     @Resource(name = "userService")
