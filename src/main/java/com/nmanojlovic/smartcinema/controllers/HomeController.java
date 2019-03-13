@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.Optional;
 
-@RestController("/")
+@RestController("/home")
 public class HomeController {
 
     @Resource(name = "userService")
     IUserService userService;
 
-    @GetMapping()
+    @GetMapping
     public <T> ResponseEntity<T> index() {
         Optional<User> user = userService.findUserByCredentials("fegwe", "gweonogw");
         if ( user.isPresent() ) {

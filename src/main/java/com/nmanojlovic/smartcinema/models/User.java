@@ -53,7 +53,7 @@ public class User implements Serializable {
     @Column(name = "state")
     private String state;
 
-    @OneToMany(mappedBy = "buff", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ticket> tickets;
 
     public String getEmail() { return email; }

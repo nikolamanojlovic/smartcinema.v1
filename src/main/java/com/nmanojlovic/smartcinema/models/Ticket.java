@@ -26,7 +26,7 @@ public class Ticket implements Serializable {
     private List<TicketEntry> entries;
 
     @ManyToOne
-    @JoinColumn(name = "buff")
+    @JoinColumn(name = "user")
     private User user;
 
     public long getId() { return id; }

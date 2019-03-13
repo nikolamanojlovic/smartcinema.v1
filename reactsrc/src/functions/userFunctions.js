@@ -5,14 +5,15 @@ import axios from 'axios';
 
 export const UserLogIn = (email, password) => {
     return dispatch => {
-        axios.get(API_URL + '/authenticate/login', {
-            email: email,
-            password: password
+        axios.post(API_URL + '/auth/login', {
+            email : email,
+            password : password
         }).then((response) => {
-            console.log("feokwpof");
-            setTimeout(() => {dispatch(UserLogInActionCreator(response.data))}, 2000);
+            setTimeout(() => {
+                dispatch(UserLogInActionCreator(response.data))
+            }, 1000);
         }).catch((error) => {
-            dispatch(ErrorMessageActionCreator("neka greska"));
+            dispatch(ErrorMessageActionCreator("Credentials are not valid!"));
         })
     };
 };
