@@ -14,6 +14,8 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable {
 
+    public User() {}
+
     public User(String email, String password, String name, String lastName, char sex, Date dateOfBirth,
                 String city, String state, List<Ticket> tickets) {
         this.email = email;

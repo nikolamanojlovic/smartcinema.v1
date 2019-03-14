@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public abstract class SuperDao<T, K extends Serializable> implements ISuperDao<T
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Transactional
     public void create(T entity) {
         getEntityManager().persist(entity);
     }

@@ -27,7 +27,7 @@ public class UserDao extends SuperDao<User, String> implements IUserDao {
 
         List<User> result = getEntityManager().createQuery(String.join(SPACE_SEPARATOR, query)).getResultList();
         if ( result != null && result.size() > 0 ) {
-            result.get(0);
+            return result.get(0);
         }
         return null;
     }
