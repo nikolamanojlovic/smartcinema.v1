@@ -1,6 +1,6 @@
 package com.nmanojlovic.smartcinema.daos.implementation;
 
-import com.nmanojlovic.smartcinema.constants.DatabaseConstants;
+import com.nmanojlovic.smartcinema.constants.Constants;
 import com.nmanojlovic.smartcinema.daos.ISuperDao;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -41,7 +41,7 @@ public abstract class SuperDao<T, K extends Serializable> implements ISuperDao<T
     }
 
     public List<T> findAll() {
-        return entityManager.createQuery(DatabaseConstants.FROM + getModelName()).getResultList();
+        return entityManager.createQuery(Constants.FROM + getModelName()).getResultList();
     }
 
     protected EntityManager getEntityManager() {

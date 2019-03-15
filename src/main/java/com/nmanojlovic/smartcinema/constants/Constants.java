@@ -6,4 +6,12 @@ public final class Constants {
     public static final char FEMALE = 'F';
 
     public static final String DEFAULT_DATE_FORMAT = "dd/MM/yyyy";
+
+    public static final String FROM = " FROM ";
+    public static final String WHERE = " WHERE ";
+    public static final String AND = " AND ";
+
+    public static final String USER = " user ";
+    public static final String EMAIL = " email ";
+    public static final String PASSSWORD = " password ";
 }

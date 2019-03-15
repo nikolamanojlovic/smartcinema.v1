@@ -1,8 +1,10 @@
 package com.nmanojlovic.smartcinema.daos.implementation;
 
-import com.nmanojlovic.smartcinema.constants.DatabaseConstants;
+import com.nmanojlovic.smartcinema.constants.Constants;
 import com.nmanojlovic.smartcinema.daos.IUserDao;
 import com.nmanojlovic.smartcinema.models.User;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,19 +18,18 @@ public class UserDao extends SuperDao<User, String> implements IUserDao {
 
     @Override
     protected String getModelName() {
-        return  " " + User.class.getSimpleName() + " ";
+        return " " + User.class.getSimpleName() + " ";
     }
 
     @Override
     public User findUserByCredentials(String email, String password) {
-        String[] query = {DatabaseConstants.FROM.name(), getModelName(), DatabaseConstants.WHERE.name(),
-                          DatabaseConstants.EMAIL.name(), "=", "'" + email + "'", DatabaseConstants.AND.name(),
-                          DatabaseConstants.PASSWORD.name(), "=", "'" + password + "'"};
+        if (StringUtils.isBlank(email) || StringUtils.isBlank(password)) {
+            return null;
+        }
+        String[] query = {Constants.FROM, getModelName(), Constants.WHERE, Constants.EMAIL, "=", "'" +
+                email + "'", Constants.AND, Constants.PASSSWORD, "=", "'" + password + "'"};
 
         List<User> result = getEntityManager().createQuery(String.join(SPACE_SEPARATOR, query)).getResultList();
-        if ( result != null && result.size() > 0 ) {
-            return result.get(0);
-        }
-        return null;
+        return CollectionUtils.isNotEmpty(result) ? result.get(0) : null;
     }
 }
