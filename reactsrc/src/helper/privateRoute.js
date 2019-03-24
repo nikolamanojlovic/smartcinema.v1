@@ -1,14 +1,18 @@
 import {Redirect, Route} from "react-router-dom";
-import React from "react";
+import React, {Component} from "react";
 import {connect} from "react-redux";
+import LogInPage from "../pages/logInPage";
+import siteHistory from "./history";
 
-const PrivateRoute = ({ component: Component, props, ...rest }) => (
-    <Route {...rest} render = {(props) => (
-       props.user
-            ? <Component {...props} />
-            : <Redirect to='/login' />
-    )} />
-);
+class PrivateRoute extends Component {
+    render() {
+        return(
+            Object.entries(this.props.user).length !== 0 ?
+                <Route exact path={this.props.path} component={this.props.component}/> :
+                <Redirect to="/login"/>
+        );
+    }
+}
 
 const mapStateToProps = state => {
     return {

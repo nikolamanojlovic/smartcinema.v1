@@ -6,3 +6,9 @@ export const UserLogInActionCreator = user => {
         payload: user
     };
 };
+
+export const GetCurrentUserActionCreator = () => {
+    return {
+        type: userActionTypes.GET_USER
+    };
+};

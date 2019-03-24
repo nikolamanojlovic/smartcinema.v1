@@ -1,8 +1,11 @@
 import {Component} from "react";
+import MenuComponent from "../components/menuComponent";
 
 class HomePage extends Component {
     render() {
-        return <h1>Hello</h1>;
+        return(
+            <MenuComponent/>
+        );
     }
 }
 
