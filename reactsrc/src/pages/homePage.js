@@ -1,10 +1,14 @@
 import {Component} from "react";
 import MenuComponent from "../components/menuComponent";
+import FilmPoster from "../components/filmPoster";
 
 class HomePage extends Component {
     render() {
         return(
-            <MenuComponent/>
+            <div>
+                <MenuComponent/>
+                <FilmPoster/>
+            </div>
         );
     }
 }

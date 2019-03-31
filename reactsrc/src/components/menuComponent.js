@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import AppBar from "@material-ui/core/AppBar";
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from "@material-ui/core/InputBase";
+import Input from "@material-ui/core/Input";
 
 const style = {
     bar: {
@@ -31,12 +32,14 @@ const style = {
         marginRight: 25,
         marginLeft: 10
     },
+    svg: {
+        marginTop: 2.5
+    },
     input: {
         margin: 0,
         float: 'right',
         color: '#FFF',
-        height: '100%',
-        backgroundColor: 'rgba(165, 18, 44, 0.5)'
+        height: '100%'
     }
 };
 
@@ -48,11 +51,12 @@ class MenuComponent extends Component {
                     <img src={require('../images/logo.svg')} alt="SmartCinema Logo" style={style.logo}/>
                     <div className="search-bar" style={style.search}>
                         <div className="search-icon" style={style.icon}>
-                            <SearchIcon/>
+                            <SearchIcon style={style.svg}/>
                         </div>
-                        <InputBase
-                            placeholder="Search…"
+                        <Input
                             style={style.input}
+                            disableUnderline={true}
+                            placeholder="Search"
                         />
                     </div>
                 </div>
