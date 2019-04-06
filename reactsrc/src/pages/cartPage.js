@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import FilmList from "../components/filmList";
 import SideBar from "../components/sideBar";
 
-class HomePage extends Component {
+class CartPage extends Component {
     constructor(props) {
         super(props);
     };
@@ -12,7 +11,6 @@ class HomePage extends Component {
         return(
             <div>
                 <SideBar/>
-                <FilmList/>
             </div>
         );
     }
@@ -24,4 +22,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps)(CartPage);

@@ -4,7 +4,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import {connect} from "react-redux";
 import {UserLogOut} from "../functions/userFunctions";
-import Redirect from "react-router-dom/es/Redirect";
+import {Redirect} from "react-router-dom";
+import siteHistory from "../helper/history";
 
 const styles = {
     nav: {
@@ -45,13 +46,13 @@ class SideBar extends Component {
         console.log(index);
         switch (index) {
             case 1:
-                <Redirect to="/cart"/>
+                siteHistory.push("/cart");
                 break;
             case 2:
                 this.props.logOut();
                 break;
             default:
-                <Redirect to="/"/>
+                siteHistory.push("/");
                 break;
         }
     }

@@ -3,6 +3,7 @@ import {Card, CardContent} from "@material-ui/core";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
+import siteHistory from "../helper/history";
 
 const style = {
     card: {
@@ -29,10 +30,20 @@ const style = {
 };
 
 class FilmPoster extends Component {
+    constructor(props) {
+        super(props);
+
+        this._handleClick = this._handleClick.bind(this);
+    };
+
+    _handleClick(id) {
+        siteHistory.push("/film/" + id);
+    }
+
     render() {
         return (
             <Card style={style.card}>
-                <CardActionArea style={style.action}>
+                <CardActionArea style={style.action} onClick={() => this._handleClick(this.props.film.id)}>
                     <CardMedia
                         component="img"
                         alt={this.props.film.title}
