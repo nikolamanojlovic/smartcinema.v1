@@ -7,6 +7,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import {connect} from "react-redux";
+import {UserLogIn, UserLogOut} from "../functions/userFunctions";
+import {ClearMessage} from "../functions/messageFunctions";
 
 const styles = {
     nav: {
@@ -37,6 +39,23 @@ const styles = {
 };
 
 class SideBar extends Component {
+    constructor(props) {
+        super(props);
+
+        this._handleClick = this._handleClick.bind(this);
+    };
+
+    _handleClick(index) {
+        console.log(index);
+        switch (index) {
+            case 2:
+                this.props.logOut();
+                break;
+            default:
+                break;
+        }
+    }
+
     render() {
         return (
             <nav style={styles.nav}>
@@ -47,7 +66,7 @@ class SideBar extends Component {
                 <Divider variant="middle" style={styles.divider}/>
                 <List>
                     {['Home', 'Cart', 'Log out'].map((text, index) => (
-                        <ListItem button key={text}>
+                        <ListItem button key={text} onClick={() => this._handleClick(index)}>
                             {/*<ListItemIcon>rgerg</ListItemIcon>*/}
                             <Typography style={styles.item}>
                                 {text}
@@ -66,4 +85,10 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(SideBar);
+const mapDispatchToProps = dispatch => {
+    return {
+        logOut: () => dispatch(UserLogOut())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

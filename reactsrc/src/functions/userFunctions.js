@@ -1,5 +1,9 @@
 import {API_URL} from "../helper/apiUrl";
-import {GetCurrentUserActionCreator, UserLogInActionCreator} from "../actionCreators/userActionCreators";
+import {
+    GetCurrentUserActionCreator,
+    UserLogInActionCreator,
+    UserLogOutActionCreator
+} from "../actionCreators/userActionCreators";
 import {ErrorMessageActionCreator} from "../actionCreators/messageActionCreators";
 import axios from 'axios';
 
@@ -15,6 +19,12 @@ export const UserLogIn = (email, password) => {
         }).catch((error) => {
             dispatch(ErrorMessageActionCreator("Credentials are not valid!"));
         })
+    };
+};
+
+export const UserLogOut = () => {
+    return dispatch => {
+        dispatch(UserLogOutActionCreator());
     };
 };
 

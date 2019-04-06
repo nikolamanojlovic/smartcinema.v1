@@ -21,6 +21,7 @@ const store = createStore(
 
 store.subscribe(() => {
     //this is just a function that saves state to localStorage
+    console.log(store.getState());
     saveState(store.getState());
 });
 

@@ -7,6 +7,12 @@ export const UserLogInActionCreator = user => {
     };
 };
 
+export const UserLogOutActionCreator = () => {
+    return {
+        type: userActionTypes.LOG_OUT
+    };
+};
+
 export const GetCurrentUserActionCreator = () => {
     return {
         type: userActionTypes.GET_USER
