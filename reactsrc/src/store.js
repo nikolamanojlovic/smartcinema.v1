@@ -4,10 +4,12 @@ import UserReducer from "./reducers/userReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 import MessageReducer from "./reducers/messageReducer";
 import {loadState, saveState} from "./persist";
+import FilmReducer from "./reducers/filmReducer";
 
 const reducers = combineReducers({
     UserReducer,
-    MessageReducer
+    MessageReducer,
+    FilmReducer
 });
 
 console.log(loadState());

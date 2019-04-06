@@ -7,7 +7,18 @@ import CardMedia from "@material-ui/core/CardMedia";
 const style = {
     card: {
         width: 265,
-        margin: 15
+        height: 600,
+        margin: 15,
+        display: "inline-block"
+    },
+    action: {
+        height: "100%"
+    },
+    content: {
+      height: "50%"
+    },
+    media: {
+        margin: 0
     }
 };
 
@@ -15,21 +26,21 @@ class FilmPoster extends Component {
     render() {
         return (
             <Card style={style.card}>
-                <CardActionArea>
+                <CardActionArea style={style.action}>
                     <CardMedia
                         component="img"
-                        alt="Contemplative Reptile"
+                        alt={this.props.film.title}
                         height="370"
-                        image="https://www.movieartarena.com/imgs/bladerunner2049ff.jpg"
-                        title="Contemplative Reptile"
+                        image={this.props.film.poster}
+                        title={this.props.film.title}
+                        style={style.media}
                     />
-                    <CardContent>
+                    <CardContent style={style.content}>
                         <Typography gutterBottom variant="h5" component="h2">
-                            Lizard
+                            {this.props.film.title}
                         </Typography>
                         <Typography component="p">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except Antarctica
+                            {this.props.film.plot}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
