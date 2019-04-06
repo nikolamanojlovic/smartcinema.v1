@@ -12,7 +12,6 @@ const reducers = combineReducers({
     FilmReducer
 });
 
-console.log(loadState());
 const store = createStore(
     reducers,
     loadState(),

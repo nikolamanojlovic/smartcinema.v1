@@ -1,14 +1,10 @@
-import {Component} from "react";
-import AppBar from "./menuComponent";
-import React from "react";
-import {Divider, Drawer, Typography} from "@material-ui/core";
+import React, {Component} from "react";
+import {Divider, Typography} from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import {connect} from "react-redux";
-import {UserLogIn, UserLogOut} from "../functions/userFunctions";
-import {ClearMessage} from "../functions/messageFunctions";
+import {UserLogOut} from "../functions/userFunctions";
+import Redirect from "react-router-dom/es/Redirect";
 
 const styles = {
     nav: {
@@ -48,10 +44,14 @@ class SideBar extends Component {
     _handleClick(index) {
         console.log(index);
         switch (index) {
+            case 1:
+                <Redirect to="/cart"/>
+                break;
             case 2:
                 this.props.logOut();
                 break;
             default:
+                <Redirect to="/"/>
                 break;
         }
     }
