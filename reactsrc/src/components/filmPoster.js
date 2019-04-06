@@ -19,6 +19,12 @@ const style = {
     },
     media: {
         margin: 0
+    },
+    h5: {
+        fontWeight: "bold"
+    },
+    p: {
+        textAlign: "justify"
     }
 };
 
@@ -36,10 +42,10 @@ class FilmPoster extends Component {
                         style={style.media}
                     />
                     <CardContent style={style.content}>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h5" component="h2" style={style.h5}>
                             {this.props.film.title}
                         </Typography>
-                        <Typography component="p">
+                        <Typography component="p" style={style.p}>
                             {this.props.film.plot}
                         </Typography>
                     </CardContent>
