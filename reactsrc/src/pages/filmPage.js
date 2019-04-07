@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import SideBar from "../components/sideBar";
+import FilmDetails from "../components/filmDetails";
 
 class FilmPage extends Component {
     constructor(props) {
@@ -11,15 +12,10 @@ class FilmPage extends Component {
         return(
             <div>
                 <SideBar/>
+                <FilmDetails/>
             </div>
         );
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        user: state.UserReducer.user,
-    };
-};
-
-export default connect(mapStateToProps)(FilmPage);
+export default FilmPage;

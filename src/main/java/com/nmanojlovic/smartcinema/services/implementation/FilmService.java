@@ -19,4 +19,9 @@ public class FilmService implements IFilmService {
     public Optional<List<Film>> findAllFilms() {
         return Optional.ofNullable(filmDao.findAll());
     }
+
+    @Override
+    public Optional<Film> finFilmById(String id) {
+        return Optional.ofNullable(filmDao.findById(id));
+    }
 }

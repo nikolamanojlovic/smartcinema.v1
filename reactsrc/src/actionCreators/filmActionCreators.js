@@ -6,3 +6,10 @@ export const GetFilmsActionCreator = films => {
         payload: films
     };
 };
+
+export const GetFilmByIdActionCreator = id => {
+    return {
+        type: FilmActionTypes.GET_FILM_BY_ID,
+        payload: id
+    };
+};

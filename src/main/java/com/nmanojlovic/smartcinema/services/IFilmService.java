@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface IFilmService {
 
     Optional<List<Film>> findAllFilms();
+
+    Optional<Film> finFilmById(String id);
 }
