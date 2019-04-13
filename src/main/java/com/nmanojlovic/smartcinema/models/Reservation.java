@@ -10,18 +10,25 @@ import java.io.Serializable;
 @Table(name = "reservation")
 public class Reservation implements Serializable {
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    public Reservation() {}
+
+    public Reservation(Seat seat, Projection projection) {
+        this.seat = seat;
+        this.projection = projection;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
-            @JoinColumn(name = "hall", referencedColumnName = "hall"),
+            @JoinColumn(name = "hall_seat", referencedColumnName = "hall"),
             @JoinColumn(name = "row", referencedColumnName = "row"),
             @JoinColumn(name = "number", referencedColumnName = "number")
     })
     @Id
     private Seat seat;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
-            @JoinColumn(name = "hall", referencedColumnName = "hall"),
+            @JoinColumn(name = "hall_projection", referencedColumnName = "hall"),
             @JoinColumn(name = "film", referencedColumnName = "film"),
             @JoinColumn(name = "date", referencedColumnName = "date"),
             @JoinColumn(name = "start_time", referencedColumnName = "start_time"),

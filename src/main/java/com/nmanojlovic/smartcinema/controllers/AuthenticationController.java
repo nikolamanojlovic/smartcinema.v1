@@ -14,7 +14,7 @@ import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping("/auth")
-public class AuthenticationController {
+public class AuthenticationController extends SuperController {
 
     @Resource(name = "userService")
     private IUserService userService;
@@ -23,14 +23,12 @@ public class AuthenticationController {
     private Gson gson;
 
     @PostMapping(value = "/login")
-    public ResponseEntity<User> login(@RequestBody String payload) {
+    public ResponseEntity<String> login(@RequestBody String payload) {
         CredentialsData credentials = gson.fromJson(payload, CredentialsData.class);
 
-        Optional<User> user = userService.findUserByCredentials(credentials.getEmail(), credentials.getPassword());
-
-        if (user.isPresent()) {
-            return ResponseEntity.ok(user.get());
-        }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        return sendResponse(
+                userService.findUserByCredentials(credentials.getEmail(), credentials.getPassword()),
+                User.class, HttpStatus.UNAUTHORIZED
+        );
     }
 }

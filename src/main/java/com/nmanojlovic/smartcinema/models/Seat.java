@@ -11,6 +11,12 @@ import java.util.List;
 @Table(name = "seat")
 public class Seat implements Serializable {
 
+    public Seat() {}
+
+    public Seat(SeatId seatId) {
+        this.seatId = seatId;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="hall", referencedColumnName = "id")
     @Id

@@ -1,4 +1,8 @@
-import {GetFilmByIdActionCreator, GetFilmsActionCreator} from "../actionCreators/filmActionCreators";
+import {
+    GetFilmByIdActionCreator,
+    GetFilmsActionCreator,
+    RemoveFilmActionCreator
+} from "../actionCreators/filmActionCreators";
 import axios from "axios";
 import {API_URL} from "../helper/apiUrl";
 import {ErrorMessageActionCreator} from "../actionCreators/messageActionCreators";
@@ -28,5 +32,11 @@ export const GetFilmById = id => {
                 dispatch(ErrorMessageActionCreator("There is no film!"));
             }
         })
+    };
+};
+
+export const RemoveFilm = () => {
+    return dispatch => {
+        dispatch(RemoveFilmActionCreator());
     };
 };

@@ -6,6 +6,13 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class SeatId {
 
+    public SeatId() {}
+
+    public SeatId(int row, int number) {
+        this.row = row;
+        this.number = number;
+    }
+
     @Column(name = "row")
     private int row;
 

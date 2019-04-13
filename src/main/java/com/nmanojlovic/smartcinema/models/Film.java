@@ -3,24 +3,25 @@ package com.nmanojlovic.smartcinema.models;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @EnableAutoConfiguration
 @Entity
 @Table(name = "film")
-public class Film {
+public class Film implements Serializable {
 
     public Film() {}
 
-    public Film(String id, String title, int year, int duration, String plot, String poster, double costOfPlay, List<Projection> projections) {
+    public Film(String id, String title, int year, int duration, String plot, String poster, String cover, double costOfPlay) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.duration = duration;
         this.plot = plot;
         this.poster = poster;
+        this.cover = cover;
         this.costOfPlay = costOfPlay;
-        this.projections = projections;
     }
 
     @Id
@@ -41,6 +42,9 @@ public class Film {
 
     @Column(name = "poster")
     private String poster;
+
+    @Column(name = "cover")
+    private String cover;
 
     @Column(name = "cost_of_play")
     private double costOfPlay;
@@ -90,6 +94,14 @@ public class Film {
 
     public void setPoster(String poster) {
         this.poster = poster;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 
     public double getCostOfPlay() { return costOfPlay; }

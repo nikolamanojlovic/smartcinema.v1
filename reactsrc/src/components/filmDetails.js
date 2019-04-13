@@ -2,8 +2,42 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import {GetFilmById} from "../functions/filmFunctions";
+import CardMedia from "@material-ui/core/CardMedia";
+import {Paper} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 const styles = {
+    grid: {
+        marginLeft: "15%"
+    },
+    media: {
+        width: "100%",
+        height: 400,
+        objectFit: "cover",
+        objectPosition: "50% 30%"
+    },
+    paper: {
+        height: "70%"
+    },
+    heading: {
+        fontWeight: "bold",
+        marginLeft: 15,
+        marginTop: 10
+    },
+    details: {
+        float: "left"
+    },
+    info: {
+        display: "inline-block",
+        width: "40%"
+    },
+    projections: {
+        display: "inline-block",
+        width: "60%"
+    },
+    about: {
+        marginLeft: 15
+    }
 };
 
 class FilmDetails extends Component {
@@ -11,9 +45,8 @@ class FilmDetails extends Component {
         super(props);
     };
 
-    componentDidMount() {
-        console.log(window.location.href);
-        this.props.getFilmById(window.location.href.split('/')[4])
+    async componentDidMount() {
+        await this.props.getFilmById(window.location.href.split('/')[4])
     }
 
     render() {
@@ -23,8 +56,28 @@ class FilmDetails extends Component {
                 direction="column"
                 justify="flex-start"
                 alignItems="stretch"
+                spacing={0}
+                style={styles.grid}
             >
-                {console.log(window.location.href.split('/')[2])}
+                <Grid key="cover" item>
+                    <img src={this.props.film.cover} title={this.props.film.title} alt={this.props.film.title}
+                         style={styles.media}/>
+                </Grid>
+                <Grid key="details" style={styles.details} item>
+                    <Typography variant="h3" style={styles.heading} gutterBottom>
+                        {this.props.film.title} ({this.props.film.year})
+                    </Typography>
+                    <div className="film-details" style={styles.info}>
+                        <Typography variant="h5" style={styles.about} gutterBottom>
+                            About:
+                        </Typography>
+                    </div>
+                    <div className="projections" style={styles.projections}>
+                        <Typography variant="h5" gutterBottom>
+                            Projections:
+                        </Typography>
+                    </div>
+                </Grid>
             </Grid>
         );
     }

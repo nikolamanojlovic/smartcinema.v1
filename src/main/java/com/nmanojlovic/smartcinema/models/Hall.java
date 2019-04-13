@@ -11,6 +11,14 @@ import java.util.List;
 @Table(name = "hall")
 public class Hall implements Serializable {
 
+    public Hall() {}
+
+    public Hall(long id, String name, List<Seat> seats) {
+        this.id = id;
+        this.name = name;
+        this.seats = seats;
+    }
+
     @Id
     @Column(name = "id")
     private long id;

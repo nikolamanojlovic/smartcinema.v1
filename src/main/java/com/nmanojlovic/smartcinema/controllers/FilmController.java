@@ -26,11 +26,7 @@ public class FilmController extends SuperController {
     @GetMapping(value = "/all")
     public ResponseEntity<String> films() {
         Optional<List<Film>> films = filmService.findAllFilms();
-
-        if ( films.isPresent() ) {
-            return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(films.get(), ArrayList.class));
-        }
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        return sendResponse(filmService.findAllFilms(), ArrayList.class, HttpStatus.NO_CONTENT);
     }
 
     @GetMapping(value = "/{id}")

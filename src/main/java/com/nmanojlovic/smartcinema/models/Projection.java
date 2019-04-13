@@ -5,11 +5,20 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @EnableAutoConfiguration
 @Entity
 @Table(name = "projection")
 public class Projection implements Serializable {
+
+    public Projection() {}
+
+    public Projection(Hall hall, Film film, ProjectionId id) {
+        this.hall = hall;
+        this.film = film;
+        this.id = id;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="hall", referencedColumnName = "id")
@@ -42,4 +51,13 @@ public class Projection implements Serializable {
     public List<Reservation> getReservations() { return reservations; }
 
     public void setReservations(List<Reservation> reservations) { this.reservations = reservations; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Projection) {
+            Projection projection = (Projection) o;
+            return this.id.equals(projection.getId());
+        }
+        return false;
+    }
 }

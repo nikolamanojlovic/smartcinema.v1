@@ -13,3 +13,9 @@ export const GetFilmByIdActionCreator = id => {
         payload: id
     };
 };
+
+export const RemoveFilmActionCreator = () => {
+    return {
+        type: FilmActionTypes.REMOVE_FILM
+    };
+};

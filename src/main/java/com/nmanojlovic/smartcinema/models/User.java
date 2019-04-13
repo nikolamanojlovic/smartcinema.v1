@@ -17,7 +17,7 @@ public class User implements Serializable {
     public User() {}
 
     public User(String email, String password, String name, String lastName, char sex, Date dateOfBirth,
-                String city, String state, List<Ticket> tickets) {
+                String city, String state) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -26,7 +26,6 @@ public class User implements Serializable {
         this.dateOfBirth = dateOfBirth;
         this.city = city;
         this.state = state;
-        this.tickets = tickets;
     }
 
     @Id

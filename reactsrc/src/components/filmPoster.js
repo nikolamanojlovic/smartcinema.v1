@@ -4,7 +4,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import siteHistory from "../helper/history";
-import {GetFilmById} from "../functions/filmFunctions";
+import {GetFilmById, RemoveFilm} from "../functions/filmFunctions";
 import {UserLogIn} from "../functions/userFunctions";
 import {ClearMessage} from "../functions/messageFunctions";
 import connect from "react-redux/es/connect/connect";
@@ -41,6 +41,7 @@ class FilmPoster extends Component {
     };
 
     _handleClick(id) {
+        this.props.removeFilm();
         siteHistory.push("/film/" + id);
     }
 
@@ -70,4 +71,10 @@ class FilmPoster extends Component {
     }
 }
 
-export default FilmPoster;
+const mapDispatchToProps = dispatch => {
+    return {
+        removeFilm: () => dispatch(RemoveFilm())
+    };
+};
+
+export default connect(null, mapDispatchToProps)(FilmPoster);

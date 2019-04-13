@@ -12,6 +12,16 @@ import java.util.List;
 @Table(name = "ticket")
 public class Ticket implements Serializable {
 
+    public Ticket() {}
+
+    public Ticket(long id, double price, Date timestamp, List<TicketEntry> entries, User user) {
+        this.id = id;
+        this.price = price;
+        this.timestamp = timestamp;
+        this.entries = entries;
+        this.user = user;
+    }
+
     @Id
     @Column(name = "id")
     private long id;

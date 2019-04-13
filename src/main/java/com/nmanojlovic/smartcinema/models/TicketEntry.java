@@ -10,17 +10,24 @@ import java.io.Serializable;
 @Table(name = "ticket_entry")
 public class TicketEntry implements Serializable {
 
+    public TicketEntry() {}
+
+    public TicketEntry(long on, Reservation reservation) {
+        this.on = on;
+        this.reservation = reservation;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ordinal")
     private long on;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="ticket", referencedColumnName = "id")
     private Ticket ticket;
 
-    @OneToOne(mappedBy="ticketEntry", fetch=FetchType.LAZY)
+    @OneToOne(mappedBy="ticketEntry", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private Reservation reservation;
 
     public long getOn() { return on; }
