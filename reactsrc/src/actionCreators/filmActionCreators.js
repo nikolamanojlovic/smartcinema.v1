@@ -19,3 +19,10 @@ export const RemoveFilmActionCreator = () => {
         type: FilmActionTypes.REMOVE_FILM
     };
 };
+
+export const GetProjectionForFilmByIdActionCreator = projections => {
+    return {
+        type: FilmActionTypes.GET_PROJECTIONS_BY_FILM_ID,
+        payload: projections
+    };
+};

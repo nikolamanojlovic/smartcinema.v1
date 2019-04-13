@@ -21,13 +21,14 @@ class FilmList extends Component {
 
     render() {
         return (
+            this.props.films ?
             <div className="films" style={style.films}>
                 {
                     this.props.films.map((e, i) => (
                         <FilmPoster key={e.id} film={e}/>
                     ))
                 }
-            </div>
+            </div> : <div/>
         );
     }
 }

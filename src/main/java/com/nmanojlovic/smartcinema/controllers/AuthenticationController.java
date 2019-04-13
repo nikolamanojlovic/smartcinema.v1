@@ -2,6 +2,7 @@ package com.nmanojlovic.smartcinema.controllers;
 
 import com.google.gson.Gson;
 import com.nmanojlovic.smartcinema.data.CredentialsData;
+import com.nmanojlovic.smartcinema.data.UserData;
 import com.nmanojlovic.smartcinema.models.User;
 import com.nmanojlovic.smartcinema.services.IUserService;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class AuthenticationController extends SuperController {
 
         return sendResponse(
                 userService.findUserByCredentials(credentials.getEmail(), credentials.getPassword()),
-                User.class, HttpStatus.UNAUTHORIZED
+                UserData.class, HttpStatus.UNAUTHORIZED
         );
     }
 }

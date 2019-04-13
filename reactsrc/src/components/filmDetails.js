@@ -5,6 +5,7 @@ import {GetFilmById} from "../functions/filmFunctions";
 import CardMedia from "@material-ui/core/CardMedia";
 import {Paper} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import ProjectionsList from "./projectionsList";
 
 const styles = {
     grid: {
@@ -45,40 +46,42 @@ class FilmDetails extends Component {
         super(props);
     };
 
-    async componentDidMount() {
-        await this.props.getFilmById(window.location.href.split('/')[4])
+    componentDidMount() {
+        this.props.getFilmById(window.location.href.split('/')[4])
     }
 
     render() {
         return (
-            <Grid
-                container
-                direction="column"
-                justify="flex-start"
-                alignItems="stretch"
-                spacing={0}
-                style={styles.grid}
-            >
-                <Grid key="cover" item>
-                    <img src={this.props.film.cover} title={this.props.film.title} alt={this.props.film.title}
-                         style={styles.media}/>
-                </Grid>
-                <Grid key="details" style={styles.details} item>
-                    <Typography variant="h3" style={styles.heading} gutterBottom>
-                        {this.props.film.title} ({this.props.film.year})
-                    </Typography>
-                    <div className="film-details" style={styles.info}>
-                        <Typography variant="h5" style={styles.about} gutterBottom>
-                            About:
+            this.props.film ?
+                <Grid
+                    container
+                    direction="column"
+                    justify="flex-start"
+                    alignItems="stretch"
+                    spacing={0}
+                    style={styles.grid}
+                >
+                    <Grid key="cover" item>
+                        <img src={this.props.film.cover} title={this.props.film.title} alt={this.props.film.title}
+                             style={styles.media}/>
+                    </Grid>
+                    <Grid key="details" style={styles.details} item>
+                        <Typography variant="h3" style={styles.heading} gutterBottom>
+                            {this.props.film.title} ({this.props.film.year})
                         </Typography>
-                    </div>
-                    <div className="projections" style={styles.projections}>
-                        <Typography variant="h5" gutterBottom>
-                            Projections:
-                        </Typography>
-                    </div>
-                </Grid>
-            </Grid>
+                        <div className="film-details" style={styles.info}>
+                            <Typography variant="h5" style={styles.about} gutterBottom>
+                                About:
+                            </Typography>
+                        </div>
+                        <div className="projections" style={styles.projections}>
+                            <Typography variant="h5" gutterBottom>
+                                Projections:
+                            </Typography>
+                            <ProjectionsList film={this.props.film.id}/>
+                        </div>
+                    </Grid>
+                </Grid> : <div/>
         );
     }
 }

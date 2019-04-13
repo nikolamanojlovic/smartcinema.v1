@@ -2,6 +2,7 @@ package com.nmanojlovic.smartcinema.controllers;
 
 import com.google.gson.Gson;
 import com.nmanojlovic.smartcinema.data.FilmData;
+import com.nmanojlovic.smartcinema.data.ProjectionData;
 import com.nmanojlovic.smartcinema.models.Film;
 import com.nmanojlovic.smartcinema.services.IFilmService;
 import org.springframework.http.HttpStatus;
@@ -32,5 +33,10 @@ public class FilmController extends SuperController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<String> film(@PathVariable("id") String id) {
         return sendResponse(filmService.finFilmById(id), FilmData.class, HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping(value = "/projections/{id}")
+    public ResponseEntity<String> projections(@PathVariable("id") String id) {
+        return sendResponse(filmService.findProjectionsForFilm(id), ArrayList.class, HttpStatus.NO_CONTENT);
     }
 }

@@ -27,7 +27,7 @@ public class UserDao extends SuperDao<User, String> implements IUserDao {
             return null;
         }
         String[] query = {Constants.FROM, getModelName(), Constants.WHERE, Constants.EMAIL, "=", "'" +
-                email + "'", Constants.AND, Constants.PASSSWORD, "=", "'" + password + "'"};
+                email + "'", Constants.AND, Constants.PASSWORD, "=", "'" + password + "'"};
 
         List<User> result = getEntityManager().createQuery(String.join(SPACE_SEPARATOR, query)).getResultList();
         return CollectionUtils.isNotEmpty(result) ? result.get(0) : null;

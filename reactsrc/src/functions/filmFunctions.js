@@ -1,6 +1,6 @@
 import {
     GetFilmByIdActionCreator,
-    GetFilmsActionCreator,
+    GetFilmsActionCreator, GetProjectionForFilmByIdActionCreator,
     RemoveFilmActionCreator
 } from "../actionCreators/filmActionCreators";
 import axios from "axios";
@@ -30,6 +30,20 @@ export const GetFilmById = id => {
         }).catch((error) => {
             if ( error.code === 204 ) {
                 dispatch(ErrorMessageActionCreator("There is no film!"));
+            }
+        })
+    };
+};
+
+export const GetProjectionsForFilmById = id => {
+    return dispatch => {
+        axios.get(API_URL + '/film/projections/' + id).then((response) => {
+            setTimeout(() => {
+                dispatch(GetProjectionForFilmByIdActionCreator(response.data));
+            }, 1000);
+        }).catch((error) => {
+            if ( error.code === 204 ) {
+                dispatch(ErrorMessageActionCreator("There are no projections for this film!"));
             }
         })
     };
