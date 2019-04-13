@@ -9,6 +9,8 @@ import java.util.Date;
 @Embeddable
 public class ProjectionId implements Serializable {
 
+    public ProjectionId() {}
+
     public ProjectionId(Date date, LocalTime startTime, LocalTime endTime) {
         this.date = date;
         this.startTime = startTime;

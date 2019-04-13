@@ -1,11 +1,14 @@
 package com.nmanojlovic.smartcinema.services.implementation;
 
 import com.nmanojlovic.smartcinema.daos.IFilmDao;
+import com.nmanojlovic.smartcinema.data.FilmData;
 import com.nmanojlovic.smartcinema.models.Film;
+import com.nmanojlovic.smartcinema.populators.ISuperPopulator;
 import com.nmanojlovic.smartcinema.services.IFilmService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,13 +18,16 @@ public class FilmService implements IFilmService {
     @Resource(name = "filmDao")
     private IFilmDao filmDao;
 
+    @Resource(name = "filmPopulator")
+    ISuperPopulator<Film, FilmData> filmPopulator;
+
     @Override
-    public Optional<List<Film>> findAllFilms() {
-        return Optional.ofNullable(filmDao.findAll());
+    public Optional<List<FilmData>> findAllFilms() {
+        return Optional.ofNullable(filmPopulator.populateList(filmDao.findAll()));
     }
 
     @Override
-    public Optional<Film> finFilmById(String id) {
-        return Optional.ofNullable(filmDao.findById(id));
+    public Optional<FilmData> finFilmById(String id) {
+        return Optional.ofNullable(filmPopulator.populate(filmDao.findById(id)));
     }
 }
