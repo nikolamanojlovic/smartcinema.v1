@@ -6,6 +6,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import {Divider, Paper} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ProjectionsList from "./projectionsList";
+import MessageComponent from "./messageComponent";
 
 const styles = {
     grid: {
@@ -23,7 +24,7 @@ const styles = {
     },
     heading: {
         fontWeight: "bold",
-        marginLeft: 15,
+        marginLeft: 28,
         marginTop: 10
     },
     details: {
@@ -101,7 +102,7 @@ class FilmDetails extends Component {
                             </Typography>
                             <div className="film-details-plot" style={styles.plot}>
                                 <img src={this.props.film.poster} alt={this.props.film.title} style={styles.img}/>
-                                <Typography variant="body1" component="p"   style={styles.plotText} gutterBottom>
+                                <Typography variant="body1" component="span"   style={styles.plotText} gutterBottom>
                                     {this.props.film.plot}
                                     <Divider style={styles.break}/>
                                     <b>Duration:</b> {this.props.film.duration} min
@@ -116,7 +117,7 @@ class FilmDetails extends Component {
                             <Typography variant="h5" gutterBottom>
                                 Projections:
                             </Typography>
-                            {this.props.film.id ? <ProjectionsList film={this.props.film.id}/> : <div/>}
+                            {this.props.film.id ? <ProjectionsList film={this.props.film.id}/> : <span/>}
                         </div>
                     </Grid>
                 </Grid> : <div/>

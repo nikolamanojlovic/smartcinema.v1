@@ -17,7 +17,7 @@ public class FilmPopulator implements ISuperPopulator<Film, FilmData> {
         data.setId(model.getId());
         data.setTitle(model.getTitle());
         data.setYear(model.getYear());
-        data.setDuration(model.getYear());
+        data.setDuration(model.getDuration());
         data.setPlot(model.getPlot());
         data.setPoster(model.getPoster());
         data.setCover(model.getCover());

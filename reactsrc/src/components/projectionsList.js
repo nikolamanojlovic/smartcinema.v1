@@ -12,6 +12,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
+import MessageComponent from "./messageComponent";
 
 const styles = {
     outside: {
@@ -48,12 +49,23 @@ class ProjectionsList extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            seat: 'none'
+        };
+
         this._handleClick = this._handleClick.bind(this);
+        this._handleChange = this._handleChange.bind(this);
     };
 
     _handleClick(film, projection) {
         this.props.getAvailableSeatsForProjection(film, projection);
-    }
+        this.setState({ seat: 'none' });
+    };
+
+    _handleChange(event) {
+        console.log(event);
+        this.setState({ [event.target.name]: event.target.value });
+    };
 
     componentDidMount() {
         this.props.getProjectionsForFilmById(this.props.film)
@@ -88,30 +100,32 @@ class ProjectionsList extends Component {
                                <div className="seats">
                                    <form autoComplete="off">
                                        <FormControl style={styles.formControl}>
-                                           <InputLabel htmlFor="seats">Choose a seat</InputLabel>
+                                           <InputLabel htmlFor="seats">Choose a seat:</InputLabel>
                                            <Select
-                                               value={this.props.seats}
+                                               value={this.state.seat}
+                                               onChange={this._handleChange}
                                                inputProps={{
                                                    name: 'seat',
                                                    id: 'seat-simple',
                                                }}
                                            >
+                                               <MenuItem key={-1} value="none">None</MenuItem>
                                                {
                                                    this.props.seats.map((e, i) => (
-                                                       <MenuItem value={e}>Row: {e.row} Number: {e.number}</MenuItem>
+                                                       <MenuItem key={i} value={e}>Row: {e.row} Number: {e.number}</MenuItem>
                                                    ))
                                                }
                                            </Select>
                                        </FormControl>
                                    </form>
-                                   < Button variant="contained" color="secondary" style={styles.button}>
+                                   <Button variant="contained" color="secondary" style={styles.button}>
                                        <ShoppingCart style={styles.iconWhite}/>
                                        Add to cart
                                    </Button>
-                               </div> : <div/>
+                               </div> : <MessageComponent/>
                        }
                    </div>
-               </div> : <div/>
+               </div> :  <MessageComponent/>
         );
     }
 }

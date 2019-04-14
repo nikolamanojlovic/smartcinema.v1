@@ -80,7 +80,7 @@ class SideBar extends Component {
                             Cart
                         </Typography>
                     </ListItem>
-                    <ListItem button key='Log out' onClick={() => this._handleClick(1)}>
+                    <ListItem button key='Log out' onClick={() => this._handleClick(2)}>
                         <ListItemIcon><Clear style={{color: "#FFF"}}/></ListItemIcon>
                         <Typography style={styles.item}>
                             Log out
