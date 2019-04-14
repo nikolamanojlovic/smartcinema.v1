@@ -83,9 +83,9 @@ class ProjectionsList extends Component {
                        </List>
                    </div>
                    <div style={styles.box} className="hallsAndSeats">
-                       <div className="seats">
-                           {
-                               this.props.seats ?
+                       {
+                           Object.entries(this.props.projections).length !== 0 && this.props.seats ?
+                               <div className="seats">
                                    <form autoComplete="off">
                                        <FormControl style={styles.formControl}>
                                            <InputLabel htmlFor="seats">Choose a seat</InputLabel>
@@ -103,13 +103,13 @@ class ProjectionsList extends Component {
                                                }
                                            </Select>
                                        </FormControl>
-                                   </form> : <div/>
-                           }
-                       </div>
-                       <Button variant="contained" color="secondary" style={styles.button}>
-                           <ShoppingCart style={styles.iconWhite}/>
-                           Add to cart
-                       </Button>
+                                   </form>
+                                   < Button variant="contained" color="secondary" style={styles.button}>
+                                       <ShoppingCart style={styles.iconWhite}/>
+                                       Add to cart
+                                   </Button>
+                               </div> : <div/>
+                       }
                    </div>
                </div> : <div/>
         );

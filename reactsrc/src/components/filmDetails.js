@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import {GetFilmById} from "../functions/filmFunctions";
 import CardMedia from "@material-ui/core/CardMedia";
-import {Paper} from "@material-ui/core";
+import {Divider, Paper} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ProjectionsList from "./projectionsList";
 
@@ -27,18 +27,43 @@ const styles = {
         marginTop: 10
     },
     details: {
-        float: "left"
+        float: "left",
+        position: "relative"
     },
     info: {
+        position: "absolute",
         display: "inline-block",
-        width: "40%"
+        marginLeft: 15,
+        width: "40%",
     },
     projections: {
+        position: "absolute",
         display: "inline-block",
+        marginLeft: "40%",
         width: "40%"
     },
     about: {
         marginLeft: 15
+    },
+    plot: {
+        float: "left",
+    },
+    img: {
+        display: "inline-block",
+        marginLeft: 15,
+        width: 150,
+        height: 250
+    },
+    plotText: {
+        display: "inline-block",
+        width: "350px",
+        marginLeft: 15,
+        textAlign: "justify",
+        position: "absolute"
+    },
+    break: {
+        marginTop: "15px",
+        marginBottom: "10px"
     }
 };
 
@@ -74,6 +99,18 @@ class FilmDetails extends Component {
                             <Typography variant="h5" style={styles.about} gutterBottom>
                                 About:
                             </Typography>
+                            <div className="film-details-plot" style={styles.plot}>
+                                <img src={this.props.film.poster} alt={this.props.film.title} style={styles.img}/>
+                                <Typography variant="body1" component="p"   style={styles.plotText} gutterBottom>
+                                    {this.props.film.plot}
+                                    <Divider style={styles.break}/>
+                                    <b>Duration:</b> {this.props.film.duration} min
+                                    <br/>
+                                    <b>Year:</b> {this.props.film.year}
+                                    <br/>
+                                    <b>Cost of play:</b> {this.props.film.costOfPlay} RSD
+                                </Typography>
+                            </div>
                         </div>
                         <div className="projections" style={styles.projections}>
                             <Typography variant="h5" gutterBottom>
