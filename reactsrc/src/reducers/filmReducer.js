@@ -11,7 +11,7 @@ const FilmReducer = (state = [], action) => {
         case FilmActionTypes.GEt_AVAILABLE_SEATS_FOR_PROJECTION:
             return {...state, seats: action.payload};
         case FilmActionTypes.REMOVE_FILM:
-            return {...state, film: {}};
+            return {...state, film: {}, projections: [], seats: []};
         default:
             return {...state};
     }

@@ -8,6 +8,8 @@ import {Redirect} from "react-router-dom";
 import siteHistory from "../helper/history";
 import {Home, ShoppingCart, Clear} from '@material-ui/icons';
 import ListItemIcon from "@material-ui/core/ListItemIcon";
+import {ClearMessage} from "../functions/messageFunctions";
+import {RemoveFilm} from "../functions/filmFunctions";
 
 const styles = {
     nav: {
@@ -45,7 +47,8 @@ class SideBar extends Component {
     };
 
     _handleClick(index) {
-        console.log(index);
+        this.props.clearMessage();
+        this.props.removeFilm();
         switch (index) {
             case 1:
                 siteHistory.push("/cart");
@@ -100,7 +103,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logOut: () => dispatch(UserLogOut())
+        logOut: () => dispatch(UserLogOut()),
+        clearMessage: () => dispatch(ClearMessage()),
+        removeFilm: () => dispatch(RemoveFilm())
     };
 };
 

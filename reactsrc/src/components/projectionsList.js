@@ -34,7 +34,7 @@ const styles = {
         width: 16,
         height: 16
     },
-    button : {
+    button: {
         marginTop: 10,
         marginBottom: 25,
         backgroundColor: '#A5122C'
@@ -59,12 +59,12 @@ class ProjectionsList extends Component {
 
     _handleClick(film, projection) {
         this.props.getAvailableSeatsForProjection(film, projection);
-        this.setState({ seat: 'none' });
+        this.setState({seat: 'none'});
     };
 
     _handleChange(event) {
         console.log(event);
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({[event.target.name]: event.target.value});
     };
 
     componentDidMount() {
@@ -73,59 +73,60 @@ class ProjectionsList extends Component {
 
     render() {
         return (
-            this.props.projections ?
-               <div style={styles.outside}>
-                   <div className="projectionList" style={styles.box}>
-                       <List>
-                           {
-                               this.props.projections.map((e, i) => (
-                                   <ListItem key={i}  onClick={() => this._handleClick(this.props.film, e)} button>
-                                       <ListItemIcon>
-                                           <Schedule style={styles.icon}/>
-                                       </ListItemIcon>
-                                       <ListItemText
-                                           primary={(new Date(e.date)).toDateString().replace(/^\S+\s/, '') + ": " + e.hallData.name}
-                                           secondary={
-                                               e.startTime.hour + ":" + e.startTime.minute + "-" +
-                                               e.endTime.hour + ":" + e.endTime.minute
-                                           }/>
-                                   </ListItem>
-                               ))
-                           }
-                       </List>
-                   </div>
-                   <div style={styles.box} className="hallsAndSeats">
-                       {
-                           Object.entries(this.props.projections).length !== 0 && this.props.seats ?
-                               <div className="seats">
-                                   <form autoComplete="off">
-                                       <FormControl style={styles.formControl}>
-                                           <InputLabel htmlFor="seats">Choose a seat:</InputLabel>
-                                           <Select
-                                               value={this.state.seat}
-                                               onChange={this._handleChange}
-                                               inputProps={{
-                                                   name: 'seat',
-                                                   id: 'seat-simple',
-                                               }}
-                                           >
-                                               <MenuItem key={-1} value="none">None</MenuItem>
-                                               {
-                                                   this.props.seats.map((e, i) => (
-                                                       <MenuItem key={i} value={e}>Row: {e.row} Number: {e.number}</MenuItem>
-                                                   ))
-                                               }
-                                           </Select>
-                                       </FormControl>
-                                   </form>
-                                   <Button variant="contained" color="secondary" style={styles.button}>
-                                       <ShoppingCart style={styles.iconWhite}/>
-                                       Add to cart
-                                   </Button>
-                               </div> : <MessageComponent/>
-                       }
-                   </div>
-               </div> :  <MessageComponent/>
+            Object.entries(this.props.projections).length !== 0 ?
+                <div style={styles.outside}>
+                    <div className="projectionList" style={styles.box}>
+                        <List>
+                            {
+                                this.props.projections.map((e, i) => (
+                                    <ListItem key={i} onClick={() => this._handleClick(this.props.film, e)} button>
+                                        <ListItemIcon>
+                                            <Schedule style={styles.icon}/>
+                                        </ListItemIcon>
+                                        <ListItemText
+                                            primary={(new Date(e.date)).toDateString().replace(/^\S+\s/, '') + ": " + e.hallData.name}
+                                            secondary={
+                                                e.startTime.hour + ":" + e.startTime.minute + "-" +
+                                                e.endTime.hour + ":" + e.endTime.minute
+                                            }/>
+                                    </ListItem>
+                                ))
+                            }
+                        </List>
+                    </div>
+                    <div style={styles.box} className="hallsAndSeats">
+                        {
+                            Object.entries(this.props.projections).length !== 0 && this.props.seats ?
+                                <div className="seats">
+                                    <form autoComplete="off">
+                                        <FormControl style={styles.formControl}>
+                                            <InputLabel htmlFor="seats">Choose a seat:</InputLabel>
+                                            <Select
+                                                value={this.state.seat}
+                                                onChange={this._handleChange}
+                                                inputProps={{
+                                                    name: 'seat',
+                                                    id: 'seat-simple',
+                                                }}
+                                            >
+                                                <MenuItem key={-1} value="none">None</MenuItem>
+                                                {
+                                                    this.props.seats.map((e, i) => (
+                                                        <MenuItem key={i}
+                                                                  value={e}>Row: {e.row} Number: {e.number}</MenuItem>
+                                                    ))
+                                                }
+                                            </Select>
+                                        </FormControl>
+                                    </form>
+                                    <Button variant="contained" color="secondary" style={styles.button}>
+                                        <ShoppingCart style={styles.iconWhite}/>
+                                        Add to cart
+                                    </Button>
+                                </div> : <MessageComponent/>
+                        }
+                    </div>
+                </div> : <div style={styles.outside}><MessageComponent/></div>
         );
     }
 }
