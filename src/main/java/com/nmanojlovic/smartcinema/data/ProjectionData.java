@@ -8,6 +8,7 @@ public class ProjectionData {
     private Date date;
     private LocalTime startTime;
     private LocalTime endTime;
+    private HallData hallData;
 
     public Date getDate() {
         return date;
@@ -31,5 +32,13 @@ public class ProjectionData {
 
     public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
+    }
+
+    public HallData getHallData() {
+        return hallData;
+    }
+
+    public void setHallData(HallData hallData) {
+        this.hallData = hallData;
     }
 }

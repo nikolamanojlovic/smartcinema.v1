@@ -20,7 +20,7 @@ public class Projection implements Serializable {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="hall", referencedColumnName = "id")
     @Id
     private Hall hall;

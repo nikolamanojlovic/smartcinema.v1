@@ -6,6 +6,8 @@ import {connect} from "react-redux";
 import {UserLogOut} from "../functions/userFunctions";
 import {Redirect} from "react-router-dom";
 import siteHistory from "../helper/history";
+import {Home, ShoppingCart, Clear} from '@material-ui/icons';
+import ListItemIcon from "@material-ui/core/ListItemIcon";
 
 const styles = {
     nav: {
@@ -66,14 +68,24 @@ class SideBar extends Component {
                 </Typography>
                 <Divider variant="middle" style={styles.divider}/>
                 <List>
-                    {['Home', 'Cart', 'Log out'].map((text, index) => (
-                        <ListItem button key={text} onClick={() => this._handleClick(index)}>
-                            {/*<ListItemIcon>rgerg</ListItemIcon>*/}
-                            <Typography style={styles.item}>
-                                {text}
-                            </Typography>
-                        </ListItem>
-                    ))}
+                    <ListItem button key='Home' onClick={() => this._handleClick(0)}>
+                        <ListItemIcon><Home style={{color: "#FFF"}}/></ListItemIcon>
+                        <Typography style={styles.item}>
+                            Home
+                        </Typography>
+                    </ListItem>
+                    <ListItem button key='Cart' onClick={() => this._handleClick(1)}>
+                        <ListItemIcon><ShoppingCart style={{color: "#FFF"}}/></ListItemIcon>
+                        <Typography style={styles.item}>
+                            Cart
+                        </Typography>
+                    </ListItem>
+                    <ListItem button key='Log out' onClick={() => this._handleClick(1)}>
+                        <ListItemIcon><Clear style={{color: "#FFF"}}/></ListItemIcon>
+                        <Typography style={styles.item}>
+                            Log out
+                        </Typography>
+                    </ListItem>
                 </List>
             </nav>
         );
