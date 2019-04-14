@@ -42,6 +42,6 @@ public class FilmService implements IFilmService {
 
     @Override
     public Optional<List<ProjectionData>> findProjectionsForFilm(String filmId) {
-        return Optional.ofNullable(projectionPopulator.populateList(projectionDao.findAll()));
+        return Optional.ofNullable(projectionPopulator.populateList(projectionDao.findProjectionsByFilmId(filmId)));
     }
 }

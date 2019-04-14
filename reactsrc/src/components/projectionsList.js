@@ -5,6 +5,8 @@ import {GetProjectionForFilmByIdActionCreator} from "../actionCreators/filmActio
 import FilmPoster from "./filmList";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
+import ListItemText from "@material-ui/core/ListItemText";
+import {Paper} from "@material-ui/core";
 
 const styles = {
 
@@ -23,16 +25,21 @@ class ProjectionsList extends Component {
     render() {
         return (
             this.props.projections ?
-                <List>
-                    <div className="projections">
+                <div style={{maxHeight: 200, maxWidth: 700, overflow: 'auto'}}>
+                    <List>
                         {
                             this.props.projections.map((e, i) => (
-                                <ListItem primary={e.date + ": " + e.startTime + "-" + e.endTime} button>
+                                <ListItem button>
+                                    <ListItemText primary={(new Date(e.date)).toDateString()}
+                                                  secondary={
+                                                      e.startTime.hour + ":" + e.startTime.minute + "-" +
+                                                      e.endTime.hour + ":" + e.endTime.minute
+                                                  }/>
                                 </ListItem>
                             ))
                         }
-                    </div>
-                </List> : <div/>
+                    </List>
+                </div> : <div/>
         );
     }
 }

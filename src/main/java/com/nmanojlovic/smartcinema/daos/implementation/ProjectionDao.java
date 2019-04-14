@@ -12,7 +12,7 @@ import java.util.List;
 @Repository("projectionDao")
 public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implements IProjectionDao {
 
-    private static String FILM_ID_EQUALS_FILM = " film = :filmId ";
+    private static String FILM_ID_EQUALS = " film = ";
 
     public ProjectionDao() {
         this.model = Projection.class;
@@ -29,7 +29,6 @@ public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implement
             return null;
         }
         return getEntityManager().createQuery(
-                Constants.FROM + getModelName() + Constants.WHERE + FILM_ID_EQUALS_FILM
-        ).setParameter("filmId", filmId).getResultList();
+                Constants.FROM + getModelName() + Constants.WHERE + FILM_ID_EQUALS + "'" + filmId + "'").getResultList();
     }
 }

@@ -9,7 +9,8 @@ import ProjectionsList from "./projectionsList";
 
 const styles = {
     grid: {
-        marginLeft: "15%"
+        marginLeft: "15%",
+        width: "85%"
     },
     media: {
         width: "100%",
@@ -34,7 +35,7 @@ const styles = {
     },
     projections: {
         display: "inline-block",
-        width: "60%"
+        width: "40%"
     },
     about: {
         marginLeft: 15
@@ -78,7 +79,7 @@ class FilmDetails extends Component {
                             <Typography variant="h5" gutterBottom>
                                 Projections:
                             </Typography>
-                            <ProjectionsList film={this.props.film.id}/>
+                            {this.props.film.id ? <ProjectionsList film={this.props.film.id}/> : <div/>}
                         </div>
                     </Grid>
                 </Grid> : <div/>
