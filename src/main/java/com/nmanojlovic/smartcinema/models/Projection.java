@@ -14,6 +14,10 @@ public class Projection implements Serializable {
 
     public Projection() {}
 
+    public Projection(ProjectionId id) {
+        this.id = id;
+    }
+
     public Projection(Hall hall, Film film, ProjectionId id) {
         this.hall = hall;
         this.film = film;

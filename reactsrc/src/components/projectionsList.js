@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {GetProjectionsForFilmById} from "../functions/filmFunctions";
+import {GetAvailableSeatsForProjection, GetProjectionsForFilmById} from "../functions/filmFunctions";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -27,11 +27,10 @@ class ProjectionsList extends Component {
     };
 
     _handleClick(film, projection) {
-        console.log(film + "   " + projection);
+        this.props.getAvailableSeatsForProjection(film, projection);
     }
 
     componentDidMount() {
-        console.log(this.props.film);
         this.props.getProjectionsForFilmById(this.props.film)
     }
 
@@ -42,7 +41,7 @@ class ProjectionsList extends Component {
                     <List>
                         {
                             this.props.projections.map((e, i) => (
-                                <ListItem key={i}  onClick={() => this._handleClick(this.props.film, i)} button>
+                                <ListItem key={i}  onClick={() => this._handleClick(this.props.film, e)} button>
                                     <ListItemIcon>
                                         <Schedule style={styles.icon}/>
                                     </ListItemIcon>
@@ -71,7 +70,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getProjectionsForFilmById: (id) => dispatch(GetProjectionsForFilmById(id))
+        getProjectionsForFilmById: (id) => dispatch(GetProjectionsForFilmById(id)),
+        getAvailableSeatsForProjection: (film, projection) => dispatch(GetAvailableSeatsForProjection(film, projection))
     };
 };
 

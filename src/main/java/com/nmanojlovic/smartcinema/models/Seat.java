@@ -36,7 +36,7 @@ public class Seat implements Serializable {
 
     public void setSeatId(SeatId seatId) { this.seatId = seatId; }
 
-    public List<Reservation> getProjections() { return reservations; }
+    public List<Reservation> getReservations() { return reservations; }
 
-    public void setProjections(List<Reservation> projections) { this.reservations = projections; }
+    public void setReservations(List<Reservation> projections) { this.reservations = projections; }
 }

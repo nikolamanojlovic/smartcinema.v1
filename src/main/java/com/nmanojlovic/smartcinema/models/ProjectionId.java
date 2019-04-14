@@ -42,8 +42,9 @@ public class ProjectionId implements Serializable {
     public boolean equals(Object o) {
         if (o instanceof ProjectionId) {
             ProjectionId id = (ProjectionId) o;
-            return this.date.equals(id.getDate()) && this.startTime.equals(id.getStartTime()) &&
-                   this.endTime.equals(id.getEndTime());
+            return this.date.toInstant().toEpochMilli() == id.getDate().toInstant().toEpochMilli()
+                    && this.startTime.equals(id.getStartTime()) &&
+                    this.endTime.equals(id.getEndTime());
         }
         return false;
     }

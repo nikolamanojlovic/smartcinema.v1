@@ -14,15 +14,22 @@ export const GetFilmByIdActionCreator = id => {
     };
 };
 
-export const RemoveFilmActionCreator = () => {
-    return {
-        type: FilmActionTypes.REMOVE_FILM
-    };
-};
-
 export const GetProjectionForFilmByIdActionCreator = projections => {
     return {
         type: FilmActionTypes.GET_PROJECTIONS_BY_FILM_ID,
         payload: projections
+    };
+};
+
+export const GetAvailableSeatsForProjectionActionCreator = seats => {
+    return {
+        type: FilmActionTypes.GEt_AVAILABLE_SEATS_FOR_PROJECTION,
+        payload: seats
+    };
+};
+
+export const RemoveFilmActionCreator = () => {
+    return {
+        type: FilmActionTypes.REMOVE_FILM
     };
 };

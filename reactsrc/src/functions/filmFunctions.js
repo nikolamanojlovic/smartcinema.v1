@@ -1,4 +1,5 @@
 import {
+    GetAvailableSeatsForProjectionActionCreator,
     GetFilmByIdActionCreator,
     GetFilmsActionCreator, GetProjectionForFilmByIdActionCreator,
     RemoveFilmActionCreator
@@ -44,6 +45,20 @@ export const GetProjectionsForFilmById = id => {
         }).catch((error) => {
             if ( error.code === 204 ) {
                 dispatch(ErrorMessageActionCreator("There are no projections for this film!"));
+            }
+        })
+    };
+};
+
+export const GetAvailableSeatsForProjection = (film, projection) => {
+    return dispatch => {
+        axios.get(API_URL + '/film/projections/' + film + '/' + JSON.stringify(projection)).then((response) => {
+            setTimeout(() => {
+                dispatch(GetAvailableSeatsForProjectionActionCreator(response.data));
+            }, 1000);
+        }).catch((error) => {
+            if ( error.code === 204 ) {
+                dispatch(ErrorMessageActionCreator("There are no available seats for this projection!"));
             }
         })
     };
