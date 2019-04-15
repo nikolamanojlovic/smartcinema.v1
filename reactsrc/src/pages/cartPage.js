@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import SideBar from "../components/sideBar";
+import CartDetails from "../components/cartDetails";
 
 class CartPage extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class CartPage extends Component {
         return(
             <div>
                 <SideBar/>
+                <CartDetails/>
             </div>
         );
     }

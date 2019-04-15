@@ -10,7 +10,6 @@ const style = {
 
 class MessageComponent extends Component {
      _returnMessage() {
-         console.log(this.props.message);
          switch (Object.keys(this.props.message)[0]) {
              case 'error':
                  return <Typography variant="body1" component="span" style={style.error}>
