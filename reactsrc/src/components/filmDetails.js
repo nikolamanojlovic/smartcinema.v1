@@ -117,7 +117,7 @@ class FilmDetails extends Component {
                             <Typography variant="h5" gutterBottom>
                                 Projections:
                             </Typography>
-                            {this.props.film.id ? <ProjectionsList film={this.props.film.id}/> : <span/>}
+                            {this.props.film.id ? <ProjectionsList film={this.props.film}/> : <span/>}
                         </div>
                     </Grid>
                 </Grid> : <div/>

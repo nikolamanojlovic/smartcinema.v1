@@ -13,6 +13,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import MessageComponent from "./messageComponent";
+import {AddReservation} from "../functions/reservationFunctions";
 
 const styles = {
     outside: {
@@ -50,25 +51,34 @@ class ProjectionsList extends Component {
         super(props);
 
         this.state = {
-            seat: 'none'
+            seat: 'none',
+            projection: 'none'
         };
 
         this._handleClick = this._handleClick.bind(this);
         this._handleChange = this._handleChange.bind(this);
+        this._handleAddToCartClick = this._handleAddToCartClick.bind(this);
     };
 
     _handleClick(film, projection) {
         this.props.getAvailableSeatsForProjection(film, projection);
         this.setState({seat: 'none'});
+        this.setState({projection: projection})
     };
 
     _handleChange(event) {
-        console.log(event);
         this.setState({[event.target.name]: event.target.value});
     };
 
+    _handleAddToCartClick(seat, projection, film) {
+        if ( seat === 'none' ) {
+            return;
+        }
+        this.props.addReservation(seat, projection, film);
+    };
+
     componentDidMount() {
-        this.props.getProjectionsForFilmById(this.props.film)
+        this.props.getProjectionsForFilmById(this.props.film.id)
     }
 
     render() {
@@ -79,7 +89,7 @@ class ProjectionsList extends Component {
                         <List>
                             {
                                 this.props.projections.map((e, i) => (
-                                    <ListItem key={i} onClick={() => this._handleClick(this.props.film, e)} button>
+                                    <ListItem key={i} onClick={() => this._handleClick(this.props.film.id, e)} button>
                                         <ListItemIcon>
                                             <Schedule style={styles.icon}/>
                                         </ListItemIcon>
@@ -119,7 +129,8 @@ class ProjectionsList extends Component {
                                             </Select>
                                         </FormControl>
                                     </form>
-                                    <Button variant="contained" color="secondary" style={styles.button}>
+                                    <Button variant="contained" color="secondary" style={styles.button}
+                                            onClick={() => this._handleAddToCartClick(this.state.seat, this.state.projection, this.props.film) }>
                                         <ShoppingCart style={styles.iconWhite}/>
                                         Add to cart
                                     </Button>
@@ -134,14 +145,15 @@ class ProjectionsList extends Component {
 const mapStateToProps = state => {
     return {
         projections: state.FilmReducer.projections,
-        seats: state.FilmReducer.seats
+        seats: state.FilmReducer.seats,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         getProjectionsForFilmById: (id) => dispatch(GetProjectionsForFilmById(id)),
-        getAvailableSeatsForProjection: (film, projection) => dispatch(GetAvailableSeatsForProjection(film, projection))
+        getAvailableSeatsForProjection: (film, projection) => dispatch(GetAvailableSeatsForProjection(film, projection)),
+        addReservation: (seat, projection, film) => dispatch(AddReservation(seat, projection, film))
     };
 };
 
