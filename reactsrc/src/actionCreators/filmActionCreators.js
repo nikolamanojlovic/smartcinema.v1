@@ -23,7 +23,7 @@ export const GetProjectionForFilmByIdActionCreator = projections => {
 
 export const GetAvailableSeatsForProjectionActionCreator = seats => {
     return {
-        type: FilmActionTypes.GEt_AVAILABLE_SEATS_FOR_PROJECTION,
+        type: FilmActionTypes.GET_AVAILABLE_SEATS_FOR_PROJECTION,
         payload: seats
     };
 };
