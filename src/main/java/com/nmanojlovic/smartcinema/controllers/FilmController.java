@@ -19,9 +19,6 @@ public class FilmController extends SuperController {
     @Resource(name = "filmService")
     private IFilmService filmService;
 
-    @Resource
-    private Gson gson;
-
     @GetMapping(value = "/all")
     public ResponseEntity<String> films() {
         return sendResponse(filmService.findAllFilms(), ArrayList.class, HttpStatus.NO_CONTENT);
@@ -37,11 +34,11 @@ public class FilmController extends SuperController {
         return sendResponse(filmService.findProjectionsForFilm(id), ArrayList.class, HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping(value = "/projections/{filmId}/{projection}")
-    public ResponseEntity<String> availableSeats(@PathVariable("filmId") String filmId, @PathVariable("projection") String projection) {
-        ProjectionData projectionData = gson.fromJson(projection, ProjectionData.class);
+    @GetMapping(value = "/projections/seats/{projection}")
+    public ResponseEntity<String> availableSeats(@PathVariable("projection") String projection) {
+        ProjectionData projectionData = getGson().fromJson(projection, ProjectionData.class);
 
-        return sendResponse(filmService.findAvailableSeatsForFilmAndProjection(filmId, projectionData),
+        return sendResponse(filmService.findAvailableSeatsForFilmAndProjection(projectionData.getFilmId(), projectionData),
                 ArrayList.class, HttpStatus.NO_CONTENT);
     }
 }

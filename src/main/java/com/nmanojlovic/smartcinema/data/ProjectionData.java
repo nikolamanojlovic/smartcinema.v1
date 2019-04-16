@@ -9,6 +9,7 @@ public class ProjectionData {
     private LocalTime startTime;
     private LocalTime endTime;
     private HallData hallData;
+    private String filmId;
 
     public Date getDate() {
         return date;
@@ -40,5 +41,13 @@ public class ProjectionData {
 
     public void setHallData(HallData hallData) {
         this.hallData = hallData;
+    }
+
+    public String getFilmId() {
+        return filmId;
+    }
+
+    public void setFilmId(String filmId) {
+        this.filmId = filmId;
     }
 }

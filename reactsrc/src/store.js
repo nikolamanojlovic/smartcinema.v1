@@ -5,13 +5,13 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import MessageReducer from "./reducers/messageReducer";
 import {loadState, saveState} from "./persist";
 import FilmReducer from "./reducers/filmReducer";
-import ReservationReducer from "./reducers/reservationReducer";
+import TicketReducer from "./reducers/ticketReducer";
 
 const reducers = combineReducers({
     UserReducer,
     MessageReducer,
     FilmReducer,
-    ReservationReducer
+    TicketReducer
 });
 
 const store = createStore(

@@ -55,7 +55,7 @@ public class Ticket implements Serializable {
 
     public void setEntries(List<TicketEntry> entries) { this.entries = entries; }
 
-    public User getBuff() { return user; }
+    public User getUser() { return user; }
 
-    public void setBuff(User buff) { this.user = buff; }
+    public void setUser(User user) { this.user = user; }
 }

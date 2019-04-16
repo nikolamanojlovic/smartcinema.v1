@@ -19,4 +19,8 @@ public class SuperController {
         }
         return ResponseEntity.status(fail).body(null);
     }
+
+    public Gson getGson() {
+        return gson;
+    }
 }

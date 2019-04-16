@@ -30,7 +30,7 @@ class CartList extends Component {
 
 const mapStateToProps = state => {
     return {
-        reservations: state.ReservationReducer.reservations
+        ticket: state.TicketReducer.ticket
     };
 };
 

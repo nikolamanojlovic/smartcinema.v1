@@ -6,14 +6,13 @@ import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import {Schedule, ShoppingCart} from '@material-ui/icons';
-import siteHistory from "../helper/history";
 import {Button} from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import MessageComponent from "./messageComponent";
-import {AddReservation} from "../functions/reservationFunctions";
+import {AddToCart} from "../functions/ticketFunctions";
 
 const styles = {
     outside: {
@@ -70,11 +69,11 @@ class ProjectionsList extends Component {
         this.setState({[event.target.name]: event.target.value});
     };
 
-    _handleAddToCartClick(seat, projection, film) {
+    _handleAddToCartClick(seat, projection) {
         if ( seat === 'none' ) {
             return;
         }
-        this.props.addReservation(seat, projection, film);
+        this.props.addToCart(seat, projection);
     };
 
     componentDidMount() {
@@ -130,7 +129,7 @@ class ProjectionsList extends Component {
                                         </FormControl>
                                     </form>
                                     <Button variant="contained" color="secondary" style={styles.button}
-                                            onClick={() => this._handleAddToCartClick(this.state.seat, this.state.projection, this.props.film) }>
+                                            onClick={() => this._handleAddToCartClick(this.state.seat, this.state.projection) }>
                                         <ShoppingCart style={styles.iconWhite}/>
                                         Add to cart
                                     </Button>
@@ -146,6 +145,7 @@ const mapStateToProps = state => {
     return {
         projections: state.FilmReducer.projections,
         seats: state.FilmReducer.seats,
+        user: state.UserReducer.user
     };
 };
 
@@ -153,7 +153,7 @@ const mapDispatchToProps = dispatch => {
     return {
         getProjectionsForFilmById: (id) => dispatch(GetProjectionsForFilmById(id)),
         getAvailableSeatsForProjection: (film, projection) => dispatch(GetAvailableSeatsForProjection(film, projection)),
-        addReservation: (seat, projection, film) => dispatch(AddReservation(seat, projection, film))
+        addToCart: (seat, projection) => dispatch(AddToCart(seat, projection))
     };
 };
 

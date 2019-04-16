@@ -20,12 +20,9 @@ public class AuthenticationController extends SuperController {
     @Resource(name = "userService")
     private IUserService userService;
 
-    @Resource
-    private Gson gson;
-
     @PostMapping(value = "/login")
     public ResponseEntity<String> login(@RequestBody String payload) {
-        CredentialsData credentials = gson.fromJson(payload, CredentialsData.class);
+        CredentialsData credentials = getGson().fromJson(payload, CredentialsData.class);
 
         return sendResponse(
                 userService.findUserByCredentials(credentials.getEmail(), credentials.getPassword()),

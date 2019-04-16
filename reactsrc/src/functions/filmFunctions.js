@@ -44,7 +44,7 @@ export const GetProjectionsForFilmById = id => {
 
 export const GetAvailableSeatsForProjection = (film, projection) => {
     return dispatch => {
-        axios.get(API_URL + '/film/projections/' + film + '/' + JSON.stringify(projection)).then((response) => {
+        axios.get(API_URL + '/film/projections/seats/' + JSON.stringify(projection)).then((response) => {
             Object.entries(response.data).length === 0 ? dispatch(ErrorMessageActionCreator("There are no available seats for this projection!")) :
                 dispatch(GetAvailableSeatsForProjectionActionCreator(response.data));
         }).catch((error) => {
