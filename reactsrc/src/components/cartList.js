@@ -4,14 +4,19 @@ import {connect} from "react-redux";
 import {GetFilms} from "../functions/filmFunctions";
 import MessageComponent from "./messageComponent";
 import Typography from "@material-ui/core/Typography";
+import TicketEntry from "./ticketEntry";
 
-const style = {
+const styles = {
     films: {
         float: "left",
         marginLeft: "15%"
     },
     error: {
         color: '#A5122C',
+        marginLeft: 15
+    },
+    paper: {
+        marginLeft: 15
     }
 };
 
@@ -22,8 +27,11 @@ class CartList extends Component {
 
     render() {
         return (
-            Object.entries(this.props.reservations).length !== 0   ?
-                <div>Hello</div> : <Typography variant="body1" component="h3" style={style.error}>Your cart is empty.</Typography>
+            this.props.ticket && this.props.ticket.entries.length !== 0 ?
+                this.props.ticket.entries.map((e, i) => (
+                    <TicketEntry key={i} entry={e} paper={styles.paper}/>
+                ))
+                : <Typography variant="body1" style={styles.error} gutterBottom>Your cart is empty.</Typography>
         );
     }
 }
@@ -35,8 +43,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartList);

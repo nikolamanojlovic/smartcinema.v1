@@ -13,6 +13,10 @@ const styles = {
     grid: {
         marginLeft: "15%",
         width: "85%"
+    },
+    about: {
+        marginTop: 25,
+        marginLeft: 15
     }
 };
 
@@ -31,6 +35,9 @@ class CartDetails extends Component {
                 spacing={0}
                 style={styles.grid}
             >
+                <Typography variant="h5" style={styles.about} gutterBottom>
+                    Cart:
+                </Typography>
                 <CartList/>
             </Grid>
         );
