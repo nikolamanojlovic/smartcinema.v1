@@ -13,3 +13,17 @@ export const AddToCartActionCreator = reservation => {
         payload: reservation
     };
 };
+
+export const RemoveFromCartActionCreator = entries => {
+    return {
+        type: TicketActionTypes.REMOVE_FROM_CART,
+        payload: entries
+    };
+};
+
+export const SubmitCartActionCreator = ticket => {
+    return {
+        type: TicketActionTypes.SUBMIT_CART,
+        payload: ticket
+    };
+};

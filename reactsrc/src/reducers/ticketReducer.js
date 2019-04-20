@@ -11,6 +11,8 @@ const TicketReducer = (state = {}, action) => {
                     reservation: action.payload
                 })
             };
+        case TicketActionTypes.REMOVE_FROM_CART:
+            return {...state, ticket: {...state.ticket, entries: action.payload}};
         default:
             return {...state};
     }

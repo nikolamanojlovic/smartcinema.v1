@@ -1,7 +1,7 @@
 import {
     AddReservationActionCreator,
     AddToCartActionCreator,
-    CreateTicketActionCreator
+    CreateTicketActionCreator, RemoveFromCartActionCreator, SubmitCartActionCreator
 } from "../actionCreators/ticketActionCreator";
 import axios from "axios";
 import {API_URL} from "../helper/apiUrl";
@@ -15,7 +15,18 @@ export const CreateTicketForCurrentUser = user => {
 
 export const AddToCart = (seat, projection) => {
     return dispatch => {
-        console.log("hello");
         dispatch(AddToCartActionCreator({seat, projection}));
+    };
+};
+
+export const RemoveFromCart = (entries) => {
+    return dispatch => {
+        dispatch(RemoveFromCartActionCreator(entries));
+    };
+};
+
+export const SubmitCart = (ticket) => {
+        return dispatch => {
+        dispatch(SubmitCartActionCreator(ticket));
     };
 };

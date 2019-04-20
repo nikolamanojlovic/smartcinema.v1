@@ -17,6 +17,10 @@ const styles = {
     about: {
         marginTop: 25,
         marginLeft: 15
+    },
+    note: {
+        marginLeft: 15,
+        marginBottom: 10
     }
 };
 
@@ -36,7 +40,10 @@ class CartDetails extends Component {
                 style={styles.grid}
             >
                 <Typography variant="h5" style={styles.about} gutterBottom>
-                    Cart:
+                    Cart
+                </Typography>
+                <Typography variant="body1" style={styles.note} gutterBottom>
+                    <b>NOTE:</b> In order to purchase ticket please submit cart or data will be lost.
                 </Typography>
                 <CartList/>
             </Grid>
@@ -44,12 +51,4 @@ class CartDetails extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {};
-};
-
-const mapDispatchToProps = dispatch => {
-    return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartDetails);
+export default CartDetails;
