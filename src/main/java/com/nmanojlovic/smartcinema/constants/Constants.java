@@ -8,7 +8,6 @@ public final class Constants {
     public static final String DEFAULT_DATE_FORMAT = "dd/MM/yyyy";
 
     public static final String FROM = " FROM ";
-    public static final String WHERE = " WHERE ";
     public static final String FROM_WHERE = " FROM :table WHERE :field = ':value'";
     public static final String FROM_WHERE_COMPLEX = " FROM :table WHERE :condition";
     public static final String FROM_AS_WHERE_COMPLEX = " FROM :table AS :alias WHERE :condition";
