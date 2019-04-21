@@ -16,8 +16,6 @@ import java.util.List;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public abstract class SuperDao<T, K extends Serializable> implements ISuperDao<T, K> {
 
-    public static String SPACE_SEPARATOR = " ";
-
     protected Class<? extends T> model;
 
     @PersistenceContext
