@@ -13,6 +13,8 @@ const TicketReducer = (state = {}, action) => {
             };
         case TicketActionTypes.REMOVE_FROM_CART:
             return {...state, ticket: {...state.ticket, entries: action.payload}};
+        case TicketActionTypes.SUBMIT_CART:
+            return {...state, ticket: {...state.ticket, entries: []}};
         default:
             return {...state};
     }

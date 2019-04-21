@@ -6,7 +6,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class SeatId {
 
-    public SeatId() {}
+    public SeatId() {
+    }
 
     public SeatId(int row, int number) {
         this.row = row;
@@ -19,11 +20,28 @@ public class SeatId {
     @Column(name = "number")
     private int number;
 
-    public int getRow() { return row; }
+    public int getRow() {
+        return row;
+    }
 
-    public void setRow(int row) { this.row = row; }
+    public void setRow(int row) {
+        this.row = row;
+    }
 
-    public int getNumber() { return number; }
+    public int getNumber() {
+        return number;
+    }
 
-    public void setNumber(int number) { this.number = number; }
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof SeatId) {
+            SeatId seat = (SeatId) obj;
+            return seat.getRow() == row && seat.getNumber() == number;
+        }
+        return false;
+    }
 }

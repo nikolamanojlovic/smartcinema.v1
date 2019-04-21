@@ -3,12 +3,11 @@ import {connect} from "react-redux";
 import Typography from "@material-ui/core/Typography";
 import {DoneAll, HighlightOff} from "@material-ui/icons";
 import {Button, TableBody} from "@material-ui/core";
-import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import {RemoveFromCart} from "../functions/ticketFunctions";
+import {RemoveFromCart, SubmitCart} from "../functions/ticketFunctions";
 
 const styles = {
     entries: {
@@ -66,7 +65,7 @@ class CartList extends Component {
     }
 
     _handleSubmit(ticket) {
-        console.log(ticket);
+        this.props.submitCart(ticket);
     }
 
     render() {
@@ -152,7 +151,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        removeFromCart: (entries) => dispatch(RemoveFromCart(entries))
+        removeFromCart: (entries) => dispatch(RemoveFromCart(entries)),
+        submitCart: (ticket) => dispatch(SubmitCart(ticket))
     };
 };
 

@@ -21,9 +21,8 @@ export const RemoveFromCartActionCreator = entries => {
     };
 };
 
-export const SubmitCartActionCreator = ticket => {
+export const SubmitCartActionCreator = () => {
     return {
         type: TicketActionTypes.SUBMIT_CART,
-        payload: ticket
     };
 };
