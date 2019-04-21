@@ -28,7 +28,9 @@ public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implement
         if (StringUtils.isBlank(filmId) ) {
             return null;
         }
-        return getEntityManager().createQuery(
-                Constants.FROM + getModelName() + Constants.WHERE + FILM_ID_EQUALS + "'" + filmId + "'").getResultList();
+
+        return getEntityManager().createQuery(Constants.FROM_WHERE.replace(":table", getModelName())
+                        .replace(":field", "film")
+                        .replace(":value", filmId)).getResultList();
     }
 }

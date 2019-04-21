@@ -1,5 +1,6 @@
 package com.nmanojlovic.smartcinema.daos.implementation;
 
+import com.nmanojlovic.smartcinema.constants.Constants;
 import com.nmanojlovic.smartcinema.daos.IHallDao;
 import com.nmanojlovic.smartcinema.daos.ITicketDao;
 import com.nmanojlovic.smartcinema.daos.IUserDao;
@@ -36,8 +37,9 @@ public class TicketDao extends SuperDao<Ticket, Long> implements ITicketDao {
 
     @Override
     public long getTicketId() {
-        Object result = getEntityManager()
-                .createQuery("SELECT MAX(ticket.id) FROM " + getModelName() + " AS ticket").getSingleResult();
+        Object result = getEntityManager().createQuery(Constants.MAX.replace(":field", "ticket.id")
+                .replace(":table", getModelName())
+                .replace(":alias", "ticket")).getSingleResult();
         return result == null ? 0 : ((long) result) + 1;
     }
 
