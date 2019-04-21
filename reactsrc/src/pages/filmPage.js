@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {connect} from "react-redux";
 import SideBar from "../components/sideBar";
 import FilmDetails from "../components/filmDetails";
 

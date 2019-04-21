@@ -1,8 +1,10 @@
 import {
     GetAvailableSeatsForProjectionActionCreator,
     GetFilmByIdActionCreator,
-    GetFilmsActionCreator, GetProjectionForFilmByIdActionCreator,
-    RemoveFilmActionCreator, RemoveFilmsActionCreator
+    GetFilmsActionCreator,
+    GetProjectionForFilmByIdActionCreator,
+    RemoveFilmActionCreator,
+    RemoveFilmsActionCreator
 } from "../actionCreators/filmActionCreators";
 import axios from "axios";
 import {API_URL} from "../helper/apiUrl";

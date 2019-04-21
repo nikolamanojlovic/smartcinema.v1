@@ -1,5 +1,4 @@
 import userActionTypes from "../actionTypes/userActionTypes";
-import {loadState} from "../persist";
 
 const UserReducer = (state = [], action) => {
     switch (action.type) {

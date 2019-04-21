@@ -4,9 +4,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import siteHistory from "../helper/history";
-import {GetFilmById, RemoveFilm} from "../functions/filmFunctions";
-import {UserLogIn} from "../functions/userFunctions";
-import {ClearMessage} from "../functions/messageFunctions";
+import {RemoveFilm} from "../functions/filmFunctions";
 import connect from "react-redux/es/connect/connect";
 
 const style = {

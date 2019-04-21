@@ -1,6 +1,3 @@
-import FilmReducer from "./reducers/filmReducer";
-import TicketReducer from "./reducers/ticketReducer";
-
 export function saveState(state) {
     try {
         let serializedState = JSON.stringify(state);

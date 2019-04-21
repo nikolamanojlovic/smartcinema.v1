@@ -1,4 +1,4 @@
-import FilmActionTypes  from "../actionTypes/filmActionTypes";
+import FilmActionTypes from "../actionTypes/filmActionTypes";
 
 export const GetFilmsActionCreator = films => {
     return {
