@@ -7,6 +7,7 @@ import {Divider, Paper} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ProjectionsList from "./projectionsList";
 import MessageComponent from "./messageComponent";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {
     grid: {
@@ -65,6 +66,12 @@ const styles = {
     break: {
         marginTop: "15px",
         marginBottom: "10px"
+    },
+    spinner: {
+        position: "absolute",
+        left: "55%",
+        top: "50%",
+        color: "#A5122C"
     }
 };
 
@@ -79,7 +86,7 @@ class FilmDetails extends Component {
 
     render() {
         return (
-            this.props.film ?
+            this.props.film && this.props.film.cover ?
                 <Grid
                     container
                     direction="column"
@@ -120,7 +127,8 @@ class FilmDetails extends Component {
                             {this.props.film.id ? <ProjectionsList film={this.props.film}/> : <span/>}
                         </div>
                     </Grid>
-                </Grid> : <div/>
+                </Grid>
+                : <div style={styles.grid}><CircularProgress className="spinner" color="secondary" style={styles.spinner} /></div>
         );
     }
 }
