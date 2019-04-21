@@ -1,6 +1,6 @@
 # SmartCinema #
 
-Small application for buying tickets made for student project using React and Spring Boot.
+Small application for buying tickets made for student project using React with Redux and Spring Boot.
 
 ### Architecture  ###
 
