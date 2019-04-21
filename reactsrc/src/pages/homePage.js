@@ -10,7 +10,7 @@ class HomePage extends Component {
     };
 
     componentDidMount() {
-        if (this.props.ticket == null) {
+        if (Object.entries(this.props.ticket.user).length === 0) {
             this.props.createTicketForCurrentUser(this.props.user);
         }
     }

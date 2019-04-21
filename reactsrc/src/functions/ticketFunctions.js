@@ -1,7 +1,7 @@
 import {
     AddReservationActionCreator,
     AddToCartActionCreator,
-    CreateTicketActionCreator, RemoveFromCartActionCreator, SubmitCartActionCreator
+    CreateTicketActionCreator, RemoveFromCartActionCreator, RemoveTicketActionCreator, SubmitCartActionCreator
 } from "../actionCreators/ticketActionCreator";
 import axios from "axios";
 import {API_URL} from "../helper/apiUrl";
@@ -11,6 +11,12 @@ import {UserLogInActionCreator} from "../actionCreators/userActionCreators";
 export const CreateTicketForCurrentUser = user => {
     return dispatch => {
         dispatch(CreateTicketActionCreator(user));
+    }
+};
+
+export const RemoveTicketForCurrentUser = () => {
+    return dispatch => {
+        dispatch(RemoveTicketActionCreator());
     }
 };
 

@@ -2,12 +2,24 @@ import React, {Component} from "react";
 import FilmPoster from "../components/filmPoster";
 import {connect} from "react-redux";
 import {GetFilms} from "../functions/filmFunctions";
+import CircularProgress from "./filmDetails";
 
 const style = {
     films: {
         float: "left",
         marginLeft: "15%"
-    }
+    },
+    grid: {
+        marginLeft: "15%",
+        width: "85%"
+    },
+    spinner: {
+        position: "absolute",
+        left: "55%",
+        top: "50%",
+        color: "#A5122C"
+    },
+
 };
 
 class FilmList extends Component {
@@ -22,13 +34,14 @@ class FilmList extends Component {
     render() {
         return (
             this.props.films ?
-            <div className="films" style={style.films}>
-                {
-                    this.props.films.map((e, i) => (
-                        <FilmPoster key={e.id} film={e}/>
-                    ))
-                }
-            </div> : <div/>
+                <div className="films" style={style.films}>
+                    {
+                        this.props.films.map((e, i) => (
+                            <FilmPoster key={e.id} film={e}/>
+                        ))
+                    }
+                </div> :
+                <div style={styles.grid}><CircularProgress className="spinner" color="secondary" style={styles.spinner}/></div>
         );
     }
 }

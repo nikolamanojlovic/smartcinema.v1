@@ -9,7 +9,8 @@ import siteHistory from "../helper/history";
 import {Home, ShoppingCart, Clear} from '@material-ui/icons';
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import {ClearMessage} from "../functions/messageFunctions";
-import {RemoveFilm} from "../functions/filmFunctions";
+import {RemoveFilm, RemoveFilms} from "../functions/filmFunctions";
+import {RemoveTicketForCurrentUser} from "../functions/ticketFunctions";
 
 const styles = {
     nav: {
@@ -54,6 +55,8 @@ class SideBar extends Component {
                 siteHistory.push("/cart");
                 break;
             case 2:
+                this.props.clearTicket();
+                this.props.clearFilms();
                 this.props.logOut();
                 break;
             default:
@@ -104,6 +107,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         logOut: () => dispatch(UserLogOut()),
+        clearTicket: () => dispatch(RemoveTicketForCurrentUser()),
+        clearFilms: () => dispatch(RemoveFilms()),
         clearMessage: () => dispatch(ClearMessage()),
         removeFilm: () => dispatch(RemoveFilm())
     };

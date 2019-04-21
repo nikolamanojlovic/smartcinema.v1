@@ -2,7 +2,7 @@ import {
     GetAvailableSeatsForProjectionActionCreator,
     GetFilmByIdActionCreator,
     GetFilmsActionCreator, GetProjectionForFilmByIdActionCreator,
-    RemoveFilmActionCreator
+    RemoveFilmActionCreator, RemoveFilmsActionCreator
 } from "../actionCreators/filmActionCreators";
 import axios from "axios";
 import {API_URL} from "../helper/apiUrl";
@@ -50,6 +50,12 @@ export const GetAvailableSeatsForProjection = (film, projection) => {
         }).catch((error) => {
             dispatch(ErrorMessageActionCreator("Something went wrong with fetching seats for this projection!"));
         })
+    };
+};
+
+export const RemoveFilms = () => {
+    return dispatch => {
+        dispatch(RemoveFilmsActionCreator());
     };
 };
 

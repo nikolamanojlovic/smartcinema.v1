@@ -7,6 +7,12 @@ export const CreateTicketActionCreator = user => {
     };
 };
 
+export const RemoveTicketActionCreator = () => {
+    return {
+        type: TicketActionTypes.REMOVE_TICKET,
+    };
+};
+
 export const AddToCartActionCreator = reservation => {
     return {
         type: TicketActionTypes.ADD_TO_CART,

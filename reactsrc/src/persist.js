@@ -1,3 +1,6 @@
+import FilmReducer from "./reducers/filmReducer";
+import TicketReducer from "./reducers/ticketReducer";
+
 export function saveState(state) {
     try {
         let serializedState = JSON.stringify(state);
@@ -28,6 +31,18 @@ export function initializeState() {
         },
         MessageReducer: {
             message: {}
+        },
+        FilmReducer: {
+            films: [],
+            film: {},
+            projections: [],
+            seats: []
+        },
+        TicketReducer: {
+            ticket: {
+                entries: [],
+                user: {}
+            }
         }
     };
 }

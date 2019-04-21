@@ -7,6 +7,12 @@ export const GetFilmsActionCreator = films => {
     };
 };
 
+export const RemoveFilmsActionCreator = () => {
+    return {
+        type: FilmActionTypes.REMOVE_FILMS
+    };
+};
+
 export const GetFilmByIdActionCreator = id => {
     return {
         type: FilmActionTypes.GET_FILM_BY_ID,

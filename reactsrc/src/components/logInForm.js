@@ -49,7 +49,7 @@ class LogInForm extends Component {
 
     render() {
         return (
-            Object.entries(this.props.user).length === 0 ?
+            this.props.user && Object.entries(this.props.user).length === 0 ?
 
                 <form style={style.form}>
                     <TextField

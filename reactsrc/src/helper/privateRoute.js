@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 class PrivateRoute extends Component {
     render() {
         return(
-            Object.entries(this.props.user).length !== 0 ?
+            this.props.user && Object.entries(this.props.user).length !== 0 ?
                 <Route path={this.props.path} component={this.props.component}/> :
                 <Redirect to="/login"/>
         );

@@ -3,7 +3,10 @@ import TicketActionTypes from "../actionTypes/ticketActionTypes";
 const TicketReducer = (state = {}, action) => {
     switch (action.type) {
         case TicketActionTypes.CREATE_TICKET:
+            console.log("hello");
             return {...state, ticket: {entries: [], user: action.payload}};
+        case TicketActionTypes.REMOVE_TICKET:
+            return {...state, ticket: {entries: [], user: {}}};
         case TicketActionTypes.ADD_TO_CART:
             return {
                 ...state, ...state.ticket.entries.push({
