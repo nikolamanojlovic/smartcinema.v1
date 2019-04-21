@@ -1,8 +1,6 @@
 package com.nmanojlovic.smartcinema.populators.implementations;
 
-import com.nmanojlovic.smartcinema.data.HallData;
 import com.nmanojlovic.smartcinema.data.SeatData;
-import com.nmanojlovic.smartcinema.models.Hall;
 import com.nmanojlovic.smartcinema.models.Seat;
 import com.nmanojlovic.smartcinema.populators.ISuperPopulator;
 import org.springframework.stereotype.Component;

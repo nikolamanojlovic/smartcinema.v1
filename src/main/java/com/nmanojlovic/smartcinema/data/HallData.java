@@ -1,8 +1,5 @@
 package com.nmanojlovic.smartcinema.data;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 public class HallData {
 
     private long id;

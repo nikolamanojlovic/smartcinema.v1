@@ -1,7 +1,6 @@
 package com.nmanojlovic.smartcinema.controllers;
 
 import com.google.gson.Gson;
-import com.nmanojlovic.smartcinema.constants.Constants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

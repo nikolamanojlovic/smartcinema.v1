@@ -3,7 +3,6 @@ package com.nmanojlovic.smartcinema.services;
 import com.nmanojlovic.smartcinema.data.FilmData;
 import com.nmanojlovic.smartcinema.data.ProjectionData;
 import com.nmanojlovic.smartcinema.data.SeatData;
-import com.nmanojlovic.smartcinema.models.Projection;
 
 import java.util.List;
 import java.util.Optional;

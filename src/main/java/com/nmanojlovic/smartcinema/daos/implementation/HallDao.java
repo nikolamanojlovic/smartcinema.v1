@@ -2,7 +2,9 @@ package com.nmanojlovic.smartcinema.daos.implementation;
 
 import com.nmanojlovic.smartcinema.constants.Constants;
 import com.nmanojlovic.smartcinema.daos.IHallDao;
-import com.nmanojlovic.smartcinema.models.*;
+import com.nmanojlovic.smartcinema.models.Hall;
+import com.nmanojlovic.smartcinema.models.ProjectionId;
+import com.nmanojlovic.smartcinema.models.Seat;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 

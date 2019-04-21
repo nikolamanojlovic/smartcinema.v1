@@ -1,8 +1,6 @@
 package com.nmanojlovic.smartcinema.populators.implementations;
 
-import com.nmanojlovic.smartcinema.data.ProjectionData;
 import com.nmanojlovic.smartcinema.data.UserData;
-import com.nmanojlovic.smartcinema.models.Projection;
 import com.nmanojlovic.smartcinema.models.User;
 import com.nmanojlovic.smartcinema.populators.ISuperPopulator;
 import org.springframework.stereotype.Component;

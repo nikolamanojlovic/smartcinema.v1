@@ -2,8 +2,6 @@ package com.nmanojlovic.smartcinema.services.implementation;
 
 import com.nmanojlovic.smartcinema.daos.ITicketDao;
 import com.nmanojlovic.smartcinema.data.TicketData;
-import com.nmanojlovic.smartcinema.data.UserData;
-import com.nmanojlovic.smartcinema.models.Ticket;
 import com.nmanojlovic.smartcinema.services.ITicketService;
 import org.springframework.stereotype.Service;
 

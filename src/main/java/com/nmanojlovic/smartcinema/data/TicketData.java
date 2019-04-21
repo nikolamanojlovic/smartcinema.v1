@@ -1,7 +1,5 @@
 package com.nmanojlovic.smartcinema.data;
 
-import com.nmanojlovic.smartcinema.models.TicketEntry;
-
 import java.util.List;
 
 public class TicketData {

@@ -1,16 +1,13 @@
 package com.nmanojlovic.smartcinema.controllers;
 
-import com.google.gson.Gson;
 import com.nmanojlovic.smartcinema.data.CredentialsData;
 import com.nmanojlovic.smartcinema.data.UserData;
-import com.nmanojlovic.smartcinema.models.User;
 import com.nmanojlovic.smartcinema.services.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController

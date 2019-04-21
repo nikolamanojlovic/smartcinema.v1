@@ -1,7 +1,6 @@
 package com.nmanojlovic.smartcinema.services;
 
 import com.nmanojlovic.smartcinema.data.UserData;
-import com.nmanojlovic.smartcinema.models.User;
 
 import java.util.Optional;
 

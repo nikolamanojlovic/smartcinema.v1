@@ -1,6 +1,5 @@
 package com.nmanojlovic.smartcinema.controllers;
 
-import com.google.gson.Gson;
 import com.nmanojlovic.smartcinema.data.FilmData;
 import com.nmanojlovic.smartcinema.data.ProjectionData;
 import com.nmanojlovic.smartcinema.services.IFilmService;

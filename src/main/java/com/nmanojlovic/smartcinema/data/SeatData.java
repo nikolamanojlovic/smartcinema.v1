@@ -1,7 +1,5 @@
 package com.nmanojlovic.smartcinema.data;
 
-import javax.persistence.Column;
-
 public class SeatData {
 
     private int row;

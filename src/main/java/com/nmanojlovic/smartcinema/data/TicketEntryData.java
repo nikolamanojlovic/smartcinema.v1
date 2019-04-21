@@ -1,7 +1,5 @@
 package com.nmanojlovic.smartcinema.data;
 
-import com.nmanojlovic.smartcinema.models.Reservation;
-
 public class TicketEntryData {
 
     private long on;

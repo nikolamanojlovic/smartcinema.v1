@@ -1,7 +1,5 @@
 package com.nmanojlovic.smartcinema.data;
 
-import com.nmanojlovic.smartcinema.models.Projection;
-
 public class ReservationData {
 
     private SeatData seat;

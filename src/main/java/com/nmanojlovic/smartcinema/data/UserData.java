@@ -1,9 +1,5 @@
 package com.nmanojlovic.smartcinema.data;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.util.Date;
 
 public class UserData {

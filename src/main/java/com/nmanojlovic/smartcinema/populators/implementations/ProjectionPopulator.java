@@ -1,13 +1,10 @@
 package com.nmanojlovic.smartcinema.populators.implementations;
 
-import com.nmanojlovic.smartcinema.data.FilmData;
 import com.nmanojlovic.smartcinema.data.HallData;
 import com.nmanojlovic.smartcinema.data.ProjectionData;
-import com.nmanojlovic.smartcinema.models.Film;
 import com.nmanojlovic.smartcinema.models.Hall;
 import com.nmanojlovic.smartcinema.models.Projection;
 import com.nmanojlovic.smartcinema.populators.ISuperPopulator;
-import com.nmanojlovic.smartcinema.utils.DateUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;

@@ -5,7 +5,6 @@ import com.nmanojlovic.smartcinema.data.UserData;
 import com.nmanojlovic.smartcinema.models.User;
 import com.nmanojlovic.smartcinema.populators.ISuperPopulator;
 import com.nmanojlovic.smartcinema.services.IUserService;
-import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
