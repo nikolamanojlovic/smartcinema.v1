@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Repository("hallDao")
 public class HallDao extends SuperDao<Hall, Long> implements IHallDao {
 
-    private static String AVAILABLE_SEATS_QUERY = " s.hall.id='?hall'";
+    private static String AVAILABLE_SEATS_QUERY = " s.hall.id=':hall'";
 
     public HallDao() {
         this.model = Hall.class;
@@ -32,13 +32,15 @@ public class HallDao extends SuperDao<Hall, Long> implements IHallDao {
             return null;
         }
 
-        List<Seat> seats = getEntityManager().createQuery(
-                Constants.FROM + Seat.class.getSimpleName() + " s " + Constants.WHERE +
-                        AVAILABLE_SEATS_QUERY.replace("?hall", Long.toString(hallId))).getResultList();
+        List<Seat> seats = getEntityManager().createQuery(Constants.FROM_AS_WHERE_COMPLEX
+                .replace(":table", Seat.class.getSimpleName())
+                .replace(":alias", "s")
+                .replace(":condition", AVAILABLE_SEATS_QUERY.replace(":hall", Long.toString(hallId))))
+                .getResultList();
 
-        return seats.stream().filter(seat -> !seat.getReservations().stream().anyMatch(reservation ->
+        return seats.stream().filter(seat -> seat.getReservations().stream().noneMatch(reservation ->
                 reservation.getProjection().getId().equals(projectionId) &&
-                        reservation.getProjection().getFilm().getId().equals(filmId) &&
-                        reservation.getProjection().getHall().getId() == hallId)).collect(Collectors.toList());
+                reservation.getProjection().getFilm().getId().equals(filmId) &&
+                reservation.getProjection().getHall().getId() == hallId)).collect(Collectors.toList());
     }
 }

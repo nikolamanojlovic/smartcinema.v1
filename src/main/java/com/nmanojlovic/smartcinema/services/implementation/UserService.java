@@ -22,7 +22,11 @@ public class UserService implements IUserService {
 
     @Override
     public Optional<UserData> findUserByEmail(String email) {
-        return Optional.ofNullable(userPopulator.populate(userDao.findById(email)));
+        try {
+            return Optional.ofNullable(userPopulator.populate(userDao.findById(email)));
+        } catch (NullPointerException | EmptyResultDataAccessException ex) {
+            return Optional.empty();
+        }
     }
 
     @Override

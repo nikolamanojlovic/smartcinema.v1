@@ -40,7 +40,7 @@ public class TicketDao extends SuperDao<Ticket, Long> implements ITicketDao {
         Object result = getEntityManager().createQuery(Constants.MAX.replace(":field", "ticket.id")
                 .replace(":table", getModelName())
                 .replace(":alias", "ticket")).getSingleResult();
-        return result == null ? 0 : ((long) result) + 1;
+        return result == null ? 0 : (((long) result) + 1);
     }
 
 
@@ -82,6 +82,7 @@ public class TicketDao extends SuperDao<Ticket, Long> implements ITicketDao {
 
         ));
 
+        entry.getReservation().setTicketEntry(entry);
         entry.setTicket(ticket);
 
         return entry;
