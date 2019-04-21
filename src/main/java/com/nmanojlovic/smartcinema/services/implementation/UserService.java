@@ -5,6 +5,7 @@ import com.nmanojlovic.smartcinema.data.UserData;
 import com.nmanojlovic.smartcinema.models.User;
 import com.nmanojlovic.smartcinema.populators.ISuperPopulator;
 import com.nmanojlovic.smartcinema.services.IUserService;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,6 +27,10 @@ public class UserService implements IUserService {
 
     @Override
     public Optional<UserData> findUserByCredentials(String email, String password) {
-        return Optional.ofNullable(userPopulator.populate(userDao.findUserByCredentials(email, password)));
+        try {
+            return Optional.ofNullable(userPopulator.populate(userDao.findUserByCredentials(email, password)));
+        } catch (NullPointerException | EmptyResultDataAccessException ex) {
+            return Optional.empty();
+        }
     }
 }

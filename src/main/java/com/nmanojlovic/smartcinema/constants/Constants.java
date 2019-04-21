@@ -9,11 +9,7 @@ public final class Constants {
 
     public static final String FROM = " FROM ";
     public static final String WHERE = " WHERE ";
-    public static final String AND = " AND ";
     public static final String FROM_WHERE = " FROM :table WHERE :field = ':value'";
+    public static final String FROM_WHERE_COMPLEX = " FROM :table WHERE :condition";
     public static final String MAX = " SELECT MAX(:field) FROM :table AS :alias";
-
-    public static final String USER = " user ";
-    public static final String EMAIL = " email ";
-    public static final String PASSWORD = " password ";
 }

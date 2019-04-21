@@ -12,8 +12,6 @@ import java.util.List;
 @Repository("projectionDao")
 public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implements IProjectionDao {
 
-    private static String FILM_ID_EQUALS = " film = ";
-
     public ProjectionDao() {
         this.model = Projection.class;
     }
