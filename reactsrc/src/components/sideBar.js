@@ -5,7 +5,7 @@ import ListItem from "@material-ui/core/ListItem";
 import {connect} from "react-redux";
 import {UserLogOut} from "../functions/userFunctions";
 import siteHistory from "../helper/history";
-import {Clear, Home, ShoppingCart} from '@material-ui/icons';
+import {Clear, Home, ShoppingCart, Receipt} from '@material-ui/icons';
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import {ClearMessage} from "../functions/messageFunctions";
 import {RemoveFilm, RemoveFilms} from "../functions/filmFunctions";
@@ -54,6 +54,9 @@ class SideBar extends Component {
                 siteHistory.push("/cart");
                 break;
             case 2:
+                siteHistory.push("/orders");
+                break;
+            case 3:
                 this.props.clearTicket();
                 this.props.clearFilms();
                 this.props.logOut();
@@ -85,7 +88,13 @@ class SideBar extends Component {
                             Cart
                         </Typography>
                     </ListItem>
-                    <ListItem button key='Log out' onClick={() => this._handleClick(2)}>
+                    <ListItem button key='PastOrders' onClick={() => this._handleClick(2)}>
+                        <ListItemIcon><Receipt style={{color: "#FFF"}}/></ListItemIcon>
+                        <Typography style={styles.item}>
+                            Past orders
+                        </Typography>
+                    </ListItem>
+                    <ListItem button key='Log out' onClick={() => this._handleClick(3)}>
                         <ListItemIcon><Clear style={{color: "#FFF"}}/></ListItemIcon>
                         <Typography style={styles.item}>
                             Log out
