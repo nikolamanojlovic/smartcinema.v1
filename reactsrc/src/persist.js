@@ -1,6 +1,10 @@
+import store from "./store";
+
 export function saveState(state) {
     try {
         let serializedState = JSON.stringify(state);
+
+        console.log(state);
         localStorage.setItem("http://localhost:state", serializedState);
     } catch (err) {
         console.log(err.message);
@@ -39,7 +43,8 @@ export function initializeState() {
             ticket: {
                 entries: [],
                 user: {}
-            }
+            },
+            order: []
         }
     };
 }

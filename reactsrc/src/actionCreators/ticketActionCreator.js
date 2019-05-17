@@ -32,3 +32,10 @@ export const SubmitCartActionCreator = () => {
         type: TicketActionTypes.SUBMIT_CART,
     };
 };
+
+export const GetOrdersActionCreator = user => {
+    return {
+        type: TicketActionTypes.GET_ORDERS,
+        payload: user
+    };
+};

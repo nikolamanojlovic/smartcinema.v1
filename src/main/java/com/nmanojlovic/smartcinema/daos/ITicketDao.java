@@ -5,11 +5,15 @@ import com.nmanojlovic.smartcinema.models.Reservation;
 import com.nmanojlovic.smartcinema.models.Ticket;
 import com.nmanojlovic.smartcinema.models.TicketEntry;
 
+import java.util.List;
+
 public interface ITicketDao  extends ISuperDao<Ticket, Long>  {
 
     long getTicketId();
 
-    Ticket depopulateTicketData(TicketData data);
+    List<Ticket> getTicketsForCurrentUser(String user);
 
     void createReservationForTicketEntry(Reservation reservation, TicketEntry ticketEntry);
+
+    Ticket depopulateTicketData(TicketData data);
 }

@@ -1,7 +1,6 @@
 import {
-    AddReservationActionCreator,
     AddToCartActionCreator,
-    CreateTicketActionCreator,
+    CreateTicketActionCreator, GetOrdersActionCreator,
     RemoveFromCartActionCreator,
     RemoveTicketActionCreator,
     SubmitCartActionCreator
@@ -9,6 +8,7 @@ import {
 import axios from "axios";
 import {API_URL} from "../helper/apiUrl";
 import {ErrorMessageActionCreator} from "../actionCreators/messageActionCreators";
+import {GetFilmsActionCreator} from "../actionCreators/filmActionCreators";
 
 export const CreateTicketForCurrentUser = user => {
     return dispatch => {
@@ -41,7 +41,17 @@ export const SubmitCart = (ticket) => {
                 dispatch(SubmitCartActionCreator());
             }
         }).catch((error) => {
-            dispatch(ErrorMessageActionCreator("Credentials are not valid!"));
+            dispatch(ErrorMessageActionCreator("Something went wrong with submitting cart!"));
+        })
+    };
+};
+
+export const GetOrdersForCurrentUser = (user) => {
+    return dispatch => {
+        axios.get(API_URL + '/ticket/orders/' + user).then((response) => {
+            dispatch(GetOrdersActionCreator(response.data))
+        }).catch((error) => {
+            dispatch(ErrorMessageActionCreator("Something went wrong with fetching orders!"));
         })
     };
 };

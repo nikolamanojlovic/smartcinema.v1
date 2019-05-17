@@ -6,6 +6,7 @@ public final class Constants {
     public static final char FEMALE = 'F';
 
     public static final String DEFAULT_DATE_FORMAT = "dd/MM/yyyy";
+    public static final String MYSQL_DATE_FORMAT = "yyyy-MM-dd";
 
     public static final String FROM = " FROM ";
     public static final String FROM_WHERE = " FROM :table WHERE :field = ':value'";

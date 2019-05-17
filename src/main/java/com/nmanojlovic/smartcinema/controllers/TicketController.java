@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @CrossOrigin
@@ -21,5 +22,10 @@ public class TicketController extends SuperController {
     public ResponseEntity<String> reservation(@RequestBody String ticket) {
         TicketData ticketData = getGson().fromJson(ticket, TicketData.class);
         return sendResponse(Optional.of(ticketService.createTicketForUser(ticketData)), Boolean.class, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/orders/{user}")
+    public ResponseEntity<String> pastOrders(@PathVariable("user") String user) {
+        return sendResponse(Optional.of(ticketService.getTicketsForCurrentUser(user)), ArrayList.class, HttpStatus.OK);
     }
 }

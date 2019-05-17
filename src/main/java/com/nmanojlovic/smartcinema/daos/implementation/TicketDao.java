@@ -2,6 +2,7 @@ package com.nmanojlovic.smartcinema.daos.implementation;
 
 import com.nmanojlovic.smartcinema.constants.Constants;
 import com.nmanojlovic.smartcinema.daos.IHallDao;
+import com.nmanojlovic.smartcinema.daos.IProjectionDao;
 import com.nmanojlovic.smartcinema.daos.ITicketDao;
 import com.nmanojlovic.smartcinema.daos.IUserDao;
 import com.nmanojlovic.smartcinema.data.ProjectionData;
@@ -30,6 +31,9 @@ public class TicketDao extends SuperDao<Ticket, Long> implements ITicketDao {
     @Resource(name = "hallDao")
     private IHallDao hallDao;
 
+    @Resource(name = "projectionDao")
+    private IProjectionDao projectionDao;
+
     @Override
     protected String getModelName() {
         return " " + Ticket.class.getSimpleName() + " ";
@@ -43,6 +47,18 @@ public class TicketDao extends SuperDao<Ticket, Long> implements ITicketDao {
         return result == null ? 0 : (((long) result) + 1);
     }
 
+    @Override
+    public List<Ticket> getTicketsForCurrentUser(String user) {
+        return getEntityManager().createQuery(Constants.FROM_WHERE.replace(":table", getModelName())
+                .replace(":field", "user.email").replace(":value", user)).getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void createReservationForTicketEntry(Reservation reservation, TicketEntry ticketEntry) {
+        reservation.setTicketEntry(ticketEntry);
+        getEntityManager().persist(reservation);
+    }
 
     @Override
     public Ticket depopulateTicketData(TicketData data) {
@@ -54,13 +70,6 @@ public class TicketDao extends SuperDao<Ticket, Long> implements ITicketDao {
         ticket.setPrice(calculateTicketPrice(ticket.getEntries()));
 
         return ticket;
-    }
-
-    @Override
-    @Transactional
-    public void createReservationForTicketEntry(Reservation reservation, TicketEntry ticketEntry) {
-        reservation.setTicketEntry(ticketEntry);
-        getEntityManager().persist(reservation);
     }
 
     private TicketEntry depopulateTicketEntryData(TicketEntryData entryData, Ticket ticket) {
@@ -75,11 +84,11 @@ public class TicketDao extends SuperDao<Ticket, Long> implements ITicketDao {
                 hall.getSeats().stream().filter(seat ->
                         seat.getSeatId().equals(new SeatId(resData.getSeat().getRow(), resData.getSeat().getNumber())))
                         .findFirst().get(),
-                hall.getProjections().stream().filter(projection ->
-                        projection.getFilm().getId().equals(projData.getFilmId())
-                                && projection.getId().equals(new ProjectionId(projData.getDate(), projData.getStartTime(), projData.getEndTime())))
-                        .findFirst().get()
-
+                projectionDao.findProjectionById(
+                        new ProjectionId(projData.getDate(), projData.getStartTime(), projData.getEndTime()),
+                        projData.getFilmId(),
+                        Long.toString(projData.getHallData().getId())
+                )
         ));
 
         entry.getReservation().setTicketEntry(entry);

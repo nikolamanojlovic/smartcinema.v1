@@ -3,7 +3,9 @@ const TicketActionTypes = {
     REMOVE_TICKET: 'REMOVE_TICKET',
     ADD_TO_CART : 'ADD_TO_CART',
     REMOVE_FROM_CART: 'REMOVE_FROM_CART',
-    SUBMIT_CART: 'SUBMIT_CART'
+    SUBMIT_CART: 'SUBMIT_CART',
+
+    GET_ORDERS: 'GET_ORDERS'
 };
 
 export default TicketActionTypes;

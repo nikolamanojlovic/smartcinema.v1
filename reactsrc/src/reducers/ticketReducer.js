@@ -17,6 +17,8 @@ const TicketReducer = (state = {}, action) => {
             return {...state, ticket: {...state.ticket, entries: action.payload}};
         case TicketActionTypes.SUBMIT_CART:
             return {...state, ticket: {...state.ticket, entries: []}};
+        case TicketActionTypes.GET_ORDERS:
+            return {...state, orders: action.payload};
         default:
             return {...state};
     }

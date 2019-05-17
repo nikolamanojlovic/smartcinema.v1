@@ -3,6 +3,7 @@ import PrivateRoute from "./helper/privateRoute";
 import HomePage from "./pages/homePage";
 import CartPage from "./pages/cartPage";
 import FilmPage from "./pages/filmPage";
+import OrderPage from "./pages/orderPage";
 import React, {Component} from "react";
 import {Route, Router, Switch} from "react-router-dom";
 import siteHistory from "./helper/history";
@@ -14,6 +15,7 @@ class App extends Component {
                <Switch>
                    <Route exact path="/login" component={LogInPage}/>
                    <PrivateRoute path="/cart" component={CartPage}/>
+                   <PrivateRoute path="/orders" component={OrderPage}/>
                    <PrivateRoute path="/film/*" component={FilmPage}/>
                    <PrivateRoute path="/" component={HomePage}/>
                </Switch>

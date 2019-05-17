@@ -4,9 +4,18 @@ import java.util.List;
 
 public class TicketData {
 
+    private long id;
     private double price;
     private List<TicketEntryData> entries;
     private UserData user;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public double getPrice() {
         return price;
