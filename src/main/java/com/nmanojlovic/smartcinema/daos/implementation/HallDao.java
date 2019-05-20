@@ -26,13 +26,26 @@ public class HallDao extends SuperDao<Hall, Long> implements IHallDao {
     }
 
     @Override
+    public Seat findSeatInHallById(String hallId, int row, int number) {
+        if ( StringUtils.isBlank(hallId) || row < 1 || number < 1 ) {
+            return null;
+        }
+
+        return getEntityManager().createQuery(Constants.FROM_AS_WHERE_COMPLEX
+                .replace(":table", "seat")
+                .replace(":alias", "S")
+                .replace(":condition", " S.hall = '" + hallId + "' AND S.row = " + row +
+                        " AND S.number = " + number), Seat.class).getSingleResult();
+    }
+
+    @Override
     public List<Seat> findAvailableSeatsForFilmAndProjection(ProjectionId projectionId, long hallId, String filmId) {
         boolean isProjectionIdWrong = projectionId.getDate() == null || projectionId.getStartTime() == null || projectionId.getEndTime() == null;
         if (isProjectionIdWrong || StringUtils.isBlank(filmId)) {
             return null;
         }
 
-        return (List<Seat>) getEntityManager().createNativeQuery(Constants.SELECT_ALL_FROM_AS_WHERE_COMPLEX
+        return getEntityManager().createNativeQuery(Constants.SELECT_ALL_FROM_AS_WHERE_COMPLEX
                 .replace(":table", "seat")
                 .replace(":alias", "S")
                 .replace(":condition", " S.hall = '" + hallId + "' AND (S.row, S.number) NOT IN (" +

@@ -41,16 +41,17 @@ public class TicketDao extends SuperDao<Ticket, Long> implements ITicketDao {
 
     @Override
     public long getTicketId() {
-        Object result = getEntityManager().createQuery(Constants.MAX.replace(":field", "ticket.id")
+        Long result = getEntityManager().createQuery(Constants.MAX.replace(":field", "ticket.id")
                 .replace(":table", getModelName())
-                .replace(":alias", "ticket")).getSingleResult();
-        return result == null ? 0 : (((long) result) + 1);
+                .replace(":alias", "ticket"), Long.class).getSingleResult();
+        return result == null ? 0 : ++result;
     }
 
     @Override
     public List<Ticket> getTicketsForCurrentUser(String user) {
         return getEntityManager().createQuery(Constants.FROM_WHERE.replace(":table", getModelName())
-                .replace(":field", "user.email").replace(":value", user)).getResultList();
+                .replace(":field", "user.email").replace(":value", user), Ticket.class)
+                .getResultList();
     }
 
     @Override
@@ -81,9 +82,8 @@ public class TicketDao extends SuperDao<Ticket, Long> implements ITicketDao {
         ProjectionData projData = resData.getProjection();
 
         entry.setReservation(new Reservation(
-                hall.getSeats().stream().filter(seat ->
-                        seat.getSeatId().equals(new SeatId(resData.getSeat().getRow(), resData.getSeat().getNumber())))
-                        .findFirst().get(),
+                hallDao.findSeatInHallById(Long.toString(hall.getId()),
+                        resData.getSeat().getRow(), resData.getSeat().getNumber()),
                 projectionDao.findProjectionById(
                         new ProjectionId(projData.getDate(), projData.getStartTime(), projData.getEndTime()),
                         projData.getFilmId(),
