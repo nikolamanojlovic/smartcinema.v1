@@ -1,5 +1,6 @@
 package com.nmanojlovic.smartcinema.data;
 
+import java.util.Date;
 import java.util.List;
 
 public class TicketData {
@@ -7,6 +8,7 @@ public class TicketData {
     private long id;
     private double price;
     private List<TicketEntryData> entries;
+    private Date timestamp;
     private UserData user;
 
     public long getId() {
@@ -31,6 +33,14 @@ public class TicketData {
 
     public void setEntries(List<TicketEntryData> entries) {
         this.entries = entries;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
     public UserData getUser() {

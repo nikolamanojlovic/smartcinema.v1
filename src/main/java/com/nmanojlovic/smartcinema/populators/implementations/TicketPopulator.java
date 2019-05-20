@@ -20,7 +20,7 @@ public class TicketPopulator implements ISuperPopulator<Ticket, TicketData> {
         TicketData data = new TicketData();
         data.setId(model.getId());
         data.setPrice(model.getPrice());
-        data.setId(model.getId());
+        data.setTimestamp(model.getTimestamp());
         data.setEntries(ticketEntryPopulator.populateList(model.getEntries()));
 
         return data;
