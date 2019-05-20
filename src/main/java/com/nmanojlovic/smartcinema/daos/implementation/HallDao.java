@@ -4,7 +4,9 @@ import com.nmanojlovic.smartcinema.constants.Constants;
 import com.nmanojlovic.smartcinema.daos.IHallDao;
 import com.nmanojlovic.smartcinema.models.Hall;
 import com.nmanojlovic.smartcinema.models.ProjectionId;
+import com.nmanojlovic.smartcinema.models.Reservation;
 import com.nmanojlovic.smartcinema.models.Seat;
+import com.nmanojlovic.smartcinema.utils.DateUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 
@@ -13,8 +15,6 @@ import java.util.stream.Collectors;
 
 @Repository("hallDao")
 public class HallDao extends SuperDao<Hall, Long> implements IHallDao {
-
-    private static String AVAILABLE_SEATS_QUERY = " s.hall.id=':hall'";
 
     public HallDao() {
         this.model = Hall.class;
@@ -32,15 +32,16 @@ public class HallDao extends SuperDao<Hall, Long> implements IHallDao {
             return null;
         }
 
-        List<Seat> seats = getEntityManager().createQuery(Constants.FROM_AS_WHERE_COMPLEX
-                .replace(":table", Seat.class.getSimpleName())
-                .replace(":alias", "s")
-                .replace(":condition", AVAILABLE_SEATS_QUERY.replace(":hall", Long.toString(hallId))))
+        return (List<Seat>) getEntityManager().createNativeQuery(Constants.SELECT_ALL_FROM_AS_WHERE_COMPLEX
+                .replace(":table", "seat")
+                .replace(":alias", "S")
+                .replace(":condition", " S.hall = '" + hallId + "' AND (S.row, S.number) NOT IN (" +
+                        " SELECT R.row, R.number FROM reservation AS R WHERE " +
+                        "  CAST(R.date AS date) = '" + DateUtils.getStringFromDate(projectionId.getDate(), Constants.MYSQL_DATE_FORMAT) +
+                        "' AND R.start_time = '" + projectionId.getStartTime() +
+                        "' AND R.end_time = '" + projectionId.getEndTime() +
+                        "' AND R.film = '" + filmId + "' AND R.hall_projection = '" + hallId + "')" +
+                        " ORDER BY S.row"), Seat.class)
                 .getResultList();
-
-        return seats.stream().filter(seat -> seat.getReservations().stream().noneMatch(reservation ->
-                reservation.getProjection().getId().equals(projectionId) &&
-                reservation.getProjection().getFilm().getId().equals(filmId) &&
-                reservation.getProjection().getHall().getId() == hallId)).collect(Collectors.toList());
     }
 }
