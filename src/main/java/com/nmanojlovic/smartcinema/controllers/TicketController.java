@@ -24,8 +24,8 @@ public class TicketController extends SuperController {
         return sendResponse(Optional.of(ticketService.createTicketForUser(ticketData)), Boolean.class, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/orders/{user}")
-    public ResponseEntity<String> pastOrders(@PathVariable("user") String user) {
+    @GetMapping(value = "/orders/{user:.+}")
+    public ResponseEntity<String> pastOrders(@PathVariable String user) {
         return sendResponse(Optional.of(ticketService.getTicketsForCurrentUser(user)), ArrayList.class, HttpStatus.OK);
     }
 }
