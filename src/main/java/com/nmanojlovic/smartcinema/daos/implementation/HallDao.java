@@ -32,10 +32,10 @@ public class HallDao extends SuperDao<Hall, Long> implements IHallDao {
         }
 
         return getEntityManager().createQuery(Constants.FROM_AS_WHERE_COMPLEX
-                .replace(":table", "seat")
+                .replace(":table", Seat.class.getSimpleName())
                 .replace(":alias", "S")
-                .replace(":condition", " S.hall = '" + hallId + "' AND S.row = " + row +
-                        " AND S.number = " + number), Seat.class).getSingleResult();
+                .replace(":condition", " S.hall = '" + hallId + "' AND S.seatId.row = " + row +
+                        " AND S.seatId.number = " + number), Seat.class).getSingleResult();
     }
 
     @Override
