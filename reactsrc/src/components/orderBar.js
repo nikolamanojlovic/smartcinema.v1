@@ -13,7 +13,8 @@ import {HighlightOff} from "@material-ui/icons";
 
 const styles = {
     panel: {
-        width: "95%"
+        width: "95%",
+        marginBottom: 10
     },
     expand: {
         backgroundColor: "#A5122C",
@@ -41,7 +42,7 @@ class OrderBar extends Component {
                 <ExpansionPanelSummary style={styles.expand} expandIcon={<ExpandMoreIcon style={styles.ico}/>}>
                     <Typography style={styles.typo} variant="body1" gutterBottom>
                         <b>ID:</b> {this.props.order.id} <b>Order date:</b> {(new Date(this.props.order.timestamp)).toDateString().replace(/^\S+\s/, '')}<br/>
-                        <b>Total:</b> {this.props.order.price}
+                        <b>Total:</b> {this.props.order.price} RSD
                     </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
