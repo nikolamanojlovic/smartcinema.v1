@@ -11,6 +11,7 @@ public class ProjectionData {
     private HallData hallData;
     private String filmId;
     private String filmTitle;
+    private double costOfPlay;
 
     public Date getDate() {
         return date;
@@ -58,5 +59,13 @@ public class ProjectionData {
 
     public void setFilmTitle(String filmTitle) {
         this.filmTitle = filmTitle;
+    }
+
+    public double getCostOfPlay() {
+        return costOfPlay;
+    }
+
+    public void setCostOfPlay(double costOfPlay) {
+        this.costOfPlay = costOfPlay;
     }
 }

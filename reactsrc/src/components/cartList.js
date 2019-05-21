@@ -112,12 +112,11 @@ class CartList extends Component {
                                                 {e.reservation.projection.filmId.title}
                                             </TableCell>
                                             <TableCell align="center">
-                                                {this.props.films.find(function (film) {
-                                                    return film.id === e.reservation.projection.filmId
-                                                }).costOfPlay + " RSD"}
+                                                {e.reservation.projection.costOfPlay + " RSD"}
                                             </TableCell>
-                                            <TableCell
-                                                align="center">{"R: " + e.reservation.seat.row + " N: " + e.reservation.seat.number}</TableCell>
+                                            <TableCell align="center">
+                                                {"R: " + e.reservation.seat.row + " N: " + e.reservation.seat.number}
+                                            </TableCell>
                                             <TableCell align="center">
                                                 <HighlightOff style={styles.iconRed} onClick={() => this._handleRemove(e.on)}/>
                                             </TableCell>

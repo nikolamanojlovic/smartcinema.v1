@@ -26,6 +26,7 @@ public class ProjectionPopulator implements ISuperPopulator<Projection, Projecti
         data.setHallData(hallPopulator.populate(model.getHall()));
         data.setFilmId(model.getFilm().getId());
         data.setFilmTitle(model.getFilm().getTitle());
+        data.setCostOfPlay(model.getFilm().getCostOfPlay());
 
         return data;
     }
