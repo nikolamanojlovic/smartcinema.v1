@@ -1,5 +1,6 @@
 package com.nmanojlovic.smartcinema.services.implementation;
 
+import com.nmanojlovic.smartcinema.constants.Constants;
 import com.nmanojlovic.smartcinema.daos.IFilmDao;
 import com.nmanojlovic.smartcinema.daos.IHallDao;
 import com.nmanojlovic.smartcinema.daos.IProjectionDao;
@@ -60,7 +61,22 @@ public class FilmService implements IFilmService {
     @Override
     public Optional<List<ProjectionData>> findProjectionsForFilm(String filmId) {
         try {
-            return Optional.ofNullable(projectionPopulator.populateList(projectionDao.findProjectionsByFilmId(filmId)));
+            List<ProjectionData> data = projectionPopulator.populateList(projectionDao.findProjectionsByFilmId(filmId));
+
+            if ( data != null ) {
+                data.forEach(projection -> {
+                    String id = String.valueOf(projection.getHallData().getId());
+
+                    projection.getHallData().setMaxRows(
+                            hallDao.getMaxRowOrNumberInHall(id, Constants.ROW)
+                    );
+                    projection.getHallData().setMaxNumbers(
+                            hallDao.getMaxRowOrNumberInHall(id, Constants.NUMBER)
+                    );
+                });
+            }
+
+            return Optional.ofNullable(data);
         } catch (NullPointerException npe) {
             return Optional.empty();
         }

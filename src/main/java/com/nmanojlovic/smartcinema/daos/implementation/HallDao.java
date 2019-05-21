@@ -26,6 +26,15 @@ public class HallDao extends SuperDao<Hall, Long> implements IHallDao {
     }
 
     @Override
+    public int getMaxRowOrNumberInHall(String hallId, String parameter) {
+        Integer result = getEntityManager().createQuery(Constants.MAX_WHERE.replace(":field", "S.seatId. " + parameter)
+                .replace(":table", Seat.class.getSimpleName())
+                .replace(":alias", "S")
+                .replace(":condition", " S.hall = '" + hallId + "'"), Integer.class).getSingleResult();
+        return result == null ? -1 : result;
+    }
+
+    @Override
     public Seat findSeatInHallById(String hallId, int row, int number) {
         if ( StringUtils.isBlank(hallId) || row < 1 || number < 1 ) {
             return null;

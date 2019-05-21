@@ -4,6 +4,8 @@ public class HallData {
 
     private long id;
     private String name;
+    private int maxRows;
+    private int maxNumbers;
 
     public long getId() {
         return id;
@@ -19,5 +21,21 @@ public class HallData {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getMaxRows() {
+        return maxRows;
+    }
+
+    public void setMaxRows(int maxRows) {
+        this.maxRows = maxRows;
+    }
+
+    public int getMaxNumbers() {
+        return maxNumbers;
+    }
+
+    public void setMaxNumbers(int maxNumbers) {
+        this.maxNumbers = maxNumbers;
     }
 }

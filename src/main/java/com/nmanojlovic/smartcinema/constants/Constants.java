@@ -14,4 +14,8 @@ public final class Constants {
     public static final String FROM_AS_WHERE_COMPLEX = " FROM :table AS :alias WHERE :condition";
     public static final String SELECT_ALL_FROM_AS_WHERE_COMPLEX = "SELECT * FROM :table AS :alias WHERE :condition";
     public static final String MAX = " SELECT MAX(:field) FROM :table AS :alias";
+    public static final String MAX_WHERE = " SELECT MAX(:field) FROM :table AS :alias WHERE :condition";
+
+    public static final String ROW = "row";
+    public static final String NUMBER = "number";
 }
