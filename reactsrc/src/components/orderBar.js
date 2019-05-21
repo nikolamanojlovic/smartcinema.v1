@@ -13,7 +13,7 @@ import {HighlightOff} from "@material-ui/icons";
 
 const styles = {
     panel: {
-        width: "95%",
+        width: "98%",
         marginBottom: 10
     },
     expand: {
@@ -81,7 +81,7 @@ class OrderBar extends Component {
                                                 {e.reservation.projection.hallData.name}
                                             </TableCell>
                                             <TableCell align="center">
-                                                {e.reservation.projection.hallData.name}
+                                                {e.reservation.projection.filmTitle}
                                             </TableCell>
                                             <TableCell align="center">
                                                 {"R: " + e.reservation.seat.row + " N: " + e.reservation.seat.number}

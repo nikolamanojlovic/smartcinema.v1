@@ -105,12 +105,11 @@ class CartList extends Component {
                                                     (e.reservation.projection.endTime.minute < 10 ? "0" + e.reservation.projection.endTime.minute : e.reservation.projection.endTime.minute)
                                                 }
                                             </TableCell>
-                                            <TableCell
-                                                align="center">{e.reservation.projection.hallData.name}</TableCell>
                                             <TableCell align="center">
-                                                {this.props.films.find(function (film) {
-                                                    return film.id === e.reservation.projection.filmId
-                                                }).title}
+                                                {e.reservation.projection.hallData.name}
+                                            </TableCell>
+                                            <TableCell align="center">
+                                                {e.reservation.projection.filmId.title}
                                             </TableCell>
                                             <TableCell align="center">
                                                 {this.props.films.find(function (film) {
@@ -120,8 +119,7 @@ class CartList extends Component {
                                             <TableCell
                                                 align="center">{"R: " + e.reservation.seat.row + " N: " + e.reservation.seat.number}</TableCell>
                                             <TableCell align="center">
-                                                <HighlightOff style={styles.iconRed}
-                                                              onClick={() => this._handleRemove(e.on)}/>
+                                                <HighlightOff style={styles.iconRed} onClick={() => this._handleRemove(e.on)}/>
                                             </TableCell>
                                         </TableRow>
                                     ))
