@@ -59,6 +59,9 @@ const styles = {
     },
     freeSeat: {
         color: '#A5122C'
+    },
+    reservedSeat: {
+        color: '#888888'
     }
 };
 
@@ -91,7 +94,7 @@ class ProjectionsList extends Component {
 
     _handleChangeRemove(value) {
         this.setState({seats: this.state.seats.filter(function (element) {
-                return element.row !== value.row && element.number !== value.number
+                return !(element.row === value.row && element.number === value.number)
             })});
     };
 
@@ -135,17 +138,23 @@ class ProjectionsList extends Component {
 
         for (let i = 1; i <= this.state.projection.hallData.maxNumbers; i++) {
 
-            console.log(this.state.seats);
-            if (seats.find(seat =>  row.i === seat.row && i === seat.number) &&
-                !this.state.seats.find(seat =>  row.i === seat.row && i === seat.number)) {
-                seatsIcons.push(
-                    <TableCell padding="dense" align="center">
-                        <EventSeat style={styles.freeSeat} onClick={() => this._handleChange({row: row.i, number: i})}/>
-                    </TableCell>);
+            if (seats.find(seat =>  row.i === seat.row && i === seat.number)) {
+
+                if (!this.state.seats.find(seat =>  row.i === seat.row && i === seat.number)) {
+                    seatsIcons.push(
+                        <TableCell padding="dense" align="center">
+                            <EventSeat style={styles.freeSeat} onClick={() => this._handleChange({row: row.i, number: i})}/>
+                        </TableCell>);
+                } else {
+                    seatsIcons.push(
+                        <TableCell padding="dense" align="center">
+                            <EventSeat style={styles.reservedSeat} onClick={() => this._handleChangeRemove({row: row.i, number: i})}/>
+                        </TableCell>);
+                }
             } else {
                 seatsIcons.push(
                     <TableCell padding="dense" align="center">
-                        <EventSeat onClick={() => this._handleChangeRemove({row: row.i, number: i})}/>
+                        <EventSeat/>
                     </TableCell>);
             }
         }
