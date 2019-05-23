@@ -89,6 +89,12 @@ class ProjectionsList extends Component {
         this.setState({seats: [...this.state.seats, value]});
     };
 
+    _handleChangeRemove(value) {
+        this.setState({seats: this.state.seats.filter(function (element) {
+                return element.row !== value.row && element.number !== value.number
+            })});
+    };
+
     _handleAddToCartClick(seats, projection) {
         if ( seats === [] ) {
             return;
@@ -139,7 +145,7 @@ class ProjectionsList extends Component {
             } else {
                 seatsIcons.push(
                     <TableCell padding="dense" align="center">
-                        <EventSeat/>
+                        <EventSeat onClick={() => this._handleChangeRemove({row: row.i, number: i})}/>
                     </TableCell>);
             }
         }
