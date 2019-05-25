@@ -62,6 +62,9 @@ const styles = {
     },
     reservedSeat: {
         color: '#888888'
+    },
+    cartSeat: {
+        color: '#303F9F'
     }
 };
 
@@ -143,7 +146,17 @@ class ProjectionsList extends Component {
 
             if (seats.find(seat =>  row.i === seat.row && i === seat.number)) {
 
-                if (!this.state.seats.find(seat =>  row.i === seat.row && i === seat.number)) {
+                if (this.props.entries.find(entry =>
+                    this.state.projection.date === entry.reservation.projection.date &&
+                    JSON.stringify(this.state.projection.startTime) === JSON.stringify(entry.reservation.projection.startTime) &&
+                    JSON.stringify(this.state.projection.endTime) === JSON.stringify(entry.reservation.projection.endTime) &&
+                    row.i === entry.reservation.seat.row && i === entry.reservation.seat.number))
+                {
+                    seatsIcons.push(
+                        <TableCell padding="dense" align="center">
+                            <EventSeat style={styles.cartSeat}/>
+                        </TableCell>);
+                } else if (!this.state.seats.find(seat =>  row.i === seat.row && i === seat.number)) {
                     seatsIcons.push(
                         <TableCell padding="dense" align="center">
                             <EventSeat style={styles.freeSeat} onClick={() => this._handleChange({row: row.i, number: i})}/>
@@ -235,7 +248,8 @@ const mapStateToProps = state => {
     return {
         projections: state.FilmReducer.projections,
         seats: state.FilmReducer.seats,
-        user: state.UserReducer.user
+        user: state.UserReducer.user,
+        entries: state.TicketReducer.ticket.entries
     };
 };
 
