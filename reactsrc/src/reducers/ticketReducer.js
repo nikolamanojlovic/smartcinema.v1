@@ -5,7 +5,7 @@ const TicketReducer = (state = {}, action) => {
         case TicketActionTypes.CREATE_TICKET:
             return {...state, ticket: {entries: [], user: action.payload}};
         case TicketActionTypes.REMOVE_TICKET:
-            return {...state, ticket: {entries: [], user: {}}};
+            return {...state, orders: [], ticket: {entries: [], user: {}}};
         case TicketActionTypes.ADD_TO_CART:
             return {
                 ...state, ...state.ticket.entries.push({
