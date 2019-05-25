@@ -1,18 +1,23 @@
 <p align="center"> University in Belgrade </p>
 <p align="center"> Faculty of Organizational Sciences </p>
-
+<br/>
+<br/>
+<br/>
 <p align="center"> <i>Project for Napredne Java Tehnlogije</i> </p>
 <h1 align="center"> SmartCinema </h1>
-
+<br/>
+<br/>
 <p align="left"> <i>Mentor:</i> </p>
 <p align="left"> Dušan Savić </p>
-
 <p align="left"> <i>Mentee:</i> </p>
 <p align="left"> <i>Nikola Manojlović</i> </p>
-
-
+<br/>
+<br/>
+<br/>
 <p align="center"> Belgrade, 2019. </p>
-
+<br/>
+<br/>
+<br/>
 ### SmartCinema ###
 
 Small application for buying tickets made for student project using React with Redux and Spring Boot.
@@ -28,4 +33,3 @@ Small application for buying tickets made for student project using React with R
 ### ERD Diagram ###
 
 ![ERD SC](https://user-images.githubusercontent.com/17787973/56470150-0f12fd80-6443-11e9-9917-0a347f451107.png)
-
