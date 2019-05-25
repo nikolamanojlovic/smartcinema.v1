@@ -82,6 +82,9 @@ public class SmartCinemaDBSeederEvent {
     private static List<User> users =  Arrays.asList(
             new User("manojlovic.nikola@gmail.com", "nikola", "Nikola",
                     "Manojlović", Constants.MALE, DateUtils.getDateFromString("03/07/1995"),
+                    "Belgrade", "Serbia"),
+            new User("jovic.jovana@gmail.com", "jovana", "Jovana",
+                    "Jović", Constants.FEMALE, DateUtils.getDateFromString("03/07/1985"),
                     "Belgrade", "Serbia")
     );
 
