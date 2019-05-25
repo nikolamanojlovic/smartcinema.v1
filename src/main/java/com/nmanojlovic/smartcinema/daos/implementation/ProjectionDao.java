@@ -29,9 +29,10 @@ public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implement
             return null;
         }
 
-        return getEntityManager().createQuery(Constants.FROM_WHERE.replace(":table", getModelName())
-                        .replace(":field", "film")
-                        .replace(":value", filmId)).getResultList();
+        return getEntityManager().createQuery(Constants.FROM_WHERE_COMPLEX.replace(":table", getModelName() + " P ")
+                        .replace(":condition", "film = '" + filmId + "'" +
+                                " AND CAST(P.id.date AS date) >= CURRENT_DATE" +
+                                " AND P.id.endTime >= CURRENT_TIME"), Projection.class).getResultList();
     }
 
     @Override
@@ -40,7 +41,7 @@ public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implement
                 (Projection) getEntityManager().createQuery(Constants.FROM_WHERE_COMPLEX
                 .replace(":table", getModelName() + " P ")
                 .replace(":condition", "film = '" + filmId + "' AND hall = '" + hallId + "' AND " +
-                        " CAST(date AS date) = '" + DateUtils.getStringFromDate(id.getDate(), Constants.MYSQL_DATE_FORMAT) +
+                        " CAST(P.id.date AS date) = '" + DateUtils.getStringFromDate(id.getDate(), Constants.MYSQL_DATE_FORMAT) +
                         "' AND P.id.startTime = '" + id.getStartTime() + "' AND P.id.endTime = '" + id.getEndTime() + "'")
         ).getSingleResult();
     }
