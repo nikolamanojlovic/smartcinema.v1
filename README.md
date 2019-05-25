@@ -6,7 +6,6 @@
 <p align="center"> <i>Project for Napredne Java Tehnlogije</i> </p>
 <h1 align="center"> SmartCinema </h1>
 <br/>
-<br/>
 <p align="left"> <i>Mentor:</i> </p>
 <p align="left"> Dušan Savić </p>
 <p align="left"> <i>Mentee:</i> </p>
