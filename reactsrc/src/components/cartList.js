@@ -112,7 +112,7 @@ class CartList extends Component {
                                                 {e.reservation.projection.hallData.name}
                                             </TableCell>
                                             <TableCell align="center">
-                                                {e.reservation.projection.filmId.title}
+                                                {e.reservation.projection.filmTitle}
                                             </TableCell>
                                             <TableCell align="center">
                                                 {e.reservation.projection.costOfPlay + " RSD"}
