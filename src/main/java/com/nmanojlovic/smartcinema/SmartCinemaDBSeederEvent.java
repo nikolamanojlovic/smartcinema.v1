@@ -181,6 +181,6 @@ public class SmartCinemaDBSeederEvent {
     );
 
     private static List<Ticket> tickets = Arrays.asList(
-            new Ticket(10000, 600, new Date(), ticketEntries1000, users.get(0))
+            new Ticket(10000, ticketEntries1000.size() * 600, new Date(), ticketEntries1000, users.get(0))
     );
 }
