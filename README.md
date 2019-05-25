@@ -1,4 +1,11 @@
-# SmartCinema #
+<p align="center"> University in Belgrade </p>
+<p align="center"> Faculty of Organizational Sciences </p>
+
+<p align="center"> Project for Napredne Java Tehnlogije </p>
+<p align="center"> <b> SmartCinema </b> </p>
+
+
+### SmartCinema ###
 
 Small application for buying tickets made for student project using React with Redux and Spring Boot.
 
