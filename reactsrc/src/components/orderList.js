@@ -25,7 +25,7 @@ class OrderList extends Component {
                 <div style={styles.pastOrders}>
                     {
                         this.props.orders.map((e,i) => (
-                            <OrderBar order={e}/>
+                            <OrderBar key={i} order={e}/>
                         ))
                     }
                 </div>

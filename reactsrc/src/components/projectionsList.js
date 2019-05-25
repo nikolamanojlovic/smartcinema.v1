@@ -110,11 +110,11 @@ class ProjectionsList extends Component {
     };
 
     _createNumbersCells() {
-        let numbers = [<TableCell padding="dense" align="center"><b>*</b></TableCell>];
+        let numbers = [<TableCell key={0} padding="dense" align="center"><b>*</b></TableCell>];
 
         for (let i = 1; i <= this.state.projection.hallData.maxNumbers; i++) {
             numbers.push(
-                <TableCell padding="dense" align="center" style={styles.tableCell}>
+                <TableCell key={i} padding="dense" align="center" style={styles.tableCell}>
                     <b>{i}</b>
                 </TableCell>
             )
@@ -128,8 +128,8 @@ class ProjectionsList extends Component {
 
         for (let i = 1; i <= this.state.projection.hallData.maxRows; i++) {
             rows.push(
-                <TableRow>
-                    <TableCell padding="dense" align="center" style={styles.tableCell}><b>{i}</b></TableCell>
+                <TableRow key={i}>
+                    <TableCell key={0} padding="dense" align="center" style={styles.tableCell}><b>{i}</b></TableCell>
                     {this._createSeatsCells({i}, seats)}
                 </TableRow>);
         }
@@ -153,23 +153,23 @@ class ProjectionsList extends Component {
                     row.i === entry.reservation.seat.row && i === entry.reservation.seat.number))
                 {
                     seatsIcons.push(
-                        <TableCell padding="dense" align="center">
+                        <TableCell key={i} padding="dense" align="center">
                             <EventSeat style={styles.cartSeat}/>
                         </TableCell>);
                 } else if (!this.state.seats.find(seat =>  row.i === seat.row && i === seat.number)) {
                     seatsIcons.push(
-                        <TableCell padding="dense" align="center">
+                        <TableCell key={i} padding="dense" align="center">
                             <EventSeat style={styles.freeSeat} onClick={() => this._handleChange({row: row.i, number: i})}/>
                         </TableCell>);
                 } else {
                     seatsIcons.push(
-                        <TableCell padding="dense" align="center">
+                        <TableCell key={i} padding="dense" align="center">
                             <EventSeat style={styles.reservedSeat} onClick={() => this._handleChangeRemove({row: row.i, number: i})}/>
                         </TableCell>);
                 }
             } else {
                 seatsIcons.push(
-                    <TableCell padding="dense" align="center">
+                    <TableCell key={i} padding="dense" align="center">
                         <EventSeat/>
                     </TableCell>);
             }
@@ -213,7 +213,7 @@ class ProjectionsList extends Component {
                                                 this.state.projection !== 'none' ?
                                                     <Table style={styles.seatsTableRender}>
                                                         <TableBody>
-                                                            <TableRow className="rows">
+                                                            <TableRow key={-1} className="rows">
                                                                 {
                                                                     this._createNumbersCells()
                                                                 }
