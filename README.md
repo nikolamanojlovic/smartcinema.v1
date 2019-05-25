@@ -10,7 +10,7 @@
 <p align="left"> <i>Mentor:</i> </p>
 <p align="left"> Dušan Savić </p>
 <p align="left"> <i>Mentee:</i> </p>
-<p align="left"> <i>Nikola Manojlović</i> </p>
+<p align="left"> Nikola Manojlović </p>
 <br/>
 <br/>
 <br/>
@@ -18,11 +18,14 @@
 <br/>
 <br/>
 <br/>
-### SmartCinema ###
+## SmartCinema ##
 
 Small application for buying tickets made for student project using React with Redux and Spring Boot.
 
-### Architecture  ###
+### Verbal description ###
+
+
+### Architecture ###
 
 ![Architecture](https://user-images.githubusercontent.com/17787973/56470323-189d6500-6445-11e9-9a3d-056522dd3919.png)
 
