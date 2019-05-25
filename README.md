@@ -18,7 +18,8 @@
 <br/>
 <br/>
 <br/>
-## SmartCinema ##
+
+### SmartCinema ###
 
 Small application for buying tickets made for student project using React with Redux and Spring Boot.
 
