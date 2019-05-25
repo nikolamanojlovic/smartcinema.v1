@@ -2,7 +2,7 @@
 <p align="center"> Faculty of Organizational Sciences </p>
 
 <p align="center"> Project for Napredne Java Tehnlogije </p>
-<p align="center"> <b> SmartCinema </b> </p>
+<h2 align="center"> <b> SmartCinema </b> </h2>
 
 
 ### SmartCinema ###
