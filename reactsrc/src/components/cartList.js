@@ -8,6 +8,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import {RemoveFromCart, SubmitCart} from "../functions/ticketFunctions";
+import MessageComponent from "./messageComponent";
+import {ClearMessage} from "../functions/messageFunctions";
 
 const styles = {
     entries: {
@@ -65,6 +67,7 @@ class CartList extends Component {
     }
 
     _handleSubmit(ticket) {
+        this.props.clearMessage();
         this.props.submitCart(ticket);
     }
 
@@ -132,6 +135,7 @@ class CartList extends Component {
                             <DoneAll style={styles.iconWhite}/>
                             Submit cart
                         </Button>
+                        {this.props.message ? <MessageComponent/> : <span/>}
                     </div>
                 </div>
                 : <Typography variant="body1" style={styles.error} gutterBottom>Your cart is empty.</Typography>
@@ -142,12 +146,14 @@ class CartList extends Component {
 const mapStateToProps = state => {
     return {
         ticket: state.TicketReducer.ticket,
-        films: state.FilmReducer.films
+        films: state.FilmReducer.films,
+        message: state.MessageReducer.message
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        clearMessage: () => dispatch(ClearMessage()),
         removeFromCart: (entries) => dispatch(RemoveFromCart(entries)),
         submitCart: (ticket) => dispatch(SubmitCart(ticket))
     };

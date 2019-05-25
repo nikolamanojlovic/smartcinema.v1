@@ -39,6 +39,8 @@ export const SubmitCart = (ticket) => {
         axios.post(API_URL + '/ticket/save', ticket).then((response) => {
             if ( response.data === true ) {
                 dispatch(SubmitCartActionCreator());
+            } else {
+                dispatch(ErrorMessageActionCreator("Your cart could not be saved, check again if seats are not already reserved."));
             }
         }).catch((error) => {
             dispatch(ErrorMessageActionCreator("Something went wrong with submitting cart!"));
