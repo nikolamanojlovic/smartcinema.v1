@@ -37,3 +37,15 @@ SmartCinema is a small system for reservation of seats for a film. It allows use
 ### ERD Diagram ###
 
 ![ERD SC](https://user-images.githubusercontent.com/17787973/56470150-0f12fd80-6443-11e9-9917-0a347f451107.png)
+
+### User Inteface ###
+
+![image](https://user-images.githubusercontent.com/17787973/58370560-4ecc7980-7f08-11e9-84f4-d67de45d3104.png)
+
+![image](https://user-images.githubusercontent.com/17787973/58370561-52f89700-7f08-11e9-8c92-429db56e8cb2.png)
+
+![image](https://user-images.githubusercontent.com/17787973/58370562-5724b480-7f08-11e9-88ed-baf44489a99d.png)
+
+![image](https://user-images.githubusercontent.com/17787973/58370564-5b50d200-7f08-11e9-9c68-7d9f8047844d.png)
+
+![image](https://user-images.githubusercontent.com/17787973/58370591-a1a63100-7f08-11e9-84c3-7225b2e1d992.png)
