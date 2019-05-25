@@ -4,6 +4,14 @@
 <p align="center"> <i>Project for Napredne Java Tehnlogije</i> </p>
 <h1 align="center"> SmartCinema </h1>
 
+<p align="left"> <i>Mentor:</i> </p>
+<p align="left"> Dušan Savić </p>
+
+<p align="left"> <i>Mentee:</i> </p>
+<p align="left"> <i>Nikola Manojlović</i> </p>
+
+
+<p align="center"> Belgrade, 2019. </p>
 
 ### SmartCinema ###
 
