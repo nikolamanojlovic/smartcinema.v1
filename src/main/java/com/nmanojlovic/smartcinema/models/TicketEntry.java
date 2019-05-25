@@ -18,7 +18,6 @@ public class TicketEntry implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ordinal")
     private long on;
 
