@@ -1,8 +1,8 @@
 <p align="center"> University in Belgrade </p>
 <p align="center"> Faculty of Organizational Sciences </p>
 
-<p align="center"> Project for Napredne Java Tehnlogije </p>
-<h3 align="center"> SmartCinema </h3>
+<p align="center"> <i>Project for Napredne Java Tehnlogije</i> </p>
+<h1 align="center"> SmartCinema </h1>
 
 
 ### SmartCinema ###
