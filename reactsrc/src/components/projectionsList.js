@@ -102,7 +102,10 @@ class ProjectionsList extends Component {
         if ( seats === [] ) {
             return;
         }
-        this.props.addToCart(seats, projection);
+
+        for(let i = 0; i < this.state.seats.length; i++) {
+            this.props.addToCart(seats[i], projection);
+        }
     };
 
     _createNumbersCells() {
