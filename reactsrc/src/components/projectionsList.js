@@ -150,6 +150,8 @@ class ProjectionsList extends Component {
                     this.state.projection.date === entry.reservation.projection.date &&
                     JSON.stringify(this.state.projection.startTime) === JSON.stringify(entry.reservation.projection.startTime) &&
                     JSON.stringify(this.state.projection.endTime) === JSON.stringify(entry.reservation.projection.endTime) &&
+                    this.state.projection.filmId === entry.reservation.projection.filmId &&
+                    this.state.projection.hallData.id === entry.reservation.projection.hallData.id &&
                     row.i === entry.reservation.seat.row && i === entry.reservation.seat.number))
                 {
                     seatsIcons.push(
