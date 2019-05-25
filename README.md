@@ -1,4 +1,4 @@
-<p align="center"> University in Belgrade </p>
+<p align="center"> University of Belgrade </p>
 <p align="center"> Faculty of Organizational Sciences </p>
 <br/>
 <br/>
