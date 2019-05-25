@@ -46,6 +46,6 @@ SmartCinema is a small system for reservation of seats for a film. It allows use
 
 ![image](https://user-images.githubusercontent.com/17787973/58370562-5724b480-7f08-11e9-88ed-baf44489a99d.png)
 
-![image](https://user-images.githubusercontent.com/17787973/58370564-5b50d200-7f08-11e9-9c68-7d9f8047844d.png)
+![image](https://user-images.githubusercontent.com/17787973/58370656-4d4f8100-7f09-11e9-9abe-200877508af3.png)
 
 ![image](https://user-images.githubusercontent.com/17787973/58370591-a1a63100-7f08-11e9-84c3-7225b2e1d992.png)
