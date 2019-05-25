@@ -1,6 +1,7 @@
 import {
     AddToCartActionCreator,
-    CreateTicketActionCreator, GetOrdersActionCreator,
+    CreateTicketActionCreator,
+    GetOrdersActionCreator,
     RemoveFromCartActionCreator,
     RemoveTicketActionCreator,
     SubmitCartActionCreator
@@ -8,7 +9,6 @@ import {
 import axios from "axios";
 import {API_URL} from "../helper/apiUrl";
 import {ErrorMessageActionCreator} from "../actionCreators/messageActionCreators";
-import {GetFilmsActionCreator} from "../actionCreators/filmActionCreators";
 
 export const CreateTicketForCurrentUser = user => {
     return dispatch => {

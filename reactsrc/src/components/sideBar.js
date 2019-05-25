@@ -5,7 +5,7 @@ import ListItem from "@material-ui/core/ListItem";
 import {connect} from "react-redux";
 import {UserLogOut} from "../functions/userFunctions";
 import siteHistory from "../helper/history";
-import {Clear, Home, ShoppingCart, Receipt} from '@material-ui/icons';
+import {Clear, Home, Receipt, ShoppingCart} from '@material-ui/icons';
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import {ClearMessage} from "../functions/messageFunctions";
 import {RemoveFilm, RemoveFilms} from "../functions/filmFunctions";

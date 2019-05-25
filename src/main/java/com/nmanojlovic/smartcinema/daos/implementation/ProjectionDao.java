@@ -8,7 +8,6 @@ import com.nmanojlovic.smartcinema.utils.DateUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Repository("projectionDao")

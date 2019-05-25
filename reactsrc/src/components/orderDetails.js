@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import OrderList from "./orderList";
 import {connect} from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import {GetFilmById} from "../functions/filmFunctions";
 import {GetOrdersForCurrentUser} from "../functions/ticketFunctions";
 
 const styles = {
