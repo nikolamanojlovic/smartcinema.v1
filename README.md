@@ -29,7 +29,7 @@ SmartCinema is a small system for reservation of seats for a film. It allows use
 ### Requirements ###
 
 * NPM
-* MySql
+* MySQL
 * Maven
 
 ### Architecture ###
