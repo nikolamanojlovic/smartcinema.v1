@@ -26,6 +26,12 @@ Small application for buying tickets made for student project using React with R
 
 SmartCinema is a small system for reservation of seats for a film. It allows users to see available projections and choose seats for it. Users also have the ability to see what's in their current cart and remove entries from it before submitting it. When the cart is submitted it becomes ticket. User can also see a list of past orders with detailed information.
 
+### Requirements ###
+
+* NPM
+* MySQL
+* Maven
+
 ### Architecture ###
 
 ![Architecture](https://user-images.githubusercontent.com/17787973/56470323-189d6500-6445-11e9-9a3d-056522dd3919.png)
