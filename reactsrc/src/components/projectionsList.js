@@ -18,14 +18,18 @@ const styles = {
     },
     box: {
         maxHeight: 200,
-        maxWidth: 500,
+        maxWidth: 700,
         marginRight: 15,
-        overflow: 'auto',
+        overflow: "auto",
         display: "inline-block",
         float: "left"
     },
     list: {
-        display: "inline-flex"
+        display: "inline-flex",
+        flexWrap: "wrap"
+    },
+    listItem: {
+        width: 275
     },
     icon: {
         color: "#A5122C"
@@ -190,7 +194,7 @@ class ProjectionsList extends Component {
                         <List style={styles.list}>
                             {
                                 this.props.projections.map((e, i) => (
-                                    <ListItem key={i} onClick={() => this._handleClick(this.props.film.id, e)} button>
+                                    <ListItem key={i} style={styles.listItem} onClick={() => this._handleClick(this.props.film.id, e)} button>
                                         <ListItemIcon>
                                             <Schedule style={styles.icon}/>
                                         </ListItemIcon>

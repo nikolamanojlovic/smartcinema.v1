@@ -82,10 +82,10 @@ public class SmartCinemaDBSeederEvent {
     private static List<User> users =  Arrays.asList(
             new User("manojlovic.nikola@gmail.com", "nikola", "Nikola",
                     "Manojlović", Constants.MALE, DateUtils.getDateFromString("03/07/1995"),
-                    "Belgrade", "Serbia"),
+                    "Belgrade", "Serbia", false),
             new User("jovic.jovana@gmail.com", "jovana", "Jovana",
                     "Jović", Constants.FEMALE, DateUtils.getDateFromString("03/07/1985"),
-                    "Belgrade", "Serbia")
+                    "Belgrade", "Serbia", true)
     );
 
     private static List<Film> films = Arrays.asList(
@@ -104,7 +104,35 @@ public class SmartCinemaDBSeederEvent {
             new Film("tt4154664", "Captain Marvel", 2019, 124,
                     "Carol Danvers becomes one of the universe's most powerful heroes when Earth is caught in the middle of a galactic war between two alien races.",
                     "https://m.media-amazon.com/images/M/MV5BMTE0YWFmOTMtYTU2ZS00ZTIxLWE3OTEtYTNiYzBkZjViZThiXkEyXkFqcGdeQXVyODMzMzQ4OTI@._V1_SX300.jpg",
-                    "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iKzNoxsksG5Q/v1/1200x-1.jpg", 1200)
+                    "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iKzNoxsksG5Q/v1/1200x-1.jpg", 1200),
+            new Film("tt6565702", "Dark Phoenix", 2019, 113,
+                    "Jean Grey begins to develop incredible powers that corrupt and turn her into a Dark Phoenix.",
+                    "https://m.media-amazon.com/images/M/MV5BMjAwNDgxNTI0M15BMl5BanBnXkFtZTgwNTY4MDI1NzM@._V1_SX300.jpg",
+                    "https://www.star2.com/wp-content/uploads/2019/06/Dark-Phoenix-1170x480.jpg", 1800),
+            new Film("tt5113040", "The Secret Life of Pets 2", 2019, 86,
+                    "Continuing the story of Max and his pet friends, following their secret lives after their owners leave them for work or school each day.",
+                    "https://m.media-amazon.com/images/M/MV5BMTA2NzM0MjA0MTJeQTJeQWpwZ15BbWU4MDk1MzYwNzYz._V1_SX300.jpg",
+                    "https://d13ezvd6yrslxm.cloudfront.net/wp/wp-content/images/the-secret-life-of-pets-2-1-700x376.jpg", 450),
+            new Film("tt0197521", "Godzilla: King of the Monsters", 2019, 80,
+                    "A 400-foot (122-meter) dinosaur-like beast, awoken from undersea hibernation off the Japanese coast by atomic-bomb testing, attacks Tokyo.",
+                    "https://m.media-amazon.com/images/M/MV5BMTk4YjkyN2QtNGRmZC00ZmFkLTllNmYtMGIwNTUwYWMwZWE1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+                    "http://cdn.collider.com/wp-content/uploads/2019/03/godzilla-king-of-the-monsters-vs-ghidorah.jpg", 800),
+            new Film("tt6146586", "John Wick: Chapter 3 - Parabellum", 2019, 130,
+                    "Super-assassin John Wick is on the run after killing a member of the international assassin's guild, and with a $14 million price tag on his head.",
+                    "https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_SX300.jpg",
+                    "https://cdn.mos.cms.futurecdn.net/37TvALgYi2PdvjZEto7hsN.jpg", 1000),
+            new Film("tt5884052", "Pokémon Detective Pikachu", 2019, 104,
+                    "In a world where people collect Pokémon to do battle, a boy comes across an intelligent talking Pikachu who seeks to be a detective.",
+                    "https://m.media-amazon.com/images/M/MV5BNDU4Mzc3NzE5NV5BMl5BanBnXkFtZTgwMzE1NzI1NzM@._V1_SX300.jpg",
+                    "https://cf-images.us-east-1.prod.boltdns.net/v1/static/769341148/ea18861d-e838-402d-b9a5-e898eb08a8d2/3df0c7d2-2d0e-45b9-83e0-3676e76f84d8/1280x720/match/image.jpg", 800),
+            new Film("tt6320628", "Spider-Man: Far From Home", 2019, 133,
+                    "Following the events of Avengers: Endgame, Spider-Man must step up to take on new threats in a world that has changed forever.",
+                    "https://m.media-amazon.com/images/M/MV5BZDI4Mjc0Y2UtMTE0My00NmUwLTkxYWYtZjVjZjUyOTk2ZjViXkEyXkFqcGdeQXVyNzYwNTMyMTA@._V1_SX300.jpg",
+                    "https://timedotcom.files.wordpress.com/2019/01/spider-man-far-from-home-trailer-9.png", 1200),
+            new Film("tt1918886", "Joker", 2019, 104,
+                    "A space scientist working on a project to communicate with aliens visits a village called Paglapur.",
+                    "https://m.media-amazon.com/images/M/MV5BMjE0NjIxODMxN15BMl5BanBnXkFtZTcwMjM5MDcxOA@@._V1_SX300.jpg",
+                    "https://www.dailydot.com/wp-content/uploads/2018/08/joker-movie-trailer-e1554297620247.jpg", 1800)
     );
 
     private static List<Seat> seatsInHallMarlyn = Arrays.asList(
@@ -145,9 +173,58 @@ public class SmartCinemaDBSeederEvent {
             new Seat(new SeatId(2, 8))
     );
 
+    private static List<Seat> seatsInLaurenBacall = Arrays.asList(
+            new Seat(new SeatId(1, 1)),
+            new Seat(new SeatId(1, 2)),
+            new Seat(new SeatId(1, 3)),
+            new Seat(new SeatId(1, 4)),
+            new Seat(new SeatId(1, 5)),
+            new Seat(new SeatId(1, 6)),
+            new Seat(new SeatId(1, 7)),
+            new Seat(new SeatId(1, 8)),
+            new Seat(new SeatId(2, 1)),
+            new Seat(new SeatId(2, 2)),
+            new Seat(new SeatId(2, 3)),
+            new Seat(new SeatId(2, 4)),
+            new Seat(new SeatId(2, 5)),
+            new Seat(new SeatId(2, 6)),
+            new Seat(new SeatId(2, 7)),
+            new Seat(new SeatId(2, 8))
+    );
+
+    private static List<Seat> seatsInHumphreyBogart = Arrays.asList(
+            new Seat(new SeatId(1, 1)),
+            new Seat(new SeatId(1, 2)),
+            new Seat(new SeatId(1, 3)),
+            new Seat(new SeatId(1, 4)),
+            new Seat(new SeatId(1, 5)),
+            new Seat(new SeatId(1, 6)),
+            new Seat(new SeatId(1, 7)),
+            new Seat(new SeatId(1, 8)),
+            new Seat(new SeatId(2, 1)),
+            new Seat(new SeatId(2, 2)),
+            new Seat(new SeatId(2, 3)),
+            new Seat(new SeatId(2, 4)),
+            new Seat(new SeatId(2, 5)),
+            new Seat(new SeatId(2, 6)),
+            new Seat(new SeatId(2, 7)),
+            new Seat(new SeatId(2, 8)),
+            new Seat(new SeatId(3, 1)),
+            new Seat(new SeatId(3, 2)),
+            new Seat(new SeatId(3, 3)),
+            new Seat(new SeatId(3, 4)),
+            new Seat(new SeatId(3, 5)),
+            new Seat(new SeatId(3, 6)),
+            new Seat(new SeatId(3, 7)),
+            new Seat(new SeatId(3, 8))
+    );
+
+
     private static List<Hall> halls = Arrays.asList(
             new Hall(1478, "Marilyn Monroe", seatsInHallMarlyn),
-            new Hall(1469, "Rita Hayworth", seatsInHallRita)
+            new Hall(1469, "Rita Hayworth", seatsInHallRita),
+            new Hall(1400, "Lauren Bacall", seatsInLaurenBacall),
+            new Hall(1433, "Humphrey Bogartl", seatsInHumphreyBogart)
     );
 
     private static List<Projection> projections = Arrays.asList(
@@ -167,6 +244,15 @@ public class SmartCinemaDBSeederEvent {
                     new ProjectionId(new Date(), LocalTime.now().plusMinutes(films.get(0).getDuration()),
                             LocalTime.now().plusMinutes(films.get(0).getDuration() + films.get(1).getDuration()))),
             new Projection(halls.get(1), films.get(2),
+                    new ProjectionId(new Date(), LocalTime.now().plusMinutes(films.get(0).getDuration() + films.get(1).getDuration()),
+                            LocalTime.now().plusMinutes(films.get(0).getDuration() + films.get(1).getDuration() + films.get(2).getDuration()))),
+            new Projection(halls.get(3), films.get(0),
+                    new ProjectionId(new Date(), LocalTime.now(),
+                            LocalTime.now().plusMinutes(films.get(0).getDuration()))),
+            new Projection(halls.get(3), films.get(1),
+                    new ProjectionId(new Date(), LocalTime.now().plusMinutes(films.get(0).getDuration()),
+                            LocalTime.now().plusMinutes(films.get(0).getDuration() + films.get(1).getDuration()))),
+            new Projection(halls.get(3), films.get(2),
                     new ProjectionId(new Date(), LocalTime.now().plusMinutes(films.get(0).getDuration() + films.get(1).getDuration()),
                             LocalTime.now().plusMinutes(films.get(0).getDuration() + films.get(1).getDuration() + films.get(2).getDuration())))
     );

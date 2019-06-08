@@ -17,7 +17,7 @@ public class User implements Serializable {
     public User() {}
 
     public User(String email, String password, String name, String lastName, char sex, Date dateOfBirth,
-                String city, String state) {
+                String city, String state, boolean isAdmin) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -26,6 +26,7 @@ public class User implements Serializable {
         this.dateOfBirth = dateOfBirth;
         this.city = city;
         this.state = state;
+        this.isAdmin = isAdmin;
     }
 
     @Id
@@ -53,6 +54,9 @@ public class User implements Serializable {
 
     @Column(name = "state")
     private String state;
+
+    @Column(name = "is_admin")
+    private boolean isAdmin;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ticket> tickets;
@@ -106,6 +110,14 @@ public class User implements Serializable {
     public String getState() { return state; }
 
     public void setState(String state) { this.state = state; }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 
     public List<Ticket> getTickets() { return tickets; }
 
