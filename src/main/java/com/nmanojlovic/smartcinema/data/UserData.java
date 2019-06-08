@@ -11,6 +11,7 @@ public class UserData {
     private Date dateOfBirth;
     private String city;
     private String state;
+    private boolean isAdmin;
 
     public String getEmail() {
         return email;
@@ -66,5 +67,13 @@ public class UserData {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

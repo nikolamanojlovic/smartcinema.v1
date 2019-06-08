@@ -21,6 +21,7 @@ public class UserPopulator implements ISuperPopulator<User, UserData> {
         data.setDateOfBirth(model.getDateOfBirth());
         data.setCity(model.getCity());
         data.setState(model.getState());
+        data.setAdmin(model.isAdmin());
 
         return data;
     }

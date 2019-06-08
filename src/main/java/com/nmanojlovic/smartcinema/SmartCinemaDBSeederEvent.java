@@ -115,7 +115,7 @@ public class SmartCinemaDBSeederEvent {
                     "https://d13ezvd6yrslxm.cloudfront.net/wp/wp-content/images/the-secret-life-of-pets-2-1-700x376.jpg", 450),
             new Film("tt0197521", "Godzilla: King of the Monsters", 2019, 80,
                     "A 400-foot (122-meter) dinosaur-like beast, awoken from undersea hibernation off the Japanese coast by atomic-bomb testing, attacks Tokyo.",
-                    "https://m.media-amazon.com/images/M/MV5BMTk4YjkyN2QtNGRmZC00ZmFkLTllNmYtMGIwNTUwYWMwZWE1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+                    "http://www.bioskopsombor.net/wp-content/uploads/2019/03/MV5BMjkwNjMwMjEwNF5BMl5BanBnXkFtZTgwMzg5NjI5NjM@._V1_.jpg",
                     "http://cdn.collider.com/wp-content/uploads/2019/03/godzilla-king-of-the-monsters-vs-ghidorah.jpg", 800),
             new Film("tt6146586", "John Wick: Chapter 3 - Parabellum", 2019, 130,
                     "Super-assassin John Wick is on the run after killing a member of the international assassin's guild, and with a $14 million price tag on his head.",
@@ -131,7 +131,7 @@ public class SmartCinemaDBSeederEvent {
                     "https://timedotcom.files.wordpress.com/2019/01/spider-man-far-from-home-trailer-9.png", 1200),
             new Film("tt1918886", "Joker", 2019, 104,
                     "A space scientist working on a project to communicate with aliens visits a village called Paglapur.",
-                    "https://m.media-amazon.com/images/M/MV5BMjE0NjIxODMxN15BMl5BanBnXkFtZTcwMjM5MDcxOA@@._V1_SX300.jpg",
+                    "https://m.media-amazon.com/images/M/MV5BMTcyNjU1MjQ3MF5BMl5BanBnXkFtZTgwNTk1MDA4NzM@._V1_.jpg",
                     "https://www.dailydot.com/wp-content/uploads/2018/08/joker-movie-trailer-e1554297620247.jpg", 1800)
     );
 
