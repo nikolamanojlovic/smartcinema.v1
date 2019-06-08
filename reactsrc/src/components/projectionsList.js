@@ -5,7 +5,7 @@ import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import {EventSeat, Schedule, ShoppingCart} from '@material-ui/icons';
+import {EventSeat, Schedule, ShoppingCart, Clear} from '@material-ui/icons';
 import {Button, TableBody, TableCell} from "@material-ui/core";
 import MessageComponent from "./messageComponent";
 import {AddToCart} from "../functions/ticketFunctions";
@@ -174,7 +174,7 @@ class ProjectionsList extends Component {
             } else {
                 seatsIcons.push(
                     <TableCell key={i} padding="dense" align="center">
-                        <EventSeat/>
+                        <Clear/>
                     </TableCell>);
             }
         }
