@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import SideBar from "../components/sideBar";
+import TopBar from "../components/topBar";
+import CreateRepertoire from "../components/createRepertoire";
 
 class AdminPage extends Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class AdminPage extends Component {
     render() {
         return(
             <div>
-                <SideBar/>
+                <TopBar/>
+                <CreateRepertoire/>
             </div>
         );
     }

@@ -6,12 +6,14 @@ import MessageReducer from "./reducers/messageReducer";
 import {loadState, saveState} from "./persist";
 import FilmReducer from "./reducers/filmReducer";
 import TicketReducer from "./reducers/ticketReducer";
+import HallReducer from "./reducers/hallReducer";
 
 const reducers = combineReducers({
     UserReducer,
     MessageReducer,
     FilmReducer,
-    TicketReducer
+    TicketReducer,
+    HallReducer
 });
 
 const store = createStore(

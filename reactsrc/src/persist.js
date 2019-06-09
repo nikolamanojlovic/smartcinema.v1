@@ -45,6 +45,9 @@ export function initializeState() {
                 user: {}
             },
             order: []
+        },
+        HallReducer: {
+            allHalls: []
         }
     };
 }
