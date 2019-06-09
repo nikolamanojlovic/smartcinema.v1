@@ -31,8 +31,8 @@ class CreateRepertoireForm extends Component {
 
         // local state
         this.state = {
-            hallSelected: false,
-            fillSelected: false
+            hallSelected: '',
+            filmSelected: ''
         };
     };
 
@@ -66,9 +66,13 @@ class CreateRepertoireForm extends Component {
                         </Select>
                     </FormControl>
                     {
-                        this.state.hallSelected &&  this.state.hallSelected ?
-                            <Typography variant="body1" component="span"   style={styles.plotText} gutterBottom>
-                            </Typography> :
+                        this.state.hallSelected !== '' &&  this.state.filmSelected !== '' ?
+                            <div>
+                                <Typography variant="body1" component="span"   style={styles.plotText} gutterBottom>
+                                    Creating projections for film {this.state.filmSelected.title} in hall {this.state.hallSelected.name}
+                                </Typography>
+                            </div>
+                            :
                             <Typography variant="body1" component="p"   style={styles.plotText} gutterBottom>
                                 Please select hall and film in order to continue.
                             </Typography>
