@@ -24,6 +24,11 @@ const styles = {
         marginTop: 15,
         display: "block"
     },
+    plotTextError: {
+        marginTop: 15,
+        display: "block",
+        color: '#A5122C'
+    },
     picker: {
         display: "block",
         width: 440,
@@ -48,14 +53,26 @@ class CreateRepertoireForm extends Component {
     constructor(props) {
         super(props);
 
+        let today = new Date();
+
+        let day = today.getDay();
+        let month = today.getMonth() + 1;
+        let year = today.getFullYear();
+
         // local state
         this.state = {
             hallSelected: '',
-            filmSelected: ''
+            filmSelected: '',
+            projectionDate: year + '-' +  (month >= 10 ? month : "0" + month) + '-' + ( day >= 10 ? day : "0" + day),
+            projectionStartTime: today.getHours() + ":" + today.getMinutes(),
+            projectionEndTime: '',
+            error: ''
         };
 
         this._handleSelectHall.bind(this);
         this._handleSelectFilm.bind(this);
+        this._handleChooseDate.bind(this);
+        this._handleChooseTime(this);
         this._handleSubmit.bind(this);
     };
 
@@ -66,7 +83,6 @@ class CreateRepertoireForm extends Component {
 
     _handleSelectHall(e) {
         this.setState({hallSelected : e.target.value});
-        console.log(e.target.value.id)
         this.props.getProjections(e.target.value.id)
     }
 
@@ -74,8 +90,57 @@ class CreateRepertoireForm extends Component {
         this.setState({filmSelected : e.target.value})
     }
 
-    _handleSubmit(e) {
+    _handleChooseDate(e) {
+        this.setState({projectionDate : e.target.value})
+    }
 
+    _handleChooseTime(e) {
+        if (e.target) {
+            this.setState({projectionStartTime : e.target.value});
+            this._handleCalculateEndTime();
+        }
+    }
+
+    _handleCalculateEndTime() {
+           let time = this.state.projectionStartTime.split(":");
+           console.log(time)
+           let endTime = [parseInt(time[0]), parseInt(time[1])];
+           console.log(endTime)
+           let loop = this.state.filmSelected.duration;
+
+           while (loop >= 0) {
+               if (endTime[1] + 30 >= 60) {
+                   if (endTime[0] + 1 === 24) {
+                       endTime[0] = 0;
+                   } else {
+                       endTime[0] = endTime[0] + 1;
+                   }
+                   endTime[1] = endTime[1] - 30;
+               } else {
+                   if ( loop - 30 < 0 ) {
+                       endTime[1] = endTime[1] + loop;
+                   } else {
+                       endTime[1] = endTime[1] + 30
+                   }
+               }
+
+               loop = loop - 30;
+           }
+
+           let projectionEndTime = (endTime[0] >= 10 ? endTime[0] : "0" + endTime[0]) + ":" + (endTime[1] >= 10 ? endTime[1] : "0" + endTime[1]);
+           this.setState({projectionEndTime : projectionEndTime});
+    }
+
+    _handleSubmit() {
+        if (this.state.projectionStartTime === '' || this.state.projectionEndTime === '') {
+            this.setState({error: "Please fill out all fields before submitting."})
+            return;
+        }
+
+        if (Date.parse(this.state.projectionDate) < Date.now()) {
+            this.setState({error: "Date must be today's or some date after."})
+            return;
+        }
     }
 
     render() {
@@ -111,16 +176,19 @@ class CreateRepertoireForm extends Component {
                                 <TextField
                                     id="date"
                                     label="Projection date"
+                                    value={this.state.projectionDate}
                                     type="date"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    onChange={(event) => this._handleChooseDate(event)}
                                     style={styles.picker}
                                 />
                                 <TextField
                                     id="time"
                                     label="Start time"
                                     type="time"
+                                    value={this.state.projectionStartTime}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
@@ -128,11 +196,14 @@ class CreateRepertoireForm extends Component {
                                         step: 1800, // 30 min
                                     }}
                                     style={styles.timePicker}
+                                    onChange={(event) => this._handleChooseTime(event)}
+                                    onBlur={() => this._handleCalculateEndTime()}
                                 />
                                 <TextField
                                     id="end_time"
                                     label="End time"
                                     type="time"
+                                    value={this.state.projectionEndTime}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
@@ -142,9 +213,15 @@ class CreateRepertoireForm extends Component {
                                     disabled={true}
                                     style={styles.timePicker}
                                 />
-                                <Button variant="contained" color="secondary" style={styles.button}>
+                                <Button variant="contained" color="secondary" style={styles.button} onClick={() => this._handleSubmit()}>
                                     Create projection
                                 </Button>
+                                {
+                                    this.state.error === '' ? <span/> :
+                                        <Typography variant="body1" component="p" style={styles.plotTextError} gutterBottom>
+                                            {this.state.error}
+                                        </Typography>
+                                }
                             </div>
                             :
                             <Typography variant="body1" component="p"   style={styles.plotText} gutterBottom>
