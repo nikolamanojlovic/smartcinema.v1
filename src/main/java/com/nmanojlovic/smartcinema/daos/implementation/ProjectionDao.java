@@ -35,6 +35,18 @@ public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implement
     }
 
     @Override
+    public List<Projection> findProjectionsByHallId(String hallId) {
+        if (StringUtils.isBlank(hallId) ) {
+            return null;
+        }
+
+        return getEntityManager().createQuery(Constants.FROM_WHERE_COMPLEX.replace(":table", getModelName() + " P ")
+                .replace(":condition", "hall = '" + hallId + "'" +
+                        " AND CAST(P.id.date AS date) >= CURRENT_DATE" +
+                        " AND P.id.endTime >= CURRENT_TIME"), Projection.class).getResultList();
+    }
+
+    @Override
     public Projection findProjectionById(ProjectionId id, String filmId, String hallId) {
         return id == null || StringUtils.isBlank(filmId) || StringUtils.isBlank(hallId) ? null :
                 (Projection) getEntityManager().createQuery(Constants.FROM_WHERE_COMPLEX

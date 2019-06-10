@@ -9,5 +9,7 @@ public interface IProjectionDao extends ISuperDao<Projection, ProjectionId> {
 
     List<Projection> findProjectionsByFilmId(String filmId);
 
+    List<Projection> findProjectionsByHallId(String hallId);
+
     Projection findProjectionById(ProjectionId id, String filmId, String hallId);
 }

@@ -47,7 +47,8 @@ export function initializeState() {
             order: []
         },
         HallReducer: {
-            allHalls: []
+            allHalls: [],
+            projections: []
         }
     };
 }

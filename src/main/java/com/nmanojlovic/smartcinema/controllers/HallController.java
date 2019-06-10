@@ -4,10 +4,7 @@ import com.nmanojlovic.smartcinema.services.IFilmService;
 import com.nmanojlovic.smartcinema.services.IHallService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -23,5 +20,10 @@ public class HallController extends SuperController {
     @GetMapping(value = "/all")
     public ResponseEntity<String> halls() {
         return sendResponse(hallService.findAllHalls(), ArrayList.class, HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping(value = "/projections/{id}")
+    public ResponseEntity<String> projections(@PathVariable("id") String id) {
+        return sendResponse(hallService.findProjectionsForHall(id), ArrayList.class, HttpStatus.NO_CONTENT);
     }
 }
