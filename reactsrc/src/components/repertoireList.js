@@ -4,14 +4,9 @@ import {connect} from "react-redux";
 import {GetFilms} from "../functions/filmFunctions";
 import CircularProgress from "./filmDetails";
 import Typography from "@material-ui/core/Typography";
+import List from "@material-ui/core/List";
 
-const styles = {
-    plotText: {
-        marginLeft: 10,
-        marginTop: 30,
-        display: "block"
-    }
-};
+const styles = {};
 
 class RepertoireList extends Component {
     constructor(props) {
@@ -21,9 +16,17 @@ class RepertoireList extends Component {
     render() {
         return (
             <div>
-                <Typography variant="body1" component="span"   style={styles.plotText} gutterBottom>
-                    Created projections:
-                </Typography>
+                {
+                    this.props.createdProjections.length !== 0 ?
+                        <div>
+                            <List subheader={<li/>}>
+                                {
+                                    this.props.dates
+                                }
+                            </List>
+                        </div>
+                        : <span/>
+                }
             </div>
         );
     }
@@ -31,7 +34,12 @@ class RepertoireList extends Component {
 
 const mapStateToProps = state => {
     return {
-        createdProjections: state.ProjectionReducer.createdProjections,
+        dates: Array.from(new Set(state.ProjectionReducer.createdProjections.map(function (projection) {
+            return projection.date;
+        }))),
+        createdProjections: state.ProjectionReducer.createdProjections.sort(function (a, b) {
+            return (new Date(b)).setHours(0, 0, 0, 0) - (new Date(a)).setHours(0, 0, 0, 0);
+        }),
         allFilms: state.FilmReducer.films,
     };
 };

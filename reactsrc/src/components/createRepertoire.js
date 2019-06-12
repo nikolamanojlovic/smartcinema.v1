@@ -39,7 +39,7 @@ class CreateRepertoire extends Component {
         return (
                 <div style={styles.createRepertoire}>
                     <Typography variant="h3" style={styles.heading} gutterBottom>
-                        Create Repertoire:
+                        Create Repertoire
                     </Typography>
                     <div className="create">
                         <div className="currentList" style={styles.currentList}>
