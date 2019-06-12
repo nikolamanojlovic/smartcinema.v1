@@ -31,7 +31,8 @@ class RepertoireList extends Component {
 
 const mapStateToProps = state => {
     return {
-        createdProjections: state.ProjectionReducer.createdProjections
+        createdProjections: state.ProjectionReducer.createdProjections,
+        allFilms: state.FilmReducer.films,
     };
 };
 

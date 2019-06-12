@@ -1,15 +1,10 @@
 import React, {Component} from "react";
-import {Divider, Typography} from "@material-ui/core";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+import {Typography} from "@material-ui/core";
 import {connect} from "react-redux";
 import {UserLogOut} from "../functions/userFunctions";
-import siteHistory from "../helper/history";
-import {Clear, ExitToApp, Home, Receipt, ShoppingCart} from '@material-ui/icons';
-import ListItemIcon from "@material-ui/core/ListItemIcon";
+import {ExitToApp} from '@material-ui/icons';
 import {ClearMessage} from "../functions/messageFunctions";
-import {RemoveFilm, RemoveFilms} from "../functions/filmFunctions";
-import {RemoveTicketForCurrentUser} from "../functions/ticketFunctions";
+import {RemoveFilm} from "../functions/filmFunctions";
 
 const styles = {
     nav: {
