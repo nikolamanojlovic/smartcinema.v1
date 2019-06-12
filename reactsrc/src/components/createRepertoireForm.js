@@ -111,7 +111,12 @@ class CreateRepertoireForm extends Component {
         let hours = Math.floor(this.state.filmSelected.duration / 60);
         let minutes = this.state.filmSelected.duration % 60;
 
-        endTime[0] = endTime[0] + hours;
+        if (endTime[0] + hours >= 24) {
+            endTime[0] = endTime[0] + hours - 24;
+        } else {
+            endTime[0] = endTime[0] + hours;
+        }
+
         if (endTime[1] + minutes < 60) {
             endTime[1] = endTime[1] + minutes;
         } else {
