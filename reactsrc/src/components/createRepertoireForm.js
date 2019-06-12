@@ -54,7 +54,7 @@ class CreateRepertoireForm extends Component {
         super(props);
 
         let today = new Date();
-        let day = today.getDay();
+        let day = today.getDate();
         let month = today.getMonth() + 1;
         let year = today.getFullYear();
         let hour = today.getHours();
@@ -146,14 +146,14 @@ class CreateRepertoireForm extends Component {
 
         if (this.props.allProjections.find(p => {
             let date = (new Date(p.date));
-            let dateFormatted = date.getFullYear() + '-' + (date.getMonth() >= 10 ? date.getMonth() : "0" + date.getMonth()) + '-'
-                + (date.getDay() >= 10 ? date.getDay() : "0" + date.getDay());
+            let month = date.getMonth()+1;
+            let dateFormatted = date.getFullYear() + '-' + (month >= 10 ? month : "0" + month) + '-'
+                + (date.getDate() >= 10 ? date.getDate() : "0" + date.getDate());
 
             let start = (p.startTime.hour >= 10 ? p.startTime.hour : "0" + p.startTime.hour) + ":" + (p.startTime.minute >= 10 ? p.startTime.minute : "0" + p.startTime.minute);
             let end = (p.endTime.hour >= 10 ? p.endTime.hour : "0" + p.endTime.hour) + ":" + (p.endTime.minute >= 10 ? p.endTime.minute : "0" + p.endTime.minute);
 
-            console.log(dateFormatted === this.state.projectionDate && !((start < this.state.projectionStartTime && end < this.state.projectionStartTime)
-                || (start < this.state.projectionEndTime && end < this.state.projectionEndTime)))
+            console.log(dateFormatted + " "  + this.state.projectionDate)
             return dateFormatted === this.state.projectionDate && !((start < this.state.projectionStartTime && end < this.state.projectionStartTime)
                 || (start < this.state.projectionEndTime && end < this.state.projectionEndTime))
         })) {
