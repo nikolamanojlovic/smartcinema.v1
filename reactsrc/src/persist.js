@@ -49,6 +49,9 @@ export function initializeState() {
         HallReducer: {
             allHalls: [],
             projections: []
+        },
+        ProjectionReducer: {
+            createdProjections: []
         }
     };
 }

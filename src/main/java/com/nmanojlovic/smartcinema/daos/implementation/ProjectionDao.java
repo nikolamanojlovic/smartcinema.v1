@@ -1,6 +1,8 @@
 package com.nmanojlovic.smartcinema.daos.implementation;
 
 import com.nmanojlovic.smartcinema.constants.Constants;
+import com.nmanojlovic.smartcinema.daos.IFilmDao;
+import com.nmanojlovic.smartcinema.daos.IHallDao;
 import com.nmanojlovic.smartcinema.daos.IProjectionDao;
 import com.nmanojlovic.smartcinema.data.ProjectionData;
 import com.nmanojlovic.smartcinema.models.Projection;
@@ -9,10 +11,18 @@ import com.nmanojlovic.smartcinema.utils.DateUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository("projectionDao")
 public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implements IProjectionDao {
+
+    @Resource(name = "hallDao")
+    private IHallDao hallDao;
+
+    @Resource(name = "filmDao")
+    private IFilmDao filmDao;
 
     public ProjectionDao() {
         this.model = Projection.class;
@@ -59,11 +69,16 @@ public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implement
     }
 
     @Override
+    @Transactional
     public void depopulateProjectionAndSave(ProjectionData data) {
         this.create(depopulateProjection(data));
     }
 
     private Projection depopulateProjection(ProjectionData data) {
-        return null;
+        Projection projection = new Projection();
+        projection.setId(new ProjectionId(data.getDate(), data.getStartTime(), data.getStartTime()));
+        projection.setHall(hallDao.findById(data.getHallData().getId()));
+        projection.setFilm(filmDao.findById(data.getFilmId()));
+        return projection;
     }
 }

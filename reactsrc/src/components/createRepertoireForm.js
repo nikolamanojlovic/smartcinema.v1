@@ -12,6 +12,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FilmPoster from "./filmPoster";
 import {Button, Divider} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
+import {CreateProjectionActionCreator} from "../actionCreators/projectionActionCreator";
+import {CreateProjection} from "../functions/projectionFunction";
 
 const styles = {
     combo: {
@@ -158,6 +160,15 @@ class CreateRepertoireForm extends Component {
             return;
         }
 
+        this.props.createProjection({
+            date: this.state.projectionDate,
+            startTime: this.state.projectionStartTime,
+            endTime: this.state.projectionEndTime,
+            hallData: this.state.hallSelected,
+            filmId: this.state.filmSelected.id,
+        });
+        this.props.getProjections(this.state.hallSelected.id);
+        this.setState({error: ''})
     }
 
     render() {
@@ -263,7 +274,8 @@ const mapDispatchToProps = dispatch => {
     return {
         getHalls: () => dispatch(GetHalls()),
         getFilms: () => dispatch(GetFilms()),
-        getProjections: (hall) => dispatch(GetProjectionsForHallById(hall))
+        getProjections: (hall) => dispatch(GetProjectionsForHallById(hall)),
+        createProjection: (projection) => dispatch(CreateProjection(projection))
     };
 };
 

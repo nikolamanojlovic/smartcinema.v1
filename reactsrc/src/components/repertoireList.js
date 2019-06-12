@@ -31,12 +31,8 @@ class RepertoireList extends Component {
 
 const mapStateToProps = state => {
     return {
+        createdProjections: state.ProjectionReducer.createdProjections
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(RepertoireList);
+export default connect(mapStateToProps)(RepertoireList);
