@@ -38,6 +38,6 @@ public class HallService implements IHallService {
 
     @Override
     public Optional<List<ProjectionData>> findProjectionsForHall(String id) {
-        return Optional.ofNullable(projectionPopulator.populateList(projectionDao.findAll()));
+        return Optional.ofNullable(projectionPopulator.populateList(projectionDao.findProjectionsByHallId(id)));
     }
 }

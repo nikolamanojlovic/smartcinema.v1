@@ -54,17 +54,18 @@ class CreateRepertoireForm extends Component {
         super(props);
 
         let today = new Date();
-
         let day = today.getDay();
         let month = today.getMonth() + 1;
         let year = today.getFullYear();
+        let hour = today.getHours();
+        let minute = today.getMinutes();
 
         // local state
         this.state = {
             hallSelected: '',
             filmSelected: '',
             projectionDate: year + '-' +  (month >= 10 ? month : "0" + month) + '-' + ( day >= 10 ? day : "0" + day),
-            projectionStartTime: today.getHours() + ":" + today.getMinutes(),
+            projectionStartTime: (hour >= 10 ? hour : "0" + hour) + ":" + (minute >= 10 ? minute : "0" + minute),
             projectionEndTime: '',
             error: ''
         };
@@ -133,14 +134,33 @@ class CreateRepertoireForm extends Component {
 
     _handleSubmit() {
         if (this.state.projectionStartTime === '' || this.state.projectionEndTime === '') {
-            this.setState({error: "Please fill out all fields before submitting."})
+            this.setState({error: "Please fill out all fields before submitting."});
             return;
         }
 
-        if (Date.parse(this.state.projectionDate) < Date.now()) {
-            this.setState({error: "Date must be today's or some date after."})
+
+        if (Date.parse(this.state.projectionDate) < (new Date()).setHours(0,0,0,0)) {
+            this.setState({error: "Date must be today's or some date after."});
             return;
         }
+
+        if (this.props.allProjections.find(p => {
+            let date = (new Date(p.date));
+            let dateFormatted = date.getFullYear() + '-' + (date.getMonth() >= 10 ? date.getMonth() : "0" + date.getMonth()) + '-'
+                + (date.getDay() >= 10 ? date.getDay() : "0" + date.getDay());
+
+            let start = (p.startTime.hour >= 10 ? p.startTime.hour : "0" + p.startTime.hour) + ":" + (p.startTime.minute >= 10 ? p.startTime.minute : "0" + p.startTime.minute);
+            let end = (p.endTime.hour >= 10 ? p.endTime.hour : "0" + p.endTime.hour) + ":" + (p.endTime.minute >= 10 ? p.endTime.minute : "0" + p.endTime.minute);
+
+            console.log(dateFormatted === this.state.projectionDate && !((start < this.state.projectionStartTime && end < this.state.projectionStartTime)
+                || (start < this.state.projectionEndTime && end < this.state.projectionEndTime)))
+            return dateFormatted === this.state.projectionDate && !((start < this.state.projectionStartTime && end < this.state.projectionStartTime)
+                || (start < this.state.projectionEndTime && end < this.state.projectionEndTime))
+        })) {
+            this.setState({error: "Projection could not be created, there is already projection in that hall at that time."})
+        }
+
+        console.log("all good")
     }
 
     render() {
