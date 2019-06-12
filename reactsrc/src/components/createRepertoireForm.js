@@ -66,7 +66,7 @@ class CreateRepertoireForm extends Component {
         this.state = {
             hallSelected: '',
             filmSelected: '',
-            projectionDate: year + '-' +  (month >= 10 ? month : "0" + month) + '-' + ( day >= 10 ? day : "0" + day),
+            projectionDate: year + '-' + (month >= 10 ? month : "0" + month) + '-' + (day >= 10 ? day : "0" + day),
             projectionStartTime: (hour >= 10 ? hour : "0" + hour) + ":" + (minute >= 10 ? minute : "0" + minute),
             projectionEndTime: '',
             error: ''
@@ -85,51 +85,42 @@ class CreateRepertoireForm extends Component {
     }
 
     _handleSelectHall(e) {
-        this.setState({hallSelected : e.target.value});
+        this.setState({hallSelected: e.target.value});
         this.props.getProjections(e.target.value.id)
     }
 
     _handleSelectFilm(e) {
-        this.setState({filmSelected : e.target.value})
+        this.setState({filmSelected: e.target.value})
     }
 
     _handleChooseDate(e) {
-        this.setState({projectionDate : e.target.value})
+        this.setState({projectionDate: e.target.value})
     }
 
     _handleChooseTime(e) {
         if (e.target) {
-            this.setState({projectionStartTime : e.target.value});
+            this.setState({projectionStartTime: e.target.value});
             this._handleCalculateEndTime();
         }
     }
 
     _handleCalculateEndTime() {
-           let time = this.state.projectionStartTime.split(":");
-           let endTime = [parseInt(time[0]), parseInt(time[1])];
-           let loop = this.state.filmSelected.duration;
+        let time = this.state.projectionStartTime.split(":");
+        let endTime = [parseInt(time[0]), parseInt(time[1])];
 
-           while (loop >= 0) {
-               if (endTime[1] + 30 >= 60) {
-                   if (endTime[0] + 1 === 24) {
-                       endTime[0] = 0;
-                   } else {
-                       endTime[0] = endTime[0] + 1;
-                   }
-                   endTime[1] = endTime[1] - 30;
-               } else {
-                   if ( loop - 30 < 0 ) {
-                       endTime[1] = endTime[1] + loop;
-                   } else {
-                       endTime[1] = endTime[1] + 30
-                   }
-               }
+        let hours = Math.floor(this.state.filmSelected.duration / 60);
+        let minutes = this.state.filmSelected.duration % 60;
 
-               loop = loop - 30;
-           }
+        endTime[0] = endTime[0] + hours;
+        if (endTime[1] + minutes < 60) {
+            endTime[1] = endTime[1] + minutes;
+        } else {
+            endTime[0] = endTime[0] + 1;
+            endTime[1] = endTime[1] + minutes - 60;
+        }
 
-           let projectionEndTime = (endTime[0] >= 10 ? endTime[0] : "0" + endTime[0]) + ":" + (endTime[1] >= 10 ? endTime[1] : "0" + endTime[1]);
-           this.setState({projectionEndTime : projectionEndTime});
+        let projectionEndTime = (endTime[0] >= 10 ? endTime[0] : "0" + endTime[0]) + ":" + (endTime[1] >= 10 ? endTime[1] : "0" + endTime[1]);
+        this.setState({projectionEndTime: projectionEndTime});
     }
 
     _handleSubmit() {
@@ -139,14 +130,14 @@ class CreateRepertoireForm extends Component {
         }
 
 
-        if (Date.parse(this.state.projectionDate) < (new Date()).setHours(0,0,0,0)) {
+        if (Date.parse(this.state.projectionDate) < (new Date()).setHours(0, 0, 0, 0)) {
             this.setState({error: "Date must be today's or some date after."});
             return;
         }
 
         if (this.props.allProjections.find(p => {
             let date = (new Date(p.date));
-            let month = date.getMonth()+1;
+            let month = date.getMonth() + 1;
             let dateFormatted = date.getFullYear() + '-' + (month >= 10 ? month : "0" + month) + '-'
                 + (date.getDate() >= 10 ? date.getDate() : "0" + date.getDate());
 
@@ -154,9 +145,9 @@ class CreateRepertoireForm extends Component {
             let end = (p.endTime.hour >= 10 ? p.endTime.hour : "0" + p.endTime.hour) + ":" + (p.endTime.minute >= 10 ? p.endTime.minute : "0" + p.endTime.minute);
 
             return dateFormatted === this.state.projectionDate && !((start < this.state.projectionStartTime && end < this.state.projectionStartTime)
-                || (start < this.state.projectionEndTime && end < this.state.projectionEndTime))
+                || (start > this.state.projectionEndTime && end > this.state.projectionEndTime))
         })) {
-            this.setState({error: "Projection could not be created, there is already projection in that hall at that time."})
+            this.setState({error: "Projection could not be created, there is already projection in that hall at that time."});
             return;
         }
 
@@ -196,10 +187,11 @@ class CreateRepertoireForm extends Component {
                         </Select>
                     </FormControl>
                     {
-                        this.state.hallSelected !== '' &&  this.state.filmSelected !== '' ?
+                        this.state.hallSelected !== '' && this.state.filmSelected !== '' ?
                             <div>
-                                <Typography variant="body1" component="span"   style={styles.plotText} gutterBottom>
-                                    Creating projections for the film <b>{this.state.filmSelected.title}</b> in the hall <b>{this.state.hallSelected.name}</b>.
+                                <Typography variant="body1" component="span" style={styles.plotText} gutterBottom>
+                                    Creating projections for the film <b>{this.state.filmSelected.title}</b> in the
+                                    hall <b>{this.state.hallSelected.name}</b>.
                                 </Typography>
                                 <TextField
                                     id="date"
@@ -241,18 +233,20 @@ class CreateRepertoireForm extends Component {
                                     disabled={true}
                                     style={styles.timePicker}
                                 />
-                                <Button variant="contained" color="secondary" style={styles.button} onClick={() => this._handleSubmit()}>
+                                <Button variant="contained" color="secondary" style={styles.button}
+                                        onClick={() => this._handleSubmit()}>
                                     Create projection
                                 </Button>
                                 {
                                     this.state.error === '' ? <span/> :
-                                        <Typography variant="body1" component="p" style={styles.plotTextError} gutterBottom>
+                                        <Typography variant="body1" component="p" style={styles.plotTextError}
+                                                    gutterBottom>
                                             {this.state.error}
                                         </Typography>
                                 }
                             </div>
                             :
-                            <Typography variant="body1" component="p"   style={styles.plotText} gutterBottom>
+                            <Typography variant="body1" component="p" style={styles.plotText} gutterBottom>
                                 Please select hall and film in order to continue.
                             </Typography>
                     }
