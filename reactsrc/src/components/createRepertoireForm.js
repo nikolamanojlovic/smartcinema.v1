@@ -104,9 +104,7 @@ class CreateRepertoireForm extends Component {
 
     _handleCalculateEndTime() {
            let time = this.state.projectionStartTime.split(":");
-           console.log(time)
            let endTime = [parseInt(time[0]), parseInt(time[1])];
-           console.log(endTime)
            let loop = this.state.filmSelected.duration;
 
            while (loop >= 0) {
@@ -153,14 +151,13 @@ class CreateRepertoireForm extends Component {
             let start = (p.startTime.hour >= 10 ? p.startTime.hour : "0" + p.startTime.hour) + ":" + (p.startTime.minute >= 10 ? p.startTime.minute : "0" + p.startTime.minute);
             let end = (p.endTime.hour >= 10 ? p.endTime.hour : "0" + p.endTime.hour) + ":" + (p.endTime.minute >= 10 ? p.endTime.minute : "0" + p.endTime.minute);
 
-            console.log(dateFormatted + " "  + this.state.projectionDate)
             return dateFormatted === this.state.projectionDate && !((start < this.state.projectionStartTime && end < this.state.projectionStartTime)
                 || (start < this.state.projectionEndTime && end < this.state.projectionEndTime))
         })) {
             this.setState({error: "Projection could not be created, there is already projection in that hall at that time."})
+            return;
         }
 
-        console.log("all good")
     }
 
     render() {

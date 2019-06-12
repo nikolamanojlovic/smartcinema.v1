@@ -2,6 +2,7 @@ package com.nmanojlovic.smartcinema.daos.implementation;
 
 import com.nmanojlovic.smartcinema.constants.Constants;
 import com.nmanojlovic.smartcinema.daos.IProjectionDao;
+import com.nmanojlovic.smartcinema.data.ProjectionData;
 import com.nmanojlovic.smartcinema.models.Projection;
 import com.nmanojlovic.smartcinema.models.ProjectionId;
 import com.nmanojlovic.smartcinema.utils.DateUtils;
@@ -55,5 +56,14 @@ public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implement
                         " CAST(P.id.date AS date) = '" + DateUtils.getStringFromDate(id.getDate(), Constants.MYSQL_DATE_FORMAT) +
                         "' AND P.id.startTime = '" + id.getStartTime() + "' AND P.id.endTime = '" + id.getEndTime() + "'")
         ).getSingleResult();
+    }
+
+    @Override
+    public void depopulateProjectionAndSave(ProjectionData data) {
+        this.create(depopulateProjection(data));
+    }
+
+    private Projection depopulateProjection(ProjectionData data) {
+        return null;
     }
 }

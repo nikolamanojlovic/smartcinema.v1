@@ -1,5 +1,6 @@
 package com.nmanojlovic.smartcinema.daos;
 
+import com.nmanojlovic.smartcinema.data.ProjectionData;
 import com.nmanojlovic.smartcinema.models.Projection;
 import com.nmanojlovic.smartcinema.models.ProjectionId;
 
@@ -12,4 +13,6 @@ public interface IProjectionDao extends ISuperDao<Projection, ProjectionId> {
     List<Projection> findProjectionsByHallId(String hallId);
 
     Projection findProjectionById(ProjectionId id, String filmId, String hallId);
+
+    void depopulateProjectionAndSave(ProjectionData data);
 }
