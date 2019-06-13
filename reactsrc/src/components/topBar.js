@@ -46,8 +46,9 @@ class TopBar extends Component {
         this._handleClick = this._handleClick.bind(this);
     };
 
-    _handleClick(index) {
+    _handleClick() {
         this.props.clearMessage();
+        this.props.logOut();
     }
 
     render() {
@@ -56,7 +57,7 @@ class TopBar extends Component {
                 <img src={require('../images/logo.svg')} alt="SmartCinema Logo" style={styles.logo}/>
                 <Typography style={styles.p}>
                     {this.props.user.name + " " + this.props.user.lastName}
-                    <ExitToApp style={styles.item}/>
+                    <ExitToApp style={styles.item} onClick={() => this._handleClick()}/>
                 </Typography>
             </nav>
         );
