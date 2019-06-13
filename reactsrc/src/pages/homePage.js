@@ -45,7 +45,7 @@ class HomePage extends Component {
     }
 
     _handlePageChangePrevious(page, event) {
-        this.setState({currentPage: page -1})
+        this.setState({currentPage: page - 1})
     }
 
     render() {
@@ -54,7 +54,8 @@ class HomePage extends Component {
                 <SideBar/>
                 <FilmList pagination={this.state.currentPage}/>
                 <div style={styles.pagination}>
-                    <Button variant="contained" className="previous" style={styles.buttonStyle} disabled={this.state.currentPage === 1}
+                    <Button variant="contained" className="previous" style={styles.buttonStyle}
+                            disabled={this.state.currentPage === 1}
                             onClick={(event) => this._handlePageChangePrevious(this.state.currentPage, event)}>
                         <NavigateBefore/>
                     </Button>
