@@ -18,4 +18,6 @@ public final class Constants {
 
     public static final String ROW = "row";
     public static final String NUMBER = "number";
+
+    public static final int PAGE_SIZE = 10;
 }

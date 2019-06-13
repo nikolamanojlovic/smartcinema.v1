@@ -33,3 +33,9 @@ export const GetCurrentUser = () => {
         dispatch(GetCurrentUserActionCreator());
     };
 };
+
+export const ChangePage = (current) => {
+    return dispatch => {
+        dispatch(Change());
+    };
+};

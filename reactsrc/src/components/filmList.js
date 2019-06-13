@@ -3,8 +3,10 @@ import FilmPoster from "../components/filmPoster";
 import {connect} from "react-redux";
 import {GetFilms} from "../functions/filmFunctions";
 import CircularProgress from "./filmDetails";
+import Button from "@material-ui/core/Button";
+import {NavigateBefore, NavigateNext} from "@material-ui/icons";
 
-const style = {
+const styles = {
     films: {
         float: "left",
         marginLeft: "15%"
@@ -19,29 +21,75 @@ const style = {
         top: "50%",
         color: "#A5122C"
     },
-
+    pagination: {
+        position: "static",
+        marginBottom: 20,
+        textAlign: "center"
+    },
+    buttonStyle: {
+        color: "#FFFFFF",
+        backgroundColor: "#A5122C",
+        width: 20,
+        margin: 5
+    },
+    buttonCurrent: {
+        width: 20,
+        color: "#A5122C",
+        backgroundColor: "#FFFFFF"
+    }
 };
 
 class FilmList extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            currentPage: 1
+        };
     };
 
     componentDidMount() {
-        this.props.getFilms()
+        this.props.getFilms(1)
+    }
+
+    _handlePageChangeNext(page) {
+        let next = page + 1;
+        this.setState({currentPage: next});
+        this.props.getFilms(next)
+    }
+
+    _handlePageChangePrevious(page) {
+        let previous = page - 1;
+        this.setState({currentPage: previous});
+        this.props.getFilms(previous);
     }
 
     render() {
         return (
             this.props.films ?
-                <div className="films" style={style.films}>
+                <div className="films" style={styles.films}>
                     {
                         this.props.films.map((e, i) => (
                             <FilmPoster key={e.id} film={e}/>
                         ))
                     }
+                    <div style={styles.pagination}>
+                        <Button variant="contained" className="previous" style={styles.buttonStyle}
+                                disabled={this.state.currentPage === 1}
+                                onClick={() => this._handlePageChangePrevious(this.state.currentPage)}>
+                            <NavigateBefore/>
+                        </Button>
+                        <Button variant="contained" className="current" style={styles.buttonCurrent} disabled={true}>
+                            {this.state.currentPage}
+                        </Button>
+                        <Button variant="contained" className="next" style={styles.buttonStyle}
+                                onClick={() => this._handlePageChangeNext(this.state.currentPage)}>
+                            <NavigateNext/>
+                        </Button>
+                    </div>
                 </div> :
-                <div style={styles.grid}><CircularProgress className="spinner" color="secondary" style={styles.spinner}/></div>
+                <div style={styles.grid}><CircularProgress className="spinner" color="secondary"
+                                                           style={styles.spinner}/></div>
         );
     }
 }
@@ -54,7 +102,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getFilms: () => dispatch(GetFilms())
+        getFilms: (pagination) => dispatch(GetFilms(pagination))
     };
 };
 

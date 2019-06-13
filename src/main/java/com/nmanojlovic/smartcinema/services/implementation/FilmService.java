@@ -50,6 +50,15 @@ public class FilmService implements IFilmService {
     }
 
     @Override
+    public Optional<List<FilmData>> findAllFilmsPagination(int pagination) {
+        try {
+            return Optional.ofNullable(filmPopulator.populateList(filmDao.findAllPagination(pagination)));
+        } catch (NullPointerException npe) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
     public Optional<FilmData> findFilmById(String id) {
         try {
             return Optional.ofNullable(filmPopulator.populate(filmDao.findById(id)));

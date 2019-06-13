@@ -10,9 +10,9 @@ import axios from "axios";
 import {API_URL} from "../helper/apiUrl";
 import {ErrorMessageActionCreator} from "../actionCreators/messageActionCreators";
 
-export const GetFilms = () => {
+export const GetFilms = (pagination) => {
     return dispatch => {
-        axios.get(API_URL + '/film/all').then((response) => {
+        axios.get(API_URL + '/film/all/' + pagination).then((response) => {
             Object.entries(response.data).length === 0 ? dispatch(ErrorMessageActionCreator("There are no films at the moment!")) :
                 dispatch(GetFilmsActionCreator(response.data))
         }).catch((error) => {

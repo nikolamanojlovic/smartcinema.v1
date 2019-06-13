@@ -11,6 +11,8 @@ public interface IFilmService {
 
     Optional<List<FilmData>> findAllFilms();
 
+    Optional<List<FilmData>> findAllFilmsPagination(int pagination);
+
     Optional<FilmData> findFilmById(String id);
 
     Optional<List<ProjectionData>> findProjectionsForFilm(String filmId);
