@@ -8,7 +8,7 @@ import {NavigateBefore, NavigateNext} from "@material-ui/icons";
 
 const styles = {
     films: {
-        float: "left",
+        float: "none",
         marginLeft: "15%"
     },
     grid: {
@@ -22,7 +22,8 @@ const styles = {
         color: "#A5122C"
     },
     pagination: {
-        position: "static",
+        float: "none",
+        marginLeft: "15%",
         marginBottom: 20,
         textAlign: "center"
     },
@@ -66,30 +67,33 @@ class FilmList extends Component {
 
     render() {
         return (
-            this.props.films ?
-                <div className="films" style={styles.films}>
-                    {
-                        this.props.films.map((e, i) => (
-                            <FilmPoster key={e.id} film={e}/>
-                        ))
-                    }
-                    <div style={styles.pagination}>
-                        <Button variant="contained" className="previous" style={styles.buttonStyle}
-                                disabled={this.state.currentPage === 1}
-                                onClick={() => this._handlePageChangePrevious(this.state.currentPage)}>
-                            <NavigateBefore/>
-                        </Button>
-                        <Button variant="contained" className="current" style={styles.buttonCurrent} disabled={true}>
-                            {this.state.currentPage}
-                        </Button>
-                        <Button variant="contained" className="next" style={styles.buttonStyle}
-                                onClick={() => this._handlePageChangeNext(this.state.currentPage)}>
-                            <NavigateNext/>
-                        </Button>
-                    </div>
-                </div> :
-                <div style={styles.grid}><CircularProgress className="spinner" color="secondary"
-                                                           style={styles.spinner}/></div>
+            <span>
+                {
+                    this.props.films ?
+                        <div className="films" style={styles.films}>
+                            {
+                                this.props.films.map((e, i) => (
+                                    <FilmPoster key={e.id} film={e}/>
+                                ))
+                            } </div>
+                        :
+                        <div style={styles.grid}><CircularProgress className="spinner" color="secondary" style={styles.spinner}/></div>
+                }
+                <div style={styles.pagination}>
+                    <Button variant="contained" className="previous" style={styles.buttonStyle}
+                            disabled={this.state.currentPage === 1}
+                            onClick={() => this._handlePageChangePrevious(this.state.currentPage)}>
+                        <NavigateBefore/>
+                    </Button>
+                    <Button variant="contained" className="current" style={styles.buttonCurrent} disabled={true}>
+                        {this.state.currentPage}
+                    </Button>
+                    <Button variant="contained" className="next" style={styles.buttonStyle}
+                            onClick={() => this._handlePageChangeNext(this.state.currentPage)}>
+                        <NavigateNext/>
+                    </Button>
+                </div>
+            </span>
         );
     }
 }

@@ -23,6 +23,6 @@ public class FilmDao extends SuperDao<Film, String> implements IFilmDao {
     public List<Film> findAllPagination(int pagination) {
         pagination = pagination-1;
         return getEntityManager().createQuery(Constants.FROM + getModelName(), Film.class)
-                .setFirstResult((Constants.PAGE_SIZE-1)*pagination).setMaxResults(Constants.PAGE_SIZE).getResultList();
+                .setFirstResult((Constants.PAGE_SIZE)*pagination).setMaxResults(Constants.PAGE_SIZE).getResultList();
     }
 }
