@@ -1,11 +1,24 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import List from "@material-ui/core/List";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import {ListItem, ListItemText} from "@material-ui/core";
+import {ListItem, ListItemText, Typography} from "@material-ui/core";
 
 const styles = {
-    listItemText: {}
+    listBox: {
+        overflowY: "auto",
+        overflowX: "hidden",
+        height: 820
+    },
+    listItemDate: {
+        backgroundColor: '#A5122C'
+    },
+    listItemText: {
+        textAlign: "center",
+    },
+    text: {
+        fontWeight: "bold",
+        color: "#FFFFFF"
+    }
 };
 
 class RepertoireList extends Component {
@@ -13,24 +26,28 @@ class RepertoireList extends Component {
         super(props);
     };
 
-    _generateCreatedRepertioareList(dates, projections, allFilms) {
+    _generateCreatedRepertoireList(dates, projections, allFilms) {
         let list = [];
 
         dates.forEach(function (date) {
-            list.push(<ListSubheader key={date}>{date}</ListSubheader>);
+            list.push(<ListItem key={date} style={styles.listItemDate}>
+                <ListItemText style={styles.listItemText}>
+                    <Typography style={styles.text}>{date}</Typography>
+                </ListItemText>
+            </ListItem>);
             projections.forEach(function (projection) {
                 if (projection.date === date) {
                     list.push(
                         <ListItem key={projection.date + projection.startTime + projection.endTime}>
-                            <ListItemText><b>TIME:</b> {projection.startTime + "-" + projection.endTime}</ListItemText>
-                            <ListItemText><b>HALL:</b> {projection.hallData.name}</ListItemText>
-                            <ListItemText><b>FILM:</b> {allFilms.find(f => {
-                                return f.id = projection.filmId;
-                            }).title}</ListItemText>
+                            <ListItemText>
+                                <div><b>TIME:</b> {projection.startTime + "-" + projection.endTime}</div>
+                                <div><b>HALL:</b> {projection.hallData.name}</div>
+                                <div><b>FILM:</b> {allFilms.find(f => {
+                                    return f.id === projection.filmId
+                                }).title}</div>
+                            </ListItemText>
                         </ListItem>
                     );
-                } else {
-                    return;
                 }
             })
         });
@@ -40,24 +57,16 @@ class RepertoireList extends Component {
 
     render() {
         return (
-            <div>
-                {
-                    this.props.createdProjections.length !== 0 ?
-                        <div>
-                            <List subheader={<li/>}>
-                                <li>
-                                    <ul>
-                                        {
-                                            this._generateCreatedRepertioareList(this.props.dates,
-                                                this.props.createdProjections, this.props.allFilms)
-                                        }
-                                    </ul>
-                                </li>
-                            </List>
-                        </div>
-                        : <span/>
-                }
-            </div>
+            this.props.createdProjections.length !== 0 ?
+                <div style={styles.listBox}>
+                    <List subheader={<li/>} style={styles.list}>
+                        {
+                            this._generateCreatedRepertoireList(this.props.dates,
+                                this.props.createdProjections, this.props.allFilms)
+                        }
+                    </List>
+                </div>
+                : <span/>
         );
     }
 }
@@ -66,10 +75,10 @@ const mapStateToProps = state => {
     return {
         dates: Array.from(new Set(state.ProjectionReducer.createdProjections.map(function (projection) {
             return projection.date;
-        }))),
-        createdProjections: state.ProjectionReducer.createdProjections.sort(function (a, b) {
-            return (new Date(b)).setHours(0, 0, 0, 0) - (new Date(a)).setHours(0, 0, 0, 0);
+        }))).sort(function (a, b) {
+            return (new Date(a)).setHours(0, 0, 0, 0) - (new Date(b)).setHours(0, 0, 0, 0);
         }),
+        createdProjections: state.ProjectionReducer.createdProjections,
         allFilms: state.FilmReducer.films,
     };
 };

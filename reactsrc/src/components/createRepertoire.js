@@ -19,14 +19,14 @@ const styles = {
     currentList: {
         display: "inline-block",
         marginLeft: 10,
-        width: "30%",
+        width: "25%",
         float: "left"
     },
     createMenu: {
-        float: "right",
         display: "inline-block",
         marginRight: 10,
         width: "70%",
+        float: "right"
     }
 };
 
