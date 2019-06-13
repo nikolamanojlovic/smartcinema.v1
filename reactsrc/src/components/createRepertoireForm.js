@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Typography from "@material-ui/core/Typography";
 import OrderBar from "./orderBar";
 import Grid from "@material-ui/core/Grid";
-import {GetFilms} from "../functions/filmFunctions";
+import {GetAllFilms, GetFilms} from "../functions/filmFunctions";
 import {connect} from "react-redux";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -272,7 +272,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         getHalls: () => dispatch(GetHalls()),
-        getFilms: () => dispatch(GetFilms()),
+        getFilms: () => dispatch(GetAllFilms()),
         getProjections: (hall) => dispatch(GetProjectionsForHallById(hall)),
         createProjection: (projection) => dispatch(CreateProjection(projection))
     };

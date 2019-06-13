@@ -18,8 +18,13 @@ public class FilmController extends SuperController {
     @Resource(name = "filmService")
     private IFilmService filmService;
 
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> films() {
+        return sendResponse(filmService.findAllFilms(), ArrayList.class, HttpStatus.NO_CONTENT);
+    }
+
     @GetMapping(value = "/all/{pagination}")
-    public ResponseEntity<String> films(@PathVariable("pagination") String pagination) {
+    public ResponseEntity<String> filmsPagination(@PathVariable("pagination") String pagination) {
         return sendResponse(filmService.findAllFilmsPagination(Integer.parseInt(pagination)), ArrayList.class, HttpStatus.NO_CONTENT);
     }
 

@@ -21,6 +21,17 @@ export const GetFilms = (pagination) => {
     };
 };
 
+export const GetAllFilms = () => {
+    return dispatch => {
+        axios.get(API_URL + '/film/all').then((response) => {
+            Object.entries(response.data).length === 0 ? dispatch(ErrorMessageActionCreator("There are no films at the moment!")) :
+                dispatch(GetFilmsActionCreator(response.data))
+        }).catch((error) => {
+            dispatch(ErrorMessageActionCreator("Something went wrong with fetching films!"));
+        })
+    };
+};
+
 export const GetFilmById = id => {
     return dispatch => {
         axios.get(API_URL + '/film/' + id).then((response) => {
