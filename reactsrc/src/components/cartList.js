@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import Typography from "@material-ui/core/Typography";
-import {DoneAll, HighlightOff} from "@material-ui/icons";
+import {DoneAll, HighlightOff, RemoveShoppingCart} from "@material-ui/icons";
 import {Button, TableBody} from "@material-ui/core";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
@@ -47,6 +47,18 @@ const styles = {
         overFlowX: "hidden",
         marginBottom: 10,
         marginTop: 10
+    },
+    divEmpty: {
+        marginLeft: "15%",
+        width: "85%"
+    },
+    emptyCart: {
+        width: 400,
+        height: 400,
+        position: "absolute",
+        left: "48%",
+        top: "25%",
+        color: "#F0F0F0"
     }
 };
 
@@ -138,7 +150,7 @@ class CartList extends Component {
                         {this.props.message ? <MessageComponent/> : <span/>}
                     </div>
                 </div>
-                : <Typography variant="body1" style={styles.error} gutterBottom>Your cart is empty.</Typography>
+                : <div style={styles.divEmpty}><RemoveShoppingCart style={styles.emptyCart}/></div>
         );
     }
 }
