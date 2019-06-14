@@ -1,18 +1,14 @@
 import React, {Component} from "react";
 import Typography from "@material-ui/core/Typography";
-import OrderBar from "./orderBar";
-import Grid from "@material-ui/core/Grid";
-import {GetAllFilms, GetFilms} from "../functions/filmFunctions";
+import {GetAllFilms} from "../functions/filmFunctions";
 import {connect} from "react-redux";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import {GetHalls, GetProjectionsForHallById} from "../functions/hallFunctions";
 import MenuItem from "@material-ui/core/MenuItem";
-import FilmPoster from "./filmPoster";
-import {Button, Divider} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import {CreateProjectionActionCreator} from "../actionCreators/projectionActionCreator";
 import {CreateProjection} from "../functions/projectionFunction";
 
 const styles = {

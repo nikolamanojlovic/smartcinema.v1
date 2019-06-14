@@ -1,6 +1,5 @@
 package com.nmanojlovic.smartcinema.controllers;
 
-import com.nmanojlovic.smartcinema.services.IFilmService;
 import com.nmanojlovic.smartcinema.services.IHallService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

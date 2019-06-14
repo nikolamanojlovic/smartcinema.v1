@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import Typography from "@material-ui/core/Typography";
-import OrderBar from "./orderBar";
-import Grid from "@material-ui/core/Grid";
 import RepertoireList from "./repertoireList";
 import CreateRepertoireForm from "./createRepertoireForm";
 

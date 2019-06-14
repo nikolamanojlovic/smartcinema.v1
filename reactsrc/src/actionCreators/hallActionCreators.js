@@ -1,5 +1,4 @@
 import HallActionTypes from "../actionTypes/hallActionTypes";
-import FilmActionTypes from "../actionTypes/filmActionTypes";
 
 export const GetHallsActionCreator = halls => {
     return {

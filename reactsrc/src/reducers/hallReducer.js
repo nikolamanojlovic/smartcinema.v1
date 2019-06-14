@@ -1,5 +1,4 @@
 import HallActionTypes from "../actionTypes/hallActionTypes";
-import FilmActionTypes from "../actionTypes/filmActionTypes";
 
 const HallReducer = (state = [], action) => {
     switch (action.type) {

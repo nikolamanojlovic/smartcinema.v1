@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import Typography from "@material-ui/core/Typography";
 import {DoneAll, HighlightOff, RemoveShoppingCart} from "@material-ui/icons";
 import {Button, TableBody} from "@material-ui/core";
 import Table from "@material-ui/core/Table";

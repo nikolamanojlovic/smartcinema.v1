@@ -10,7 +10,6 @@ export const GetHalls = () => {
             response.data.length === 0 ? dispatch(ErrorMessageActionCreator("There are no halls at the moment!")) :
                 dispatch(GetHallsActionCreator(response.data))
         }).catch((error) => {
-            console.log(error)
             dispatch(ErrorMessageActionCreator("Something went wrong with fetching halls!"));
         })
     };
