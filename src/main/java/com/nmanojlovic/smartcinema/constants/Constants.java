@@ -9,6 +9,7 @@ public final class Constants {
     public static final String MYSQL_DATE_FORMAT = "yyyy-MM-dd";
 
     public static final String FROM = " FROM ";
+    public static final String FROM_ORDER_SIZE = " FROM :table ORDER BY SIZE(:field) :type";
     public static final String FROM_WHERE = " FROM :table WHERE :field = ':value'";
     public static final String FROM_WHERE_COMPLEX = " FROM :table WHERE :condition";
     public static final String FROM_AS_WHERE_COMPLEX = " FROM :table AS :alias WHERE :condition";
@@ -18,6 +19,9 @@ public final class Constants {
 
     public static final String ROW = "row";
     public static final String NUMBER = "number";
+
+    public static final String ASC = "ASC";
+    public static final String DESC = "DESC";
 
     public static final int PAGE_SIZE = 10;
 }
