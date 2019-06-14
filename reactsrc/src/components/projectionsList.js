@@ -201,8 +201,9 @@ class ProjectionsList extends Component {
                                         <ListItemText
                                             primary={(new Date(e.date)).toDateString().replace(/^\S+\s/, '') + ": " + e.hallData.name}
                                             secondary={
-                                                e.startTime.hour + ":" + e.startTime.minute + "-" +
-                                                e.endTime.hour + ":" + e.endTime.minute
+                                                (e.startTime.hour >= 10 ? e.startTime.hour : "0" + e.startTime.hour) + ":" + (e.startTime.minute >= 10 ? e.startTime.minute : "0" + e.startTime.minute)
+                                                + "-" +
+                                                (e.endTime.hour >= 10 ? e.endTime.hour : "0" + e.endTime.hour) + ":" + (e.endTime.minute >= 10 ? e.endTime.minute : "0" + e.endTime.minute)
                                             }/>
                                     </ListItem>
                                 ))
