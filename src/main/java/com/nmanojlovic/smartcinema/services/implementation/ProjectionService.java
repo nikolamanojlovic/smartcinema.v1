@@ -38,8 +38,7 @@ public class ProjectionService implements IProjectionService {
         ProjectionData projectionData = new ProjectionData();
         projectionData.setDate(DateUtils.getDateFromString((String) map.get("date"), Constants.MYSQL_DATE_FORMAT));
         projectionData.setStartTime(LocalTime.parse((String) map.get("startTime"), DateTimeFormatter.ISO_TIME));
-        projectionData.setStartTime(LocalTime.parse((String) map.get("endTime"), DateTimeFormatter.ISO_TIME));
-        projectionData.setStartTime(LocalTime.parse((String) map.get("endTime"), DateTimeFormatter.ISO_TIME));
+        projectionData.setEndTime(LocalTime.parse((String) map.get("endTime"), DateTimeFormatter.ISO_TIME));
         projectionData.setHallData(gson.fromJson(gson.toJson(map.get("hallData")), HallData.class));
         projectionData.setFilmId((String) map.get("filmId"));
         return projectionData;

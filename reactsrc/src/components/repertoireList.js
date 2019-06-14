@@ -38,7 +38,7 @@ class RepertoireList extends Component {
             projections.forEach(function (projection) {
                 if (projection.date === date) {
                     list.push(
-                        <ListItem key={projection.date + projection.startTime + projection.endTime}>
+                        <ListItem key={projection.date + projection.startTime + projection.endTime + Math.random()}>
                             <ListItemText>
                                 <div><b>TIME:</b> {projection.startTime + "-" + projection.endTime}</div>
                                 <div><b>HALL:</b> {projection.hallData.name}</div>
