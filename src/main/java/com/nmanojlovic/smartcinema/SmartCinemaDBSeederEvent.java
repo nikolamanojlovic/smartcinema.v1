@@ -83,6 +83,9 @@ public class SmartCinemaDBSeederEvent {
             new User("manojlovic.nikola@gmail.com", "nikola", "Nikola",
                     "Manojlović", Constants.MALE, DateUtils.getDateFromString("03/07/1995"),
                     "Belgrade", "Serbia", false),
+            new User("milan.milic@gmail.com", "milan", "Milan",
+                    "Milić", Constants.MALE, DateUtils.getDateFromString("03/07/200"),
+                    "Belgrade", "Serbia", false),
             new User("jovic.jovana@gmail.com", "jovana", "Jovana",
                     "Jović", Constants.FEMALE, DateUtils.getDateFromString("03/07/1985"),
                     "Belgrade", "Serbia", true)
