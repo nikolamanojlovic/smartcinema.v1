@@ -35,9 +35,7 @@ export const GetAllFilms = () => {
 export const GetFilmById = id => {
     return dispatch => {
         axios.get(API_URL + '/film/' + id).then((response) => {
-            setTimeout(() => {
-                dispatch(GetFilmByIdActionCreator(response.data));
-            }, 1000);
+            dispatch(GetFilmByIdActionCreator(response.data));
         }).catch((error) => {
             dispatch(ErrorMessageActionCreator("Something went wrong with fetching film!"));
         })

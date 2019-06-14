@@ -41,8 +41,8 @@ public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implement
 
         return getEntityManager().createQuery(Constants.FROM_WHERE_COMPLEX.replace(":table", getModelName() + " P ")
                         .replace(":condition", "film = '" + filmId + "'" +
-                                " AND CAST(P.id.date AS date) >= CURRENT_DATE" +
-                                " AND P.id.endTime >= CURRENT_TIME"), Projection.class).getResultList();
+                                " AND ((CAST(P.id.date AS date) = CURRENT_DATE AND CAST(P.id.endTime AS time) >= CURRENT_TIME) " +
+                                " OR (CAST(P.id.date AS date) > CURRENT_DATE))"), Projection.class).getResultList();
     }
 
     @Override
