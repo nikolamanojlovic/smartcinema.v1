@@ -76,7 +76,7 @@ public class ProjectionDao  extends SuperDao<Projection, ProjectionId> implement
 
     private Projection depopulateProjection(ProjectionData data) {
         Projection projection = new Projection();
-        projection.setId(new ProjectionId(data.getDate(), data.getStartTime(), data.getStartTime()));
+        projection.setId(new ProjectionId(data.getDate(), data.getStartTime(), data.getEndTime()));
         projection.setHall(hallDao.findById(data.getHallData().getId()));
         projection.setFilm(filmDao.findById(data.getFilmId()));
         return projection;
