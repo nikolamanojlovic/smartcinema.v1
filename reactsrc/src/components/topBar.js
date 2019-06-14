@@ -4,7 +4,9 @@ import {connect} from "react-redux";
 import {UserLogOut} from "../functions/userFunctions";
 import {ExitToApp} from '@material-ui/icons';
 import {ClearMessage} from "../functions/messageFunctions";
-import {RemoveFilm} from "../functions/filmFunctions";
+import {RemoveFilms} from "../functions/filmFunctions";
+import {ClearAllHalls, ClearProjectionForHall} from "../functions/hallFunctions";
+import {ClearCreatedProjections} from "../functions/projectionFunction";
 
 const styles = {
     nav: {
@@ -48,6 +50,10 @@ class TopBar extends Component {
 
     _handleClick() {
         this.props.clearMessage();
+        this.props.clearProjections();
+        this.props.clearCreatedProjections();
+        this.props.clearAllHalls();
+        this.props.removeFilms();
         this.props.logOut();
     }
 
@@ -74,7 +80,10 @@ const mapDispatchToProps = dispatch => {
     return {
         logOut: () => dispatch(UserLogOut()),
         clearMessage: () => dispatch(ClearMessage()),
-        removeFilm: () => dispatch(RemoveFilm())
+        clearProjections: () => dispatch(ClearProjectionForHall()),
+        clearCreatedProjections: () => dispatch(ClearCreatedProjections()),
+        clearAllHalls: () => dispatch(ClearAllHalls()),
+        removeFilms: () => dispatch(RemoveFilms()),
     };
 };
 

@@ -13,3 +13,15 @@ export const GetProjectionForHallByIdActionCreator = projections => {
         payload: projections
     };
 };
+
+export const ClearAllHallsActionCreator = () => {
+    return {
+        type: HallActionTypes.CLEAR_ALL_HALLS
+    };
+};
+
+export const ClearProjectionsForHallActionCreator = () => {
+    return {
+        type: HallActionTypes.CLEAR_PROJECTIONS_FOR_HALL
+    };
+};

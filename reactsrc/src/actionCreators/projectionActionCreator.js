@@ -6,3 +6,9 @@ export const CreateProjectionActionCreator = projection => {
         payload: projection
     };
 };
+
+export const ClearCreatedProjectionsActionCreator = () => {
+    return {
+        type: ProjectionActionTypes.CLEAR_CREATED_PROJECTIONS,
+    };
+};

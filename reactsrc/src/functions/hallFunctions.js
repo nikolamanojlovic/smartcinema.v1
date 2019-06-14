@@ -1,8 +1,12 @@
 import axios from "axios";
 import {API_URL} from "../helper/apiUrl";
 import {ErrorMessageActionCreator} from "../actionCreators/messageActionCreators";
-import {GetFilmsActionCreator, GetProjectionForFilmByIdActionCreator} from "../actionCreators/filmActionCreators";
-import {GetHallsActionCreator, GetProjectionForHallByIdActionCreator} from "../actionCreators/hallActionCreators";
+import {
+    ClearAllHallsActionCreator,
+    ClearProjectionsForHallActionCreator,
+    GetHallsActionCreator,
+    GetProjectionForHallByIdActionCreator
+} from "../actionCreators/hallActionCreators";
 
 export const GetHalls = () => {
     return dispatch => {
@@ -23,5 +27,17 @@ export const GetProjectionsForHallById = id => {
         }).catch((error) => {
             dispatch(ErrorMessageActionCreator("Something went wrong with fetching projections for this hall!"));
         })
+    };
+};
+
+export const ClearProjectionForHall = () => {
+    return dispatch => {
+        dispatch(ClearProjectionsForHallActionCreator());
+    };
+};
+
+export const ClearAllHalls = () => {
+    return dispatch => {
+        dispatch(ClearAllHallsActionCreator());
     };
 };

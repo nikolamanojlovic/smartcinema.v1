@@ -6,6 +6,10 @@ const HallReducer = (state = [], action) => {
             return {...state, allHalls: action.payload};
         case HallActionTypes.GET_PROJECTION_BY_HALL_ID:
             return {...state, projections: action.payload};
+        case HallActionTypes.CLEAR_PROJECTIONS_FOR_HALL:
+            return {...state, projections: []};
+        case HallActionTypes.CLEAR_ALL_HALLS:
+            return {...state, allHalls: []};
         default:
             return {...state};
     }

@@ -13,6 +13,12 @@ export const RemoveFilmsActionCreator = () => {
     };
 };
 
+export const RemoveFilmActionCreator = () => {
+    return {
+        type: FilmActionTypes.REMOVE_FILM
+    };
+};
+
 export const GetFilmByIdActionCreator = id => {
     return {
         type: FilmActionTypes.GET_FILM_BY_ID,
@@ -31,11 +37,5 @@ export const GetAvailableSeatsForProjectionActionCreator = seats => {
     return {
         type: FilmActionTypes.GET_AVAILABLE_SEATS_FOR_PROJECTION,
         payload: seats
-    };
-};
-
-export const RemoveFilmActionCreator = () => {
-    return {
-        type: FilmActionTypes.REMOVE_FILM
     };
 };
