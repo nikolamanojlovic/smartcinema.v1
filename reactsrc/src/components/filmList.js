@@ -89,6 +89,7 @@ class FilmList extends Component {
                         {this.state.currentPage}
                     </Button>
                     <Button variant="contained" className="next" style={styles.buttonStyle}
+                            disabled={this.props.films.length < 10}
                             onClick={() => this._handlePageChangeNext(this.state.currentPage)}>
                         <NavigateNext/>
                     </Button>
