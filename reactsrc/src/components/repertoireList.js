@@ -57,12 +57,11 @@ class RepertoireList extends Component {
 
     render() {
         return (
-            this.props.createdProjections.length !== 0 ?
+            this.props.createdProjections && this.props.createdProjections.length !== 0 ?
                 <div style={styles.listBox}>
                     <List subheader={<li/>} style={styles.list}>
                         {
-                            this._generateCreatedRepertoireList(this.props.dates,
-                                this.props.createdProjections, this.props.allFilms)
+                            this._generateCreatedRepertoireList(this.props.dates, this.props.createdProjections, this.props.allFilms)
                         }
                     </List>
                 </div>
@@ -73,11 +72,11 @@ class RepertoireList extends Component {
 
 const mapStateToProps = state => {
     return {
-        dates: Array.from(new Set(state.ProjectionReducer.createdProjections.map(function (projection) {
+        dates: state.ProjectionReducer.createdProjections ? Array.from(new Set(state.ProjectionReducer.createdProjections.map(function (projection) {
             return projection.date;
         }))).sort(function (a, b) {
             return (new Date(a)).setHours(0, 0, 0, 0) - (new Date(b)).setHours(0, 0, 0, 0);
-        }),
+        }) : {},
         createdProjections: state.ProjectionReducer.createdProjections,
         allFilms: state.FilmReducer.films,
     };
